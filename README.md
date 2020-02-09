@@ -7,3 +7,9 @@
 3. Make sure the database credentials in your new `.env` file match your actual credentials.
 4. Run `php artisan serve` in your terminal.
 5. Voilà! View the project at [http://localhost:8000](http://localhost:8000)
+
+## Testing the project
+0. Browser tests are located in `~/tests/Browser/`.
+1. Run the browser tests with `php artisan dusk`.
+
+For more information about browser testing, read the [Dusk documentation](https://laravel.com/docs/6.x/dusk).
