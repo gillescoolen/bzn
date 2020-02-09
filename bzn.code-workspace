@@ -22,6 +22,14 @@
             "phpunit.xml": true,
             ".editorconfig": true,
             "extensions.json": true
-        }
+        },
+        // Temporary fix for the intelliphense undefined types/methods
+        "intelephense.diagnostics.undefinedTypes": false,
+        "intelephense.diagnostics.undefinedFunctions": false,
+        "intelephense.diagnostics.undefinedConstants": false,
+        "intelephense.diagnostics.undefinedClassConstants": false,
+        "intelephense.diagnostics.undefinedMethods": false,
+        "intelephense.diagnostics.undefinedProperties": false,
+        "intelephense.diagnostics.undefinedVariables": false
     }
 }
