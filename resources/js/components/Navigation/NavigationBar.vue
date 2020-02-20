@@ -1,12 +1,17 @@
 <template>
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Home</router-link>
+        <Dropdown/>
     </nav>
 </template>
 
 <script>
-export default {
+import { Dropdown } from "../UI/Dropdown";
 
+export default {
+    components: {
+        Dropdown
+    }
 }
 </script>
 

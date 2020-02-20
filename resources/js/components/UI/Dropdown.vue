@@ -1,12 +1,12 @@
 <template>
-    <select id="municipalities">
-        <option value="municipality">municipality</option>
-    </select>
+    <div>
+        Hallo
+    </div>
 </template>
 
 <script>
 export default {
-
+    
 }
 </script>
 
