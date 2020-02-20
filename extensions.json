@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "mehedidracula.php-namespace-resolver",
+        "bmewburn.vscode-intelephense-client",
+        "coenraads.bracket-pair-colorizer",
+        "neilbrayfield.php-docblocker",
+        "aaron-bond.better-comments",
+        "felixfbecker.php-debug",
+        "mikestead.dotenv"
+    ]
+}

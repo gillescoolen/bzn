@@ -1,0 +1,35 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.tabSize": 4,
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "webpack*": true,
+            ".phpunit*": true,
+            "artisan": true,
+            "vendor": true,
+            ".gitattributes": true,
+            ".styleci.yml": true,
+            "server.php": true,
+            "phpunit.xml": true,
+            ".editorconfig": true,
+            "extensions.json": true
+        },
+        // Temporary fix for the intelliphense undefined types/methods
+        "intelephense.diagnostics.undefinedTypes": false,
+        "intelephense.diagnostics.undefinedFunctions": false,
+        "intelephense.diagnostics.undefinedConstants": false,
+        "intelephense.diagnostics.undefinedClassConstants": false,
+        "intelephense.diagnostics.undefinedMethods": false,
+        "intelephense.diagnostics.undefinedProperties": false,
+        "intelephense.diagnostics.undefinedVariables": false
+    }
+}
