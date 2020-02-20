@@ -19,10 +19,6 @@ export default {
 </script>
 
 <style lang="scss">
-$primary: #297536;
-$secondary: #3e9c4e;
-$accent: #478f53;
-
 body {
     margin: 0;
     font-family: 'Arial';
