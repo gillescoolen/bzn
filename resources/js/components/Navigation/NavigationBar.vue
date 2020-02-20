@@ -1,7 +1,7 @@
 <template>
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Home</router-link>
-        <Dropdown/>
+        <Dropdown v-bind:municipalities="municipalities"/>
     </nav>
 </template>
 
@@ -11,6 +11,16 @@ import { Dropdown } from "../UI";
 export default {
     components: {
         Dropdown
+    },
+
+    data () {
+        return {
+            municipalities: [
+                { name: 'Horn' },
+                { name: 'Tilburg' },
+                { name: 'Weert' }
+            ]
+        }
     }
 }
 </script>
