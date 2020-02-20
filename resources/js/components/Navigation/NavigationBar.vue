@@ -1,7 +1,6 @@
 <template>
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Home</router-link>
-        <router-link class="item" :to="{ name: 'about' }">About</router-link>
     </nav>
 </template>
 
@@ -17,7 +16,7 @@ export default {
     display: flex;
     place-items: center;
     flex-direction: row;
-    background-color: $primary;
+    background-color: #1b6e37;
 
     .item {
         color: white;

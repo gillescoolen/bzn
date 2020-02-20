@@ -11,6 +11,6 @@ export default {
 <style lang="scss" scoped>
 button {
     border: none;
-    background-color: $secondary;
+    background-color: #297536;;
 }
 </style>
