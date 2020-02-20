@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { Dropdown } from "../UI/Dropdown";
+import { Dropdown } from "../UI";
 
 export default {
     components: {
