@@ -21,3 +21,5 @@ Route::get('/municipalities', function(){
     $municipality = ['name' => 'Horn'];
     return $municipality;
 });
+
+Route::get('municipalities', 'MunicipalityController@index');
