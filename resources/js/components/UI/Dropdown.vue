@@ -1,8 +1,8 @@
 <template>
     <div>
         <select>
-            <option v-for="o in municipalities" :key="o.name" v-bind:value="o.value">
-                {{ o.name }}
+            <option v-for="m in municipalities" :key="m.name" v-bind:value="m.value">
+                {{ m.name }}
             </option>
         </select>
     </div>

@@ -14,13 +14,23 @@ export default {
         Dropdown
     },
 
-    data () {
+    data() {
         return {
-            municipalities: [
-                { name: 'Horn' },
-                { name: 'Tilburg' },
-                { name: 'Weert' }
-            ]
+            municipalities: []
+        }
+    },
+
+    created() {
+        this.fetchMunicipalities();
+    },
+
+    methods: {
+        fetchMunicipalities() {
+            fetch('api/municipalities')
+                .then(res => res.json())
+                .then(res => {
+                    this.municipalities.push(res);
+                })
         }
     }
 }
