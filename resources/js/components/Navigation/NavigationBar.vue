@@ -24,7 +24,7 @@ export default {
 
     async mounted() {
         const fetchedMuncipalities = await this.fetchMunicipalities();
-        this.municipalities.push(fetchedMuncipalities);
+        this.municipalities = fetchedMuncipalities;
     },
 
     methods: {
