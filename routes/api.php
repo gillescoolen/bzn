@@ -18,9 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/municipalities', function(){
-    $municipality = [
-        'name' => 'Horn',
-    ];
-
+    $municipality = ['name' => 'Horn'];
     return $municipality;
 });
