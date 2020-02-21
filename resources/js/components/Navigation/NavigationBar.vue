@@ -45,6 +45,13 @@ export default {
     background-color: #1b6e37;
     justify-content: space-between;
 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000000;
+    width: 100vw;
+    max-width: 100%;
+
     .dropdown {
         display: flex;
         padding: 1rem;
