@@ -30,7 +30,6 @@ export default {
     methods: {
         async fetchMunicipalities() {
             const res = await fetch('api/municipalities');
-            console.log(res);
             return await res.json()
         }
     }
