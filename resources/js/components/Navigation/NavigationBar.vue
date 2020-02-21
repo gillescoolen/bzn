@@ -22,17 +22,15 @@ export default {
         }
     },
 
-    created() {
-        this.fetchMunicipalities();
+    async mounted() {
+        const fetchedMuncipalities = await this.fetchMunicipalities();
+        this.municipalities.push(fetchedMuncipalities);
     },
 
     methods: {
-        fetchMunicipalities() {
-            fetch('api/municipalities')
-                .then(res => res.json())
-                .then(res => {
-                    this.municipalities.push(res);
-                })
+        async fetchMunicipalities() {
+            const res = await fetch('api/municipalities');
+            return await res.json()
         }
     }
 }
