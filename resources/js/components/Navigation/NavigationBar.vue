@@ -23,8 +23,7 @@ export default {
     },
 
     async mounted() {
-        const fetchedMuncipalities = await this.fetchMunicipalities();
-        this.municipalities = fetchedMuncipalities;
+        this.municipalities = await this.fetchMunicipalities();;
     },
 
     methods: {
