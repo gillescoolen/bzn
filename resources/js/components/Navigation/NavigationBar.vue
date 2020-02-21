@@ -1,12 +1,8 @@
 <template>
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Home</router-link>
-<<<<<<< Updated upstream
-        <Dropdown/>
-=======
         KIES UW GEMEENTE:
         <Dropdown v-bind:municipalities="municipalities"/>
->>>>>>> Stashed changes
     </nav>
 </template>
 
