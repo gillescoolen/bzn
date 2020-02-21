@@ -14,3 +14,17 @@
 1. Run the browser tests with `php artisan dusk`.
 
 For more information about browser testing, read the [Dusk documentation](https://laravel.com/docs/6.x/dusk).
+
+## Common issues
+Due to PHP being PHP, there are some common issues we will face which are resolved pretty easily.
+
+- Target class does not exist.
+1. Run `composer dump-autoload` in your terminal.
+
+- Generic NPM errors
+1. Remove `/node_modules`.
+2. Run `npm ci`.
+
+- Generic Composer errors
+1. Remove `/vendor`.
+2. Run `composer install`.
