@@ -1,14 +1,17 @@
 <template>
   <div class="main">
       <Map/>
+      <Legend/>
   </div>
 </template>
 
 <script>
-import { Map } from "../components/Map";
+import { Map, Legend } from "../components/Map";
+
 export default {
     components: {
-        Map
+        Map,
+        Legend
     }
 }
 </script>
