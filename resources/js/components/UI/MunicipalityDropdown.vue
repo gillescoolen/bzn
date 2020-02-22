@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div v-if="municipalities" class="wrapper">
         <transition name="fade" mode="out-in">
             <button v-if="show" key="on" @click="show = false">Sluiten</button>
             <button
@@ -9,7 +9,7 @@
             >{{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}</button>
         </transition>
         <transition name="dropdown">
-            <Dropdown v-if="show" v-on:select="set($event)" :items="items" />
+            <Dropdown v-if="show" v-on:select="set($event)" :items="municipalities" />
         </transition>
     </div>
 </template>
@@ -23,15 +23,16 @@ export default {
         Dropdown
     },
 
-    props: {
-        items: null
-    },
-
     data() {
         return {
             show: false,
-            selected: null
+            selected: null,
+            municipalities: null
         }
+    },
+
+    async mounted() {
+        this.municipalities = await this.fetchMunicipalities();
     },
 
     computed: {
@@ -48,6 +49,11 @@ export default {
         set(item) {
             this.setMunicipality(item);
             this.show = false;
+        },
+
+        async fetchMunicipalities() {
+            const res = await fetch('api/municipalities');
+            return await res.json()
         }
     },
 }

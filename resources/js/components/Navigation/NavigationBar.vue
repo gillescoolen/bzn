@@ -2,7 +2,7 @@
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Bosgroep Zuid-Nederland</router-link>
 
-        <MunicipalityDropdown v-if="municipalities" :items="municipalities" />
+        <MunicipalityDropdown/>
     </nav>
 </template>
 
@@ -12,23 +12,6 @@ import { MunicipalityDropdown } from "../UI";
 export default {
     components: {
         MunicipalityDropdown
-    },
-
-    data() {
-        return {
-            municipalities: null
-        }
-    },
-
-    async mounted() {
-        this.municipalities = await this.fetchMunicipalities();
-    },
-
-    methods: {
-        async fetchMunicipalities() {
-            const res = await fetch('api/municipalities');
-            return await res.json()
-        }
     }
 }
 </script>
