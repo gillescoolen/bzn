@@ -1,5 +1,10 @@
 export const state = () => ({
-    selected: null,
+    selected: {
+        id: 0,
+        name: 'Amsterdam',
+        longitude: 4.895168,
+        latitude: 52.370216
+    },
 });
 
 export const mutations = {
