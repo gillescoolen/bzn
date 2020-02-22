@@ -6,7 +6,9 @@
 
 <script>
 import "leaflet/dist/leaflet.css";
+import { mapGetters, mapActions } from 'vuex';
 import { LMap, LTileLayer } from 'vue2-leaflet';
+
 export default {
     components: {
         LMap,
@@ -14,24 +16,27 @@ export default {
     },
 
     props: {
-        latitude: {
-            default: 5.322876
-        },
-        longitude: {
-            default: 51.685541
-        },
+
     },
 
     data() {
         return {
             zoom: 10,
-            bounds: null,
+            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             options: {
                 zoomControl: false
             },
-            center: [this.longitude, this.latitude],
-            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         };
     },
+
+    computed: {
+        ...mapGetters({
+            getMunicipality: 'municipalities/get'
+        }),
+
+        center() {
+            return [this.getMunicipality.latitude, this.getMunicipality.longitude]
+        }
+    }
 }
 </script>
