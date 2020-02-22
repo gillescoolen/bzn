@@ -79,6 +79,28 @@ $width: 300px;
         background-color: white;
         box-shadow: 0px 4px 4px 1px #00000040;
 
+        /* width */
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background: #f0f0f0;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            border-radius: 5px;
+            background: #dbdbdb;
+        }
+
         &-item {
             cursor: pointer;
             border-bottom: 1px solid #dddddd;
