@@ -1,10 +1,8 @@
 <template>
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Home</router-link>
-        <div class="dropdown">
-            <span>KIES UW GEMEENTE:</span>
-            <Dropdown v-bind:municipalities="municipalities" />
-        </div>
+
+        <Dropdown v-if="municipalities" :items="municipalities"/>
     </nav>
 </template>
 
@@ -18,12 +16,12 @@ export default {
 
     data() {
         return {
-            municipalities: []
+            municipalities: null
         }
     },
 
     async mounted() {
-        this.municipalities = await this.fetchMunicipalities();;
+        this.municipalities = await this.fetchMunicipalities();
     },
 
     methods: {
@@ -50,19 +48,6 @@ export default {
     z-index: 10000000;
     width: 100vw;
     max-width: 100%;
-
-    .dropdown {
-        display: flex;
-        padding: 1rem;
-        flex-direction: row;
-        place-items: center;
-
-        span {
-            margin: 1rem;
-            color: white;
-            font-weight: 700;
-        }
-    }
 
     .item {
         color: white;
