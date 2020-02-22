@@ -22,14 +22,14 @@ export default {
 
 <style lang="scss" scoped>
 $width: 300px;
-$height: 40vh;
+$height: 400px;
 
 .menu {
-    top: 100%;
     right: 0;
+    top: 100%;
     z-index: 10;
-    margin: 0.5rem;
     padding: 1rem;
+    margin: 0.5rem;
     height: $height;
     min-width: $width;
     overflow-y: auto;
@@ -38,28 +38,6 @@ $height: 40vh;
     list-style-type: none;
     background-color: white;
     box-shadow: 0px 4px 4px 1px #00000040;
-
-    /* width */
-    &::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    /* Track */
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        background: #f0f0f0;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-        border-radius: 5px;
-        background: #dbdbdb;
-    }
 
     &-item {
         cursor: pointer;
@@ -79,6 +57,24 @@ $height: 40vh;
 
         &:last-child {
             border: none;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 10px;
+
+        &-track {
+            background: transparent;
+        }
+
+        &-thumb {
+            border-radius: 5px;
+            background: #f0f0f0;
+
+            &:hover {
+                border-radius: 5px;
+                background: #dbdbdb;
+            }
         }
     }
 }
