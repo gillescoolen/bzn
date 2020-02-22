@@ -1,8 +1,8 @@
 <template>
     <nav class="navigation">
-        <router-link class="item" :to="{ name: 'home' }">Home</router-link>
+        <router-link class="item" :to="{ name: 'home' }">Bosgroep Zuid-Nederland</router-link>
 
-        <Dropdown v-if="municipalities" :items="municipalities"/>
+        <Dropdown v-if="municipalities" :items="municipalities" />
     </nav>
 </template>
 
@@ -51,6 +51,7 @@ export default {
 
     .item {
         color: white;
+        font-weight: 700;
         text-decoration: none;
         margin: 0 0.5rem 0 0.5rem;
     }

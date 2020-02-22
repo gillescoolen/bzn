@@ -50,6 +50,7 @@ $width: 300px;
     button {
         color: white;
         cursor: pointer;
+        font-size: 1rem;
         font-weight: 700;
         border: 1px solid transparent;
         background-color: transparent;
