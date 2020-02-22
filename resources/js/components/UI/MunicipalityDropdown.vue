@@ -1,12 +1,12 @@
 <template>
     <div v-if="municipalities" class="wrapper">
         <transition name="fade" mode="out-in">
-            <button v-if="show" key="on" @click="show = false">Sluiten</button>
-            <button
+            <span v-if="show" key="on" @click="show = false">Sluiten</span>
+            <span
                 v-else
                 key="off"
                 @click="show = true"
-            >{{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}</button>
+            >{{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}</span>
         </transition>
         <transition name="dropdown">
             <Dropdown v-if="show" v-on:select="set($event)" :items="municipalities" />
@@ -64,21 +64,16 @@ export default {
     padding: 1rem;
     margin: 0.5rem;
 
-    button {
+    span {
         color: white;
         cursor: pointer;
         font-size: 1rem;
         font-weight: 700;
-        border: 1px solid transparent;
+        user-select: none;
         background-color: transparent;
 
         &:focus {
             outline: none;
-        }
-
-        .icon {
-            width: 1.65rem;
-            height: 1.65rem;
         }
     }
 }

@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Municipality::class, function (Faker $faker) {
     return [
         'name' => $faker->city,
-        'long' => 0,
-        'lat' => 0,
+        'long' => $faker->randomFloat(6, 4, 7),
+        'lat' => $faker->randomFloat(6, 50, 54)
     ];
 });
