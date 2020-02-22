@@ -1,5 +1,7 @@
 import Dropdown from "./Dropdown";
+import MunicipalityDropdown from "./MunicipalityDropdown";
 
 export {
-    Dropdown
+    Dropdown,
+    MunicipalityDropdown
 }
