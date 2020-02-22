@@ -17,6 +17,8 @@ class MunicipalityResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'longitude' => $this->long,
+            'latitude' => $this->lat,
         ];
     }
 }

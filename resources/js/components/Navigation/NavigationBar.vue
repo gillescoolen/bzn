@@ -1,35 +1,17 @@
 <template>
     <nav class="navigation">
-        <router-link class="item" :to="{ name: 'home' }">Home</router-link>
+        <router-link class="item" :to="{ name: 'home' }">Bosgroep Zuid-Nederland</router-link>
 
-        <Dropdown v-if="municipalities" :items="municipalities"/>
+        <MunicipalityDropdown/>
     </nav>
 </template>
 
 <script>
-import { Dropdown } from "../UI";
+import { MunicipalityDropdown } from "../UI";
 
 export default {
     components: {
-        Dropdown
-    },
-
-    data() {
-        return {
-            municipalities: null
-        }
-    },
-
-    async mounted() {
-        this.municipalities = await this.fetchMunicipalities();
-    },
-
-    methods: {
-        async fetchMunicipalities() {
-            const res = await fetch('api/municipalities');
-            console.log(res);
-            return await res.json()
-        }
+        MunicipalityDropdown
     }
 }
 </script>
@@ -43,15 +25,16 @@ export default {
     background-color: #1b6e37;
     justify-content: space-between;
 
-    position: absolute;
     top: 0;
     left: 0;
-    z-index: 10000000;
     width: 100vw;
     max-width: 100%;
+    z-index: 10000000;
+    position: absolute;
 
     .item {
         color: white;
+        font-weight: 700;
         text-decoration: none;
         margin: 0 0.5rem 0 0.5rem;
     }

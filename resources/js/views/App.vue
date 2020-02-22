@@ -21,6 +21,7 @@ export default {
 <style lang="scss">
 body {
     margin: 0;
+    overflow: hidden;
     font-family: 'Arial';
 }
 </style>
