@@ -36,7 +36,7 @@ class MapTest extends DuskTestCase
     }
 
     /**
-     * Make sure the zoom controls have been disabled.
+     * Make sure the zoom controls have been disabled and the minimal zoom amount is set to 12.
      *
      * @return void
      */
@@ -44,6 +44,7 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                ->assertVue('minZoom', 12, '@map')
                 ->assertVue('options', ['zoomControl' => false], '@map');
         });
     }

@@ -1,5 +1,12 @@
 <template>
-    <l-map dusk="map" style="height: 100%; width: 100%;" :zoom="zoom" :center="center" :options="options">
+    <l-map
+        dusk="map"
+        style="height: 100%; width: 100%;"
+        :zoom="zoom"
+        :minZoom="minZoom"
+        :center="center"
+        :options="options"
+    >
         <l-tile-layer :url="url"></l-tile-layer>
     </l-map>
 </template>
@@ -18,6 +25,7 @@ export default {
     data() {
         return {
             zoom: 12,
+            minZoom: 12,
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             options: {
                 zoomControl: false
