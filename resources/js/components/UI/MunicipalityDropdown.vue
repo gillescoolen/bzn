@@ -9,24 +9,23 @@
             >{{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}</span>
         </transition>
         <transition name="dropdown">
-            <Dropdown v-if="show" v-on:select="set($event)" :items="municipalities" />
+            <List dusk="municipality-list" v-if="show" v-on:select="set($event)" :items="municipalities" />
         </transition>
     </div>
 </template>
 
 <script>
-import { Dropdown } from '../UI'
+import { List } from '../UI'
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
     components: {
-        Dropdown
+        List
     },
 
     data() {
         return {
             show: false,
-            selected: null,
             municipalities: null
         }
     },
