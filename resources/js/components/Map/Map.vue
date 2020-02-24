@@ -1,5 +1,5 @@
 <template>
-    <l-map style="height: 100%; width: 100%;" :zoom="zoom" :center="center" :options="options">
+    <l-map dusk="map" style="height: 100%; width: 100%;" :zoom="zoom" :center="center" :options="options">
         <l-tile-layer :url="url"></l-tile-layer>
     </l-map>
 </template>
@@ -15,13 +15,9 @@ export default {
         LTileLayer,
     },
 
-    props: {
-
-    },
-
     data() {
         return {
-            zoom: 10,
+            zoom: 12,
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             options: {
                 zoomControl: false
