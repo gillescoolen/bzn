@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" v-if="items">
         <transition name="fade" mode="out-in">
             <ul v-if="show" class="legend">
                 <span v-if="show" @click="show = false" class="close">Verberg</span>
