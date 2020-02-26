@@ -5,6 +5,7 @@
 1. Open a terminal in the root folder and run `composer install` and `npm install`.
 2. Copy the `.env.example` file and name the new file `.env`.
 3. Make sure the database credentials in your new `.env` file match your actual credentials.
+4. (on first time running) Run 'php artisan migrate:fresh --seed' to insert default data
 4. Run `php artisan serve` in your terminal.
 4. Run `npm run hot` in another terminal.
 5. Voilà! View the project at [http://localhost:8000](http://localhost:8000)
