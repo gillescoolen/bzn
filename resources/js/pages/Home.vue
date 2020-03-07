@@ -2,16 +2,18 @@
   <div class="main">
       <Map/>
       <Legend/>
+      <Questionnaire/>
   </div>
 </template>
 
 <script>
-import { Map, Legend } from "../components/Map";
+import { Map, Legend, Questionnaire } from "../components/Map";
 
 export default {
     components: {
         Map,
-        Legend
+        Legend,
+        Questionnaire
     }
 }
 </script>
