@@ -1,16 +1,24 @@
 <template>
   <div class="wrapper">
-    <div v-if="show" class="questionnaire">
-      <div class="header">
-        <h1>Biodiversiteit</h1>
-        <button class="btn btn-primary" @click="show = false">
-          <span>x</span>
-        </button>
+    <transition name="fade" mode="out-in">
+      <div v-if="show" class="questionnaire">
+        <div class="header">
+          <h1>Biodiversiteit</h1>
+          <button class="btn btn-primary" @click="show = false">
+            <span>x</span>
+          </button>
+        </div>
+        <p>Wilt u de biodiversiteit binnen uw gemeente vergroten? BZN biedt met deze tool de mogelijkheid inzichten te vergaren voor het creëren van een diervriendelijke leefomgeving.</p>
+        <div class="questions"></div>
       </div>
-      <p>Wilt u de biodiversiteit binnen uw gemeente vergroten? BZN biedt met deze tool de mogelijkheid inzichten te vergaren voor het creëren van een diervriendelijke leefomgeving.</p>
-      <div class="questions"></div>
-    </div>
-    <img v-else @click="show = true" class="tree-icon" src="/assets/tree-solid.svg" alt="tree-icon" />
+      <img
+        v-else
+        @click="show = true"
+        class="tree-icon"
+        src="/assets/tree-solid.svg"
+        alt="tree-icon"
+      />
+    </transition>
   </div>
 </template>
 
@@ -74,13 +82,21 @@ $primary: #744144;
         align-items: center;
 
         span {
-            font-size: 20px;
-            height: 20px;
-            line-height: 16px;
-            cursor: pointer;
+          font-size: 20px;
+          height: 20px;
+          line-height: 16px;
+          cursor: pointer;
         }
       }
     }
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>
