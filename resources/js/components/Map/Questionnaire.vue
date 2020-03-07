@@ -4,7 +4,7 @@
       <div v-if="show" class="questionnaire">
 
         <div class="header">
-          <h1>BIODIVERSITEIT</h1>
+          <h1>Biodiversiteit</h1>
           <button @click="show = false">
             <span>x</span>
           </button>
@@ -12,7 +12,13 @@
         <p>Wilt u de biodiversiteit binnen uw gemeente vergroten? BZN biedt met deze tool de mogelijkheid inzichten te vergaren voor het creëren van een diervriendelijke leefomgeving.</p>
         
         <div class="questions">
-
+            <div v-for="question in questions" v-bind:key="question.id" class="question">
+                <p class="title">{{question.title}}</p>
+                <p class="question">{{question.question}}</p>
+                <select class="option">
+                    <option v-for="option in question.options" v-bind:key="option" :value="option">{{option}}</option>
+                </select>
+            </div>
         </div>
 
         <div class="buttons">
@@ -40,6 +46,44 @@ export default {
       show: true,
       questions: undefined
     };
+  },
+  mounted() {
+      this.setQuestions();
+  },
+  methods: {
+      setQuestions () {
+          const questions = [
+              {
+                  title: 'Vraag 1',
+                  question: 'Welk dier vind je belangrijk?',
+                  options: [
+                      'Konijnen',
+                      'Koeien',
+                      'Kippen',
+                      'Honden',
+                      'Bevers'
+                  ]
+              },
+              {
+                  title: 'Vraag 2',
+                  question: 'Welke kaas vind je goed bij de regio passen?',
+                  options: [
+                      'Blauwe kaas',
+                      'Jong belegen'
+                  ]
+              },
+              {
+                  title: 'Vraag 3',
+                  question: 'Welke soort bomen vind je mooi?',
+                  options: [
+                      'Amerikaanse eiken',
+                      'Dennenbomen',
+                      'Wilgen'
+                  ]
+              }
+          ]
+          this.questions = questions;
+      }
   }
 };
 </script>
@@ -118,6 +162,27 @@ $darkgray: #585858;
           cursor: pointer;
         }
       }
+    }
+
+    > p {
+        color: #555;
+    }
+
+    .questions {
+        margin: 25px 0;
+
+        .question {
+            margin: 15px 0;
+
+            > p {
+                margin: 5px 0;
+                color: $primary;
+            }
+            
+            .title {
+                font-weight: bold;
+            }
+        }
     }
 
     .buttons {
