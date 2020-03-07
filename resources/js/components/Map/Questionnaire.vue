@@ -2,14 +2,25 @@
   <div class="wrapper">
     <transition name="fade" mode="out-in">
       <div v-if="show" class="questionnaire">
+
         <div class="header">
-          <h1>Biodiversiteit</h1>
-          <button class="btn btn-primary" @click="show = false">
+          <h1>BIODIVERSITEIT</h1>
+          <button @click="show = false">
             <span>x</span>
           </button>
         </div>
         <p>Wilt u de biodiversiteit binnen uw gemeente vergroten? BZN biedt met deze tool de mogelijkheid inzichten te vergaren voor het creëren van een diervriendelijke leefomgeving.</p>
-        <div class="questions"></div>
+        
+        <div class="questions">
+
+        </div>
+
+        <div class="buttons">
+            <button class="bg-disabled" disabled>Vorige</button>
+            <button class="bg-secondary">Volgende</button>
+            <button class="bg-primary">Vergelijk kaarten</button>
+        </div>
+
       </div>
       <img
         v-else
@@ -35,6 +46,25 @@ export default {
 
 <style lang="scss" scoped>
 $primary: #744144;
+$secondary: #45BF63;
+$disabled: #A5A5A5;
+$darkgray: #585858;
+
+.bg-primary {
+    background-color: $primary;
+}
+
+.bg-secondary {
+    background-color: $secondary;
+}
+
+.bg-disabled {
+    background-color: $disabled;
+}
+
+.bg-darkgray {
+    background-color: $darkgray;
+}
 
 .wrapper {
   position: absolute;
@@ -88,6 +118,27 @@ $primary: #744144;
           cursor: pointer;
         }
       }
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+
+        button {
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin: 5px 0;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+
+        .bg-disabled {
+            cursor: not-allowed;
+        }
     }
   }
 }
