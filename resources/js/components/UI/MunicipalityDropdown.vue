@@ -6,7 +6,10 @@
                 v-else
                 key="off"
                 @click="show = true"
-            >{{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}</span>
+            >
+                {{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}
+                <img src="/assets/caret-down-solid.svg" alt="caret-dropdown">
+            </span>
         </transition>
         <transition name="dropdown">
             <List dusk="municipality-list" v-if="show" v-on:select="set($event)" :items="municipalities" />
@@ -70,9 +73,17 @@ export default {
         font-weight: 700;
         user-select: none;
         background-color: transparent;
+        display: flex;
+        align-items: center;
 
         &:focus {
             outline: none;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+            filter: invert(1);  
         }
     }
 }
