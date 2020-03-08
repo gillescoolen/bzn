@@ -101,7 +101,7 @@ export default {
     border-radius: 10px;
     width: 300px;
     padding: 15px;
-    max-height: calc(100vh - 110px);
+    max-height: calc(100vh - 120px);
     overflow-y: auto;
 
     .header {
@@ -152,7 +152,7 @@ export default {
         }
 
         .select {
-            margin-top: 10px;
+          margin-top: 10px;
         }
       }
     }
