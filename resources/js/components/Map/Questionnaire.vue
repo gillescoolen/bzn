@@ -10,41 +10,43 @@
         </div>
         <p>Wilt u de biodiversiteit binnen uw gemeente vergroten? BZN biedt met deze tool de mogelijkheid inzichten te vergaren voor het creëren van een diervriendelijke leefomgeving.</p>
 
-        <div class="questions">
-          <div v-for="question in questions" v-bind:key="question.id" class="question">
-            <p class="title">{{question.title}}</p>
-            <p class="question">{{question.question}}</p>
-            <Select :Panswers="question.answers" />
+        <div class="loader" v-if="questions === undefined || questions.length === 0">
+          <Spinner stroke="#744144" />
+          <p>Vragenlijst laden...</p>
+        </div>
+        <div v-else>
+          <div class="questions">
+            <div v-for="question in questions" v-bind:key="question.id" class="question">
+              <p class="title">{{question.title}}</p>
+              <p class="question">{{question.question}}</p>
+              <Select :Panswers="question.answers" />
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button class="bg-disabled" disabled>Vorige</button>
+            <button class="bg-secondary">Volgende</button>
+            <button class="bg-primary">Vergelijk kaarten</button>
           </div>
         </div>
-
-        <div class="buttons">
-          <button class="bg-disabled" disabled>Vorige</button>
-          <button class="bg-secondary">Volgende</button>
-          <button class="bg-primary">Vergelijk kaarten</button>
-        </div>
       </div>
-      <img
-        v-else
-        @click="show = true"
-        class="tree-icon"
-        src="/assets/tree-solid.svg"
-        alt="tree-icon"
-      />
+
+      <img v-else @click="show = true" class="tree-icon" src="/assets/tree-solid.svg" alt="tree-icon" />
     </transition>
   </div>
 </template>
 
 <script>
-import { Select } from "../UI";
+import { Select, Spinner } from "../UI";
 
 export default {
   components: {
-    Select
+    Select,
+    Spinner
   },
   data() {
     return {
-      show: true,
+      show: false,
       questions: undefined
     };
   },
@@ -53,11 +55,11 @@ export default {
   },
   methods: {
     async fetchQuestions() {
-      fetch('api/questions')
+      fetch("api/questions")
         .then(res => res.json())
         .then(questions => this.questions = questions)
         .catch(e => {
-          console.error('Error fetching questions: ', e)
+          console.error("Error fetching questions: ", e);
         });
     }
   }
@@ -82,6 +84,21 @@ export default {
   }
   .tree-icon:hover {
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
+  }
+
+  .loader {
+    height: 150px;
+    position: relative;
+    margin-top: -10px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+
+    p {
+      color: #555;
+      text-align: center;
+      font-weight: bold;
+    }
   }
 
   .questionnaire {
@@ -168,12 +185,11 @@ export default {
     }
   }
 }
-.fade-enter-active,
-.fade-leave-active {
+
+.fade-enter-active, .fade-leave-active {
   transition: opacity 0.2s;
 }
-.fade-enter,
-.fade-leave-to {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>
