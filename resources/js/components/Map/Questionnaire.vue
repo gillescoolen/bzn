@@ -14,7 +14,7 @@
           <div v-for="question in questions" v-bind:key="question.id" class="question">
             <p class="title">{{question.title}}</p>
             <p class="question">{{question.question}}</p>
-            <Select :Poptions="question.options" />
+            <Select :Panswers="question.answers" />
           </div>
         </div>
 
@@ -49,28 +49,16 @@ export default {
     };
   },
   mounted() {
-    this.setQuestions();
+    this.fetchQuestions();
   },
   methods: {
-    setQuestions() {
-      const questions = [
-        {
-          title: "Vraag 1",
-          question: "Welk dier vind je belangrijk?",
-          options: ["Konijnen", "Koeien", "Kippen", "Honden", "Bevers"]
-        },
-        {
-          title: "Vraag 2",
-          question: "Welke kaas vind je goed bij de regio passen?",
-          options: ["Blauwe kaas", "Jong belegen"]
-        },
-        {
-          title: "Vraag 3",
-          question: "Welke soort bomen vind je mooi?",
-          options: ["Amerikaanse eiken", "Dennenbomen", "Wilgen"]
-        }
-      ];
-      this.questions = questions;
+    async fetchQuestions() {
+      fetch('api/questions')
+        .then(res => res.json())
+        .then(questions => this.questions = questions)
+        .catch(e => {
+          console.error('Error fetching questions: ', e)
+        });
     }
   }
 };
@@ -128,6 +116,7 @@ export default {
         span {
           font-size: 20px;
           cursor: pointer;
+          height: 27px;
         }
       }
     }

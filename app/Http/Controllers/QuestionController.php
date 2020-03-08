@@ -66,23 +66,26 @@ class QuestionController extends Controller
             ])
         ];
 
+        $questionTitleIndex = 1;
         $questions = [
             new Question([
                 'id' => 1,
-                'question' => 'Welk dier vind je belangrijk?',
-                'answers' => $this->filterAnswers($answers, 1)
+                'question' => 'Welk dier vind je belangrijk?'
             ]),
             new Question([
                 'id' => 2,
-                'question' => 'Welke kaas vind je goed bij de regio passen?',
-                'answers' => $this->filterAnswers($answers, 2)
+                'question' => 'Welke kaas vind je goed bij de regio passen?'
             ]),
             new Question([
                 'id' => 3,
-                'question' => 'Welke soort bomen vind je mooi?',
-                'answers' => $this->filterAnswers($answers, 3)
+                'question' => 'Welke soort bomen vind je mooi?'
             ])
         ];
+
+        foreach($questions as $q) {
+            $q->title = 'Vraag ' . $questionTitleIndex++;
+            $q->answers = $this->filterAnswers($answers, $q->id);
+        }
 
         return response()->json($questions);
     }

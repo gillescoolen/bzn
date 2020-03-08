@@ -1,16 +1,16 @@
 <template>
-    <div class="select" v-if="options && options.length !== 0">
+    <div class="select" v-if="answers && answers.length !== 0">
         <div class="dropdown" :class="dropdownBorder" @click="expanded = !expanded">
-            <span>{{selected}}</span>
+            <span>{{selected.answer}}</span>
 
             <button :class="dropdownButtonClass" >
                 <img src="/assets/caret-right-solid.svg" alt="caret-right">
             </button>
         </div>
         
-        <ul v-if="expanded" class="options">
-            <li v-for="option in options" v-bind:key="option" class="option" :class="selected == option ? 'selected' : ''" @click="selected = option">
-                <span>{{option}}</span>
+        <ul v-if="expanded" class="answers">
+            <li v-for="answer_model in answers" v-bind:key="answer_model.id" class="answer" :class="selected == answer_model ? 'selected' : ''" @click="selected = answer_model">
+                <span>{{answer_model.answer}}</span>
             </li>
         </ul>
     </div>
@@ -19,18 +19,18 @@
 <script>
 export default {
     props: {
-        Poptions: null
+        Panswers: null
     },
     data () {
         return {
             selected: undefined,
-            options: undefined,
+            answers: undefined,
             expanded: false
         }
     },
     mounted() {
-        this.options = this.Poptions;
-        this.selected = this.options[0];
+        this.answers = this.Panswers;
+        this.selected = this.answers[0];
     },
     computed: {
         dropdownBorder () {
@@ -104,12 +104,12 @@ export default {
         color: #3d3d3d;
     }
 
-    .options {
+    .answers {
         list-style: none;
         margin: 0;
         padding: 0;
 
-        .option {
+        .answer {
             border: 1px solid grey;
             border-radius: 5px;
             padding: 5px;
@@ -117,11 +117,11 @@ export default {
             cursor: pointer;
         }
 
-        .option.selected {
+        .answer.selected {
             font-weight: bold;
         }
 
-        .option:hover {
+        .answer:hover {
             background: $secondary;
 
             span {
