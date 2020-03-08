@@ -28,3 +28,23 @@ $darkgray: #585858;
 .border-secondary {
     border-color: $secondary !important;
 }
+
+.disabled {
+    color: $disabled;
+}
+.bg-disabled {
+    background-color: $disabled;
+}
+.border-disabled {
+    border-color: $disabled !important;
+}
+
+.darkgray {
+    color: $darkgray;
+}
+.bg-darkgray {
+    background-color: $darkgray;
+}
+.border-darkgray {
+    border-color: $darkgray !important;
+}
