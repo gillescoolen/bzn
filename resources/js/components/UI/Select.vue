@@ -1,7 +1,7 @@
 <template>
-    <div class="select" v-if="options.length !== 0">
+    <div class="select" v-if="options && options.length !== 0">
         <div class="dropdown" :class="dropdownBorder" @click="expanded = !expanded">
-            <span>{{options[0]}}</span>
+            <span>{{selected}}</span>
 
             <button :class="dropdownButtonClass" >
                 <img src="/assets/caret-right-solid.svg" alt="caret-right">
@@ -9,7 +9,7 @@
         </div>
         
         <ul v-if="expanded" class="options">
-            <li v-for="option in options" v-bind:key="option" class="option">
+            <li v-for="option in options" v-bind:key="option" class="option" :class="selected == option ? 'selected' : ''" @click="selected = option">
                 <span>{{option}}</span>
             </li>
         </ul>
@@ -19,12 +19,18 @@
 <script>
 export default {
     props: {
-        options: null
+        Poptions: null
     },
     data () {
         return {
+            selected: undefined,
+            options: undefined,
             expanded: false
         }
+    },
+    mounted() {
+        this.options = this.Poptions;
+        this.selected = this.options[0];
     },
     computed: {
         dropdownBorder () {
@@ -78,6 +84,7 @@ $secondary: #45bf63;
         padding: 5px;
         display: flex;
         justify-content: space-between;
+        cursor: pointer;
 
         button {
             position: relative;
@@ -102,7 +109,7 @@ $secondary: #45bf63;
                 transition: transform .2s ease-in-out;
             }
         }
-        
+
         button.expanded {
             img {
                 transform: rotate(90deg);
@@ -115,6 +122,32 @@ $secondary: #45bf63;
     span {
         font-size: 15px;
         color: #3d3d3d;
+    }
+
+    .options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .option {
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            font-weight: bold;
+        }
+
+        .option:hover {
+            background: $secondary;
+
+            span {
+                color: white;
+            }
+        }
     }
 }
 </style>

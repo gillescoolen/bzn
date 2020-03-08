@@ -14,7 +14,7 @@
           <div v-for="question in questions" v-bind:key="question.id" class="question">
             <p class="title">{{question.title}}</p>
             <p class="question">{{question.question}}</p>
-            <Select :options="question.options" />
+            <Select :Poptions="question.options" />
           </div>
         </div>
 
