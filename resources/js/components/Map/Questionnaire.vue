@@ -101,6 +101,8 @@ export default {
     border-radius: 10px;
     width: 300px;
     padding: 15px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
 
     .header {
       display: flex;
@@ -116,18 +118,15 @@ export default {
         background-color: $primary;
         color: white;
         border: none;
-        padding: 15px;
         border-radius: 50%;
-        width: 10px;
-        height: 10px;
+        width: 30px;
+        height: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
 
         span {
           font-size: 20px;
-          height: 20px;
-          line-height: 16px;
           cursor: pointer;
         }
       }
