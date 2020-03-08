@@ -51,28 +51,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-$primary: #744144;
-$secondary: #45bf63;
-
-.bg-primary {
-    background-color: $primary;
-}
-.primary {
-    color: $primary;
-}
-.bg-secondary {
-    background-color: $secondary;
-}
-.secondary {
-    color: $secondary;
-}
-.border-primary {
-    border-color: $primary !important;
-}
-.border-secondary {
-    border-color: $secondary !important;
-}
+<style lang="scss">
+@import "./resources/sass/app.scss";
 
 .select {
     width: 100%;

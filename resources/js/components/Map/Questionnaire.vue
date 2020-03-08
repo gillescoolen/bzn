@@ -77,26 +77,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$primary: #744144;
-$secondary: #45bf63;
-$disabled: #a5a5a5;
-$darkgray: #585858;
-
-.bg-primary {
-  background-color: $primary;
-}
-
-.bg-secondary {
-  background-color: $secondary;
-}
-
-.bg-disabled {
-  background-color: $disabled;
-}
-
-.bg-darkgray {
-  background-color: $darkgray;
-}
+@import "./resources/sass/app.scss";
 
 .wrapper {
   position: absolute;
