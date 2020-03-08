@@ -21,3 +21,5 @@ Route::get('/municipalities', function(){
 Route::get('municipalities', 'MunicipalityController@index');
 
 Route::get('legend', 'LegendController@index');
+
+Route::get('/questions', 'QuestionController@index');
