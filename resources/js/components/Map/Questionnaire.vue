@@ -2,7 +2,6 @@
   <div class="wrapper">
     <transition name="fade" mode="out-in">
       <div v-if="show" class="questionnaire">
-
         <div class="header">
           <h1>Biodiversiteit</h1>
           <button @click="show = false">
@@ -10,23 +9,20 @@
           </button>
         </div>
         <p>Wilt u de biodiversiteit binnen uw gemeente vergroten? BZN biedt met deze tool de mogelijkheid inzichten te vergaren voor het creëren van een diervriendelijke leefomgeving.</p>
-        
+
         <div class="questions">
-            <div v-for="question in questions" v-bind:key="question.id" class="question">
-                <p class="title">{{question.title}}</p>
-                <p class="question">{{question.question}}</p>
-                <select class="option">
-                    <option v-for="option in question.options" v-bind:key="option" :value="option">{{option}}</option>
-                </select>
-            </div>
+          <div v-for="question in questions" v-bind:key="question.id" class="question">
+            <p class="title">{{question.title}}</p>
+            <p class="question">{{question.question}}</p>
+            <Select :options="question.options" />
+          </div>
         </div>
 
         <div class="buttons">
-            <button class="bg-disabled" disabled>Vorige</button>
-            <button class="bg-secondary">Volgende</button>
-            <button class="bg-primary">Vergelijk kaarten</button>
+          <button class="bg-disabled" disabled>Vorige</button>
+          <button class="bg-secondary">Volgende</button>
+          <button class="bg-primary">Vergelijk kaarten</button>
         </div>
-
       </div>
       <img
         v-else
@@ -40,7 +36,12 @@
 </template>
 
 <script>
+import { Select } from "../UI";
+
 export default {
+  components: {
+    Select
+  },
   data() {
     return {
       show: true,
@@ -48,66 +49,53 @@ export default {
     };
   },
   mounted() {
-      this.setQuestions();
+    this.setQuestions();
   },
   methods: {
-      setQuestions () {
-          const questions = [
-              {
-                  title: 'Vraag 1',
-                  question: 'Welk dier vind je belangrijk?',
-                  options: [
-                      'Konijnen',
-                      'Koeien',
-                      'Kippen',
-                      'Honden',
-                      'Bevers'
-                  ]
-              },
-              {
-                  title: 'Vraag 2',
-                  question: 'Welke kaas vind je goed bij de regio passen?',
-                  options: [
-                      'Blauwe kaas',
-                      'Jong belegen'
-                  ]
-              },
-              {
-                  title: 'Vraag 3',
-                  question: 'Welke soort bomen vind je mooi?',
-                  options: [
-                      'Amerikaanse eiken',
-                      'Dennenbomen',
-                      'Wilgen'
-                  ]
-              }
-          ]
-          this.questions = questions;
-      }
+    setQuestions() {
+      const questions = [
+        {
+          title: "Vraag 1",
+          question: "Welk dier vind je belangrijk?",
+          options: ["Konijnen", "Koeien", "Kippen", "Honden", "Bevers"]
+        },
+        {
+          title: "Vraag 2",
+          question: "Welke kaas vind je goed bij de regio passen?",
+          options: ["Blauwe kaas", "Jong belegen"]
+        },
+        {
+          title: "Vraag 3",
+          question: "Welke soort bomen vind je mooi?",
+          options: ["Amerikaanse eiken", "Dennenbomen", "Wilgen"]
+        }
+      ];
+      this.questions = questions;
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 $primary: #744144;
-$secondary: #45BF63;
-$disabled: #A5A5A5;
+$secondary: #45bf63;
+$disabled: #a5a5a5;
 $darkgray: #585858;
 
 .bg-primary {
-    background-color: $primary;
+  background-color: $primary;
 }
 
 .bg-secondary {
-    background-color: $secondary;
+  background-color: $secondary;
 }
 
 .bg-disabled {
-    background-color: $disabled;
+  background-color: $disabled;
 }
 
 .bg-darkgray {
-    background-color: $darkgray;
+  background-color: $darkgray;
 }
 
 .wrapper {
@@ -165,54 +153,58 @@ $darkgray: #585858;
     }
 
     > p {
-        color: #555;
+      color: #555;
     }
 
     .questions {
-        margin: 25px 0;
+      margin: 25px 0;
 
-        .question {
-            margin: 15px 0;
+      .question {
+        margin: 15px 0;
 
-            > p {
-                margin: 5px 0;
-                color: $primary;
-            }
-            
-            .title {
-                font-weight: bold;
-            }
+        > p {
+          margin: 5px 0;
+          color: $primary;
         }
+
+        .title {
+          font-weight: bold;
+        }
+
+        .select {
+            margin-top: 10px;
+        }
+      }
     }
 
     .buttons {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
 
-        button {
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            margin: 5px 0;
-            font-size: 15px;
-            font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            border-radius: 5px;
-        }
+      button {
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        margin: 5px 0;
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 5px;
+      }
 
-        .bg-disabled {
-            cursor: not-allowed;
-        }
+      .bg-disabled {
+        cursor: not-allowed;
+      }
     }
   }
 }
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 .fade-enter,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 </style>
