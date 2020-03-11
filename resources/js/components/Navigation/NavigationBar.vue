@@ -2,7 +2,7 @@
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Bosgroep Zuid-Nederland</router-link>
 
-        <MunicipalityDropdown/>
+        <MunicipalityDropdown dusk="municipality-dropdown"/>
     </nav>
 </template>
 

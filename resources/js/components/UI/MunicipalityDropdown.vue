@@ -5,6 +5,7 @@
             <span
                 v-else
                 key="off"
+                dusk="municipality-button"
                 @click="show = true"
             >
                 {{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}
@@ -39,7 +40,7 @@ export default {
 
     computed: {
         ...mapGetters({
-            getMunicipality: 'municipalities/get'
+            municipality: 'municipalities/get'
         })
     },
 

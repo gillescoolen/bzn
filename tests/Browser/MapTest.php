@@ -9,6 +9,16 @@ use Tests\DuskTestCase;
 class MapTest extends DuskTestCase
 {
     /**
+     * Get the root selector for the component.
+     *
+     * @return string
+     */
+    public function component()
+    {
+        return '@map';
+    }
+
+    /**
      * Check if the map has loaded in correctly
      *
      * @return void
@@ -17,7 +27,8 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertVue('ready', true, '@map');
+                ->assertVisible($this->component())
+                ->assertVue('ready', true, $this->component());
         });
     }
 
@@ -30,8 +41,8 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertVue('zoom', 12, '@map')
-                ->assertVue('center', [0 => 52.370216, 1 => 4.895168], '@map');
+                ->assertVue('zoom', 12, $this->component())
+                ->assertVue('center', [0 => 52.370216, 1 => 4.895168], $this->component());
         });
     }
 
@@ -44,8 +55,8 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertVue('minZoom', 12, '@map')
-                ->assertVue('options', ['zoomControl' => false], '@map');
+                ->assertVue('minZoom', 12, $this->component())
+                ->assertVue('options', ['zoomControl' => false], $this->component());
         });
     }
 }

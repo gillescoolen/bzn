@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-      <Map/>
-      <Legend/>
+      <Map dusk="map"/>
+      <Legend dusk="legend"/>
       <Questionnaire/>
   </div>
 </template>

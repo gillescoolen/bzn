@@ -1,6 +1,5 @@
 <template>
     <l-map
-        dusk="map"
         style="height: 100%; width: 100%;"
         :zoom="zoom"
         :minZoom="minZoom"
