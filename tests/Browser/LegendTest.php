@@ -70,7 +70,7 @@ class LegendTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->waitFor($this->component(), 5)
-                ->click($this->component())
+                ->click('@legend-show')
                 ->assertVue('show', true, $this->component());
         });
     }
