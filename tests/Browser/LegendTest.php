@@ -32,7 +32,7 @@ class LegendTest extends DuskTestCase
     }
 
     /**
-     * Check if our component data has municipalities.
+     * Check if our component data has legend items.
      *
      * @return void
      */
@@ -46,7 +46,7 @@ class LegendTest extends DuskTestCase
     }
 
     /**
-     * Check if the dropdown is hidden on mount.
+     * Check if the legend is hidden on mount.
      *
      * @return void
      */
@@ -61,7 +61,7 @@ class LegendTest extends DuskTestCase
 
 
     /**
-     * Check if the dropdown shows when clicking the button.
+     * Check if the legend shows when clicking the button.
      *
      * @return void
      */
