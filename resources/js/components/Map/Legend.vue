@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper" v-if="items">
         <transition name="fade" mode="out-in">
-            <ul v-if="show" class="legend">
+            <ul dusk="legend-list" v-if="show" class="legend">
                 <span v-if="show" @click="show = false" class="close">Verberg</span>
 
                 <li class="legend-item" :key="item.id" v-for="item in items">
