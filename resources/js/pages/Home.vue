@@ -1,8 +1,8 @@
 <template>
   <div class="main">
-      <Map dusk="map"/>
-      <Legend dusk="legend"/>
-      <Questionnaire/>
+    <Map dusk="map" />
+    <Legend dusk="legend" />
+    <Questionnaire dusk="questionnaire" />
   </div>
 </template>
 

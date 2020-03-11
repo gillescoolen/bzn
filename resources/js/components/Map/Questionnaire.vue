@@ -51,23 +51,26 @@ export default {
     Select,
     Spinner
   },
+
   data() {
     return {
       show: false,
       questions: null
     };
   },
-  mounted() {
-    this.fetchQuestions();
+
+  async mounted() {
+    this.questions = await this.fetchQuestions();
   },
+
   methods: {
     async fetchQuestions() {
-      fetch("api/questions")
-        .then(res => res.json())
-        .then(questions => this.questions = questions)
-        .catch(e => {
-          console.error("Error fetching questions: ", e);
-        });
+      try {
+        const res = await fetch('api/questions');
+        return await res.json()
+      } catch (error) {
+        console.error('Error fetching questions: ', error);
+      }
     }
   }
 };
@@ -193,10 +196,12 @@ export default {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.2s;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
