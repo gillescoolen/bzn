@@ -83,8 +83,6 @@ class MunicipalityTest extends DuskTestCase
      */
     public function testSelect()
     {
-        $list = '@municipality-list';
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 // Wait for our component to load, click on it and make sure it shows.
@@ -93,11 +91,11 @@ class MunicipalityTest extends DuskTestCase
                 ->assertVue('show', true, $this->component())
 
                 // Wait for the transition to finish and make sure the list is visible.
-                ->waitFor($list, 5)
-                ->assertVisible($list)
+                ->waitFor('@municipality-list', 5)
+                ->assertVisible('@municipality-list')
 
                 // Within the list, select the first item.
-                ->with($list, function ($li) {
+                ->with('@municipality-list', function ($li) {
                     $li->click('li:first-child');
                 })
 
