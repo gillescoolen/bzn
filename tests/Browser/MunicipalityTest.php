@@ -26,7 +26,9 @@ class MunicipalityTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Check if the component exists in our page.
                 ->assertVisible($this->component());
         });
     }
@@ -41,7 +43,9 @@ class MunicipalityTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Check that the 'municipalities' property is not null, which means the component has data.
                 ->assertVueIsNot('municipalities', null, $this->component());
         });
     }
@@ -55,7 +59,9 @@ class MunicipalityTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Check that the 'show' property is false, which means the component is hidden.
                 ->assertVue('show', false, $this->component());
         });
     }
@@ -69,8 +75,11 @@ class MunicipalityTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Clicks on the component.
                 ->click($this->component())
+                // Check that the 'show' property is false, which means the component is hidden.
                 ->assertVue('show', true, $this->component());
         });
     }

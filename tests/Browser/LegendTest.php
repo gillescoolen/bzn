@@ -26,7 +26,9 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Check if the component exists in our page.
                 ->assertVisible($this->component());
         });
     }
@@ -40,7 +42,9 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Check if the 'items' property has some data.
                 ->assertVueIsNot('items', null, $this->component());
         });
     }
@@ -54,7 +58,9 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Check that the 'show' property is false, which means the component is hidden.
                 ->assertVue('show', false, $this->component());
         });
     }
@@ -69,8 +75,11 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                // Clicks on the component.
                 ->click('@legend-show')
+                // Check that the 'show' property is true, which means the component is shown.
                 ->assertVue('show', true, $this->component());
         });
     }

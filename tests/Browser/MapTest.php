@@ -26,7 +26,9 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Check if the component exists in our page.
                 ->assertVisible($this->component())
+                // Check that the 'ready' property is true, which means the component is ready.
                 ->assertVue('ready', true, $this->component());
         });
     }
@@ -40,7 +42,9 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Check that the 'zoom' property is 12, which is our default.
                 ->assertVue('zoom', 12, $this->component())
+                // Check that the 'center' matches our defaults.
                 ->assertVue('center', [0 => 52.370216, 1 => 4.895168], $this->component());
         });
     }
@@ -54,7 +58,9 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                // Check that the 'minZoom' property is 12, which is our default.
                 ->assertVue('minZoom', 12, $this->component())
+                // Check that the zoom controls have been disabled.
                 ->assertVue('options', ['zoomControl' => false], $this->component());
         });
     }
