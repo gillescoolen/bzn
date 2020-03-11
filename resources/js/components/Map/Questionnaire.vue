@@ -4,13 +4,13 @@
       <div v-if="show" class="questionnaire">
         <div class="header">
           <h1>Biodiversiteit</h1>
-          <button @click="show = false">
+          <button dusk="questionnaire-hide" @click="show = false">
             <span>x</span>
           </button>
         </div>
         <p>Wilt u de biodiversiteit binnen uw gemeente vergroten? BZN biedt met deze tool de mogelijkheid inzichten te vergaren voor het creëren van een diervriendelijke leefomgeving.</p>
 
-        <div class="loader" v-if="questions === undefined || questions.length === 0">
+        <div class="loader" v-if="questions === null || questions.length === 0">
           <Spinner stroke="#744144" />
           <p>Vragenlijst laden...</p>
         </div>
@@ -31,7 +31,14 @@
         </div>
       </div>
 
-      <img v-else @click="show = true" class="tree-icon" src="/assets/tree-solid.svg" alt="tree-icon" />
+      <img
+        dusk="questionnaire-show"
+        v-else
+        @click="show = true"
+        class="tree-icon"
+        src="/assets/tree-solid.svg"
+        alt="tree-icon"
+      />
     </transition>
   </div>
 </template>
@@ -47,7 +54,7 @@ export default {
   data() {
     return {
       show: false,
-      questions: undefined
+      questions: null
     };
   },
   mounted() {
