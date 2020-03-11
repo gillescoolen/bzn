@@ -5,8 +5,9 @@
             <span
                 v-else
                 key="off"
+                dusk="municipality-button"
                 @click="show = true"
-            >{{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}</span>
+            >{{(municipality) ? municipality.name : 'Selecteer een gemeente'}}</span>
         </transition>
         <transition name="dropdown">
             <List dusk="municipality-list" v-if="show" v-on:select="set($event)" :items="municipalities" />
@@ -36,7 +37,7 @@ export default {
 
     computed: {
         ...mapGetters({
-            getMunicipality: 'municipalities/get'
+            municipality: 'municipalities/get'
         })
     },
 
