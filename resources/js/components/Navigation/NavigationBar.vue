@@ -3,18 +3,19 @@
         <router-link class="item" :to="{ name: 'home' }">Bosgroep Zuid-Nederland</router-link>
 
         <MunicipalityDropdown dusk="municipality-dropdown" />
+
         <UserDropdown />
     </nav>
 </template>
 
 <script>
 import { MunicipalityDropdown } from "../UI";
-import { UserDropdown } from "../UI";
+import  UserDropdown  from "../UI/UserDropdown";
 
 export default {
     components: {
-        UserDropdown,
-        MunicipalityDropdown
+        MunicipalityDropdown,
+        UserDropdown
     }
 };
 </script>

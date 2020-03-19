@@ -43,4 +43,10 @@ class LoginController extends Controller
     {
         return Auth::user();
     }
+
+    public function authUsername()
+    {
+        dd(Auth::user()->name);
+        return Auth::user()->name;
+    }
 }
