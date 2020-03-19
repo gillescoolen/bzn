@@ -1,5 +1,7 @@
 <template>
-    <span>{{ user.name() }}</span>
+    <div class="wrapper">
+        <span>{{ user.name() }}</span>
+    </div>
 </template>
 
 <script>
@@ -39,5 +41,9 @@
 </script>
 
 <style scoped>
+
+.wrapper {
+    width:200px!important;
+}
 
 </style>

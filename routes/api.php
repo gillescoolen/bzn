@@ -24,4 +24,4 @@ Route::get('legend', 'LegendController@index');
 
 Route::get('/questions', 'QuestionController@index');
 
-Route::get('/user', 'LoginController@authUser');
+Route::get('/user', 'Auth\LoginController@authUser');
