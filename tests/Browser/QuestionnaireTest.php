@@ -41,6 +41,7 @@ class QuestionnaireTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->waitFor($this->component(), 5)
+                ->pause(500)
                 ->assertVueIsNot('questions', null, $this->component());
         });
     }
@@ -58,7 +59,6 @@ class QuestionnaireTest extends DuskTestCase
                 ->assertVue('show', false, $this->component());
         });
     }
-
 
     /**
      * Check if the form shows when clicking the icon.
