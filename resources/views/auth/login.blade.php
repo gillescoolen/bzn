@@ -10,7 +10,7 @@
         <input dusk="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
         @error('email')
-        <span dusk="email-error" class="error" role="alert">
+        <span dusk="error" class="error" role="alert">
             {{ $message }}
         </span>
         @enderror
@@ -22,7 +22,7 @@
         <input dusk="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
         @error('password')
-        <span dusk="password-error" class="error" role="alert">
+        <span dusk="error" class="error" role="alert">
             {{ $message }}
         </span>
         @enderror

@@ -47,7 +47,7 @@
     </div>
 
     <div class="row">
-        <button type="submit">
+        <button dusk="register" type="submit">
             {{ __('Register') }}
         </button>
     </div>
