@@ -1,17 +1,19 @@
 <template>
   <div class="main">
-      <Map dusk="map"/>
-      <Legend dusk="legend"/>
+    <Map dusk="map" />
+    <Legend dusk="legend" />
+    <Questionnaire dusk="questionnaire" />
   </div>
 </template>
 
 <script>
-import { Map, Legend } from "../components/Map";
+import { Map, Legend, Questionnaire } from "../components/Map";
 
 export default {
     components: {
         Map,
-        Legend
+        Legend,
+        Questionnaire
     }
 }
 </script>

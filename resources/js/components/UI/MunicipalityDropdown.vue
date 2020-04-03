@@ -2,15 +2,21 @@
     <div v-if="municipalities" class="wrapper">
         <transition name="fade" mode="out-in">
             <span v-if="show" key="on" @click="show = false">Sluiten</span>
-            <span
-                v-else
-                key="off"
-                dusk="municipality-button"
-                @click="show = true"
-            >{{(municipality) ? municipality.name : 'Selecteer een gemeente'}}</span>
+            <span v-else key="off" dusk="municipality-button" @click="show = true">
+                {{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}
+                <img
+                    src="/assets/caret-down-solid.svg"
+                    alt="caret-dropdown"
+                />
+            </span>
         </transition>
         <transition name="dropdown">
-            <List dusk="municipality-list" v-if="show" v-on:select="set($event)" :items="municipalities" />
+            <List
+                dusk="municipality-list"
+                v-if="show"
+                v-on:select="set($event)"
+                :items="municipalities"
+            />
         </transition>
     </div>
 </template>
@@ -52,8 +58,12 @@ export default {
         },
 
         async fetchMunicipalities() {
-            const res = await fetch('api/municipalities');
-            return await res.json()
+            try {
+                const res = await fetch('api/municipalities');
+                return await res.json()
+            } catch (error) {
+                console.error('Error fetching questions: ', error);
+            }
         }
     },
 }
@@ -71,9 +81,17 @@ export default {
         font-weight: 700;
         user-select: none;
         background-color: transparent;
+        display: flex;
+        align-items: center;
 
         &:focus {
             outline: none;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+            filter: invert(1);
         }
     }
 }

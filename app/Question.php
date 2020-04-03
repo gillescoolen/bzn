@@ -12,4 +12,11 @@ class Question extends Model
      * @var string
      */
     protected $table = 'question';
+
+    public function __construct(array $data = array())
+    {
+        foreach($data as $key => $value) {
+            $this->$key = $value;
+        }
+    }
 }

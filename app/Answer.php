@@ -12,4 +12,11 @@ class Answer extends Model
      * @var string
      */
     protected $table = 'answer';
+
+    public function __construct(array $data = array())
+    {
+        foreach($data as $key => $value) {
+            $this->$key = $value;
+        }
+    }
 }

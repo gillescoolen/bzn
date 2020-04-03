@@ -2,27 +2,33 @@
     <nav class="navigation">
         <router-link class="item" :to="{ name: 'home' }">Bosgroep Zuid-Nederland</router-link>
 
-        <MunicipalityDropdown dusk="municipality-dropdown"/>
+        <MunicipalityDropdown dusk="municipality-dropdown" />
+
+        <UserDropdown />
     </nav>
 </template>
 
 <script>
 import { MunicipalityDropdown } from "../UI";
+import  UserDropdown  from "../UI/UserDropdown";
 
 export default {
     components: {
-        MunicipalityDropdown
+        MunicipalityDropdown,
+        UserDropdown
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
+@import "./resources/sass/app.scss";
+
 .navigation {
     height: 3rem;
     display: flex;
     place-items: center;
     flex-direction: row;
-    background-color: #1b6e37;
+    background-color: $primary;
     justify-content: space-between;
 
     top: 0;

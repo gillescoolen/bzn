@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/municipalities', function(){
+Route::get('/municipalities', function () {
     $municipality = ['name' => 'Horn'];
     return $municipality;
 });
@@ -21,3 +21,11 @@ Route::get('/municipalities', function(){
 Route::get('municipalities', 'MunicipalityController@index');
 
 Route::get('legend', 'LegendController@index');
+
+Route::get('/questions', 'QuestionController@index');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/user', 'Auth\LoginController@authUser');
+    Route::get('/username', 'Auth\LoginController@authUsername');
+    Route::get('/logout', 'Auth\LoginController@logout');
+});

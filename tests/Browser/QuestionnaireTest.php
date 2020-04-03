@@ -5,7 +5,7 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class LegendTest extends DuskTestCase
+class QuestionnaireTest extends DuskTestCase
 {
     /**
      * Get the root selector for the component.
@@ -14,7 +14,7 @@ class LegendTest extends DuskTestCase
      */
     public function component()
     {
-        return '@legend';
+        return '@questionnaire';
     }
 
     /**
@@ -26,15 +26,13 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
-                // Check if the component exists in our page.
                 ->assertVisible($this->component());
         });
     }
 
     /**
-     * Check if our component data has legend items.
+     * Check if our component data has questions.
      *
      * @return void
      */
@@ -42,15 +40,14 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
-                // Check if the 'items' property has some data.
-                ->assertVueIsNot('items', null, $this->component());
+                ->pause(500)
+                ->assertVueIsNot('questions', null, $this->component());
         });
     }
 
     /**
-     * Check if the legend is hidden on mount.
+     * Check if the form is hidden on mount.
      *
      * @return void
      */
@@ -58,16 +55,13 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
-                // Check that the 'show' property is false, which means the component is hidden.
                 ->assertVue('show', false, $this->component());
         });
     }
 
-
     /**
-     * Check if the legend shows when clicking the button.
+     * Check if the form shows when clicking the icon.
      *
      * @return void
      */
@@ -75,11 +69,8 @@ class LegendTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
-                // Clicks on the component.
-                ->click('@legend-show')
-                // Check that the 'show' property is true, which means the component is shown.
+                ->click('@questionnaire-show')
                 ->assertVue('show', true, $this->component());
         });
     }
