@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="items">
             <span class="title">BZM Admin Panel</span>
-            <a v-for="(item, index) in items" :key="index"  :href="item.path" class="item">{{item.name}}</a>
+            <router-link v-for="(item, index) in items" :key="index"  :to="item.path" class="item">{{item.name}}</router-link>
         </div>
     </div>
 </template>

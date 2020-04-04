@@ -2,13 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import municipalities from "./store/municipalities";
+import SidebarLayout from './layouts/SidebarLayout';
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
+Vue.component('sidebar', SidebarLayout);
 
 import App from './views/App'
-import Home from './pages/Home'
-import Admin from './pages/Admin'
+import { Home, Admin, Users } from './pages'
 
 const router = new VueRouter({
     mode: 'history',
@@ -21,7 +22,14 @@ const router = new VueRouter({
         {
             path: '/admin',
             name: 'admin',
+            meta: { layout: 'sidebar' },
             component: Admin
+        },
+        {
+            path: '/admin/users',
+            name: 'users',
+            meta: { layout: 'sidebar' },
+            component: Users
         },
     ],
 });

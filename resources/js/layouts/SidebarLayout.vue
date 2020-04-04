@@ -3,7 +3,7 @@
         <Sidebar />
         <div class="wrapper">
             <div class="content">
-                <h1>Hoi</h1>
+                <slot/>
             </div>
         </div>
     </div>
