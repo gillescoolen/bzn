@@ -97,12 +97,12 @@ export default {
   }
 
   .loader {
+    padding: 15px;
     height: 150px;
     position: relative;
     margin-top: -10px;
-    background-color: white;
     border-radius: 10px;
-    padding: 15px;
+    background-color: white;
 
     p {
       color: #555;
@@ -112,12 +112,12 @@ export default {
   }
 
   .questionnaire {
-    background-color: white;
-    border-radius: 10px;
     width: 300px;
     padding: 15px;
-    max-height: calc(100vh - 120px);
+    max-height: 90vh;
     overflow-y: auto;
+    border-radius: 10px;
+    background-color: white;
 
     .header {
       display: flex;
