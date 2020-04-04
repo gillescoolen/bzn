@@ -24,6 +24,8 @@ Route::get('legend', 'LegendController@index');
 
 Route::get('questions', 'QuestionController@index');
 
+Route::get('users', 'UserController@index');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/user', 'Auth\LoginController@authUser');
     Route::get('/username', 'Auth\LoginController@authUsername');
