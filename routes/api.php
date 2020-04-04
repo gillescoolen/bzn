@@ -22,7 +22,7 @@ Route::get('municipalities', 'MunicipalityController@index');
 
 Route::get('legend', 'LegendController@index');
 
-Route::get('/questions', 'QuestionController@index');
+Route::get('questions', 'QuestionController@index');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/user', 'Auth\LoginController@authUser');

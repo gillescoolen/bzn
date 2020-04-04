@@ -1,21 +1,26 @@
 <template>
-  <div class="main">
-    <Map dusk="map" />
-    <Legend dusk="legend" />
-    <Questionnaire dusk="questionnaire" />
-  </div>
+    <div>
+        <NavigationBar />
+        <div class="main">
+            <Map dusk="map" />
+            <Legend dusk="legend" />
+            <Questionnaire dusk="questionnaire" />
+        </div>
+    </div>
 </template>
 
 <script>
+import { NavigationBar } from "../components/Navigation";
 import { Map, Legend, Questionnaire } from "../components/Map";
 
 export default {
     components: {
         Map,
         Legend,
-        Questionnaire
+        Questionnaire,
+        NavigationBar
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
