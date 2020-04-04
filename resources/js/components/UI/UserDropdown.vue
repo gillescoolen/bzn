@@ -2,7 +2,6 @@
     <div class="wrapper" v-if="username">
         <span v-if="show" @click="show = false">Sluiten</span>
         <span v-else @click="show = true">Welkom {{ user.name }} !</span>
-        <a href="#" @click.prevent="logout">Uitloggen</a>
     </div>
     <div class="wrapper" v-else>
         <a href="/login/">Inloggen</a>
@@ -20,7 +19,7 @@
             return {
                 show: false,
                 user: null,
-                username: null,
+                username: null
             }
         },
 
@@ -44,22 +43,6 @@
                     return await res.json()
                 } catch (error) {
                     console.error('Error fetching username: ', error);
-                }
-            },
-            logout(evt) {
-                if (confirm("Are you sure you want to log out?")) {
-                    axios.get('api/logout').then(response => {
-                        localStorage.removeItem('auth_token');
-
-                        // remove any other authenticated user data you put in local storage
-
-                        // Assuming that you set this earlier for subsequent Ajax request at some point like so:
-                        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + auth_token ;
-                        delete axios.defaults.headers.common['Authorization'];
-
-                        // If using 'vue-router' redirect to login page
-                        this.$router.go('/login');
-                    })
                 }
             }
         },
