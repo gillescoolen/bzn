@@ -3,7 +3,7 @@
         <transition name="fade" mode="out-in">
             <span v-if="show" key="on" @click="show = false">Sluiten</span>
             <span v-else key="off" dusk="municipality-button" @click="show = true">
-                {{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}
+                {{(municipality) ? municipality.name : 'Selecteer een gemeente'}}
                 <img
                     src="/assets/caret-down-solid.svg"
                     alt="caret-dropdown"
