@@ -25,7 +25,7 @@ $width: 300px;
 $height: 400px;
 
 .menu {
-    right: 0;
+    left: 0;
     top: 100%;
     z-index: 10;
     padding: 1rem;
