@@ -3,7 +3,9 @@
         <Sidebar />
         <div class="wrapper">
             <div class="content">
-                <slot/>
+                <transition name="fade" mode="out-in">
+                    <slot />
+                </transition>
             </div>
         </div>
     </div>
@@ -42,5 +44,14 @@ export default {
             box-shadow: 0px 0px 4px 0px #7a7a7a10;
         }
     }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>
