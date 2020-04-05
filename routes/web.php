@@ -12,4 +12,6 @@
 */
 Auth::routes();
 
-Route::get('/{opt?}', 'AppController@index')->where('opt', '.*');
+Route::get('/', 'AppController@index')->where('any', '.*');
+
+Route::get('/{opt?}', 'AppController@index')->where('opt', '.*')->middleware('auth');
