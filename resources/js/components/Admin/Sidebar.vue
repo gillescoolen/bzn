@@ -18,7 +18,7 @@ export default {
         return {
             items: [
                 {
-                    name: "Users",
+                    name: "Gebruikers",
                     path: "/admin/users"
                 }
             ]
