@@ -10,7 +10,7 @@
             >{{item.name}}</router-link>
         </div>
         <div class="user">
-            <button @click="user">Uitloggen</button>
+            <button @click="logout">Uitloggen</button>
         </div>
     </div>
 </template>
@@ -43,16 +43,8 @@ export default {
     methods: {
         async logout() {
             try {
-                await this.$http.get("/api/logout");
-            } catch (error) {
-                console.error(error);
-            }
-        },
-
-        async user() {
-            try {
-                const { data: res } = await this.$http.get("/api/current");
-                console.log(res);
+                await this.$http.post("/logout");
+                this.$router.go('/login')
             } catch (error) {
                 console.error(error);
             }
