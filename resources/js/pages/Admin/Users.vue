@@ -8,11 +8,8 @@
                 <div @click="approve(user.id)" class="approve">Toelaten</div>
             </div>
         </div>
-        <div v-else-if="!users" class="message">
-            <h2>Aan het laden...</h2>
-        </div>
         <div v-else class="message">
-            <h2>Geen gebruikers gevonden...</h2>
+            <h2>Geen gebruikers gevonden.</h2>
         </div>
     </div>
 </template>
@@ -37,9 +34,11 @@ export default {
 
         async fetchUsers() {
             try {
-                const res = await fetch("/api/users/unapproved");
+                const { data: res } = await this.$http.get(
+                    "/api/users/unapproved"
+                );
 
-                return await res.json();
+                return res;
             } catch (error) {
                 console.error(error);
             }
@@ -47,7 +46,7 @@ export default {
 
         async approve(id) {
             try {
-                const res = await fetch(`/api/users/${id}`, {
+                const res = await this.$http.patch(`/api/users/${id}/approve`, {
                     method: "PATCH",
                     body: {
                         approved: 1

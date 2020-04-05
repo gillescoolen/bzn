@@ -1,7 +1,7 @@
-import users from "./user";
+import user from "./user";
 import municipalities from "./municipalities";
 
 export const modules = {
-    users,
+    user,
     municipalities
 }

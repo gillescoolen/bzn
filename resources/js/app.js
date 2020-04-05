@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { modules } from "./store/index";
+import axios from 'axios'
+import App from './views/App'
 import VueRouter from 'vue-router'
-import SidebarLayout from './layouts/SidebarLayout';
+import { modules } from "./store/index";
+import AdminLayout from './layouts/AdminLayout';
+import { Home, Admin, Users, Questions, Municipalities } from './pages'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
-Vue.component('sidebar', SidebarLayout);
+Vue.component('admin', AdminLayout);
 
-import App from './views/App'
-import { Home, Admin, Users, Questions, Municipalities } from './pages'
+Vue.prototype.$http = axios;
 
 const router = new VueRouter({
     mode: 'history',
@@ -22,25 +24,25 @@ const router = new VueRouter({
         {
             path: '/admin',
             name: 'admin',
-            meta: { layout: 'sidebar' },
+            meta: { layout: 'admin' },
             component: Admin
         },
         {
             path: '/admin/questions',
             name: 'questions',
-            meta: { layout: 'sidebar' },
+            meta: { layout: 'admin' },
             component: Questions
         },
         {
             path: '/admin/municipalities',
             name: 'municipalities',
-            meta: { layout: 'sidebar' },
+            meta: { layout: 'admin' },
             component: Municipalities
         },
         {
             path: '/admin/users',
             name: 'users',
-            meta: { layout: 'sidebar' },
+            meta: { layout: 'admin' },
             component: Users
         }
     ],

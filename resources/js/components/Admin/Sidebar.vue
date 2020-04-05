@@ -43,7 +43,8 @@ export default {
     methods: {
         async logout() {
             try {
-                await fetch('/api/logout');
+                await this.$http.post("/logout");
+                this.$router.go('/login')
             } catch (error) {
                 console.error(error);
             }

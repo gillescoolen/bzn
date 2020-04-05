@@ -2,14 +2,14 @@
     <div class="wrapper" v-if="items">
         <transition name="fade" mode="out-in">
             <ul dusk="legend-list" v-if="show" class="legend">
-                <span dusk='legend-hide' v-if="show" @click="show = false" class="close">Verberg</span>
+                <span dusk="legend-hide" v-if="show" @click="show = false" class="close">Verberg</span>
 
                 <li class="legend-item" :key="item.id" v-for="item in items">
                     <div :style="{ 'background-color': item.color }" class="indicator"></div>
                     <span>{{item.label}}</span>
                 </li>
             </ul>
-            <span dusk='legend-show' v-else @click="show = true" class="show">Legenda</span>
+            <span dusk="legend-show" v-else @click="show = true" class="show">Legenda</span>
         </transition>
     </div>
 </template>
@@ -20,21 +20,20 @@ export default {
         return {
             show: false,
             items: null
-        }
+        };
     },
 
     async mounted() {
         this.items = await this.fetchLegendItems();
     },
 
-
     methods: {
         async fetchLegendItems() {
-            const res = await fetch('api/legend');
-            return await res.json()
+            const { data: res } = await this.$http.get("api/legend");
+            return await res;
         }
-    },
-}
+    }
+};
 </script>
 
 <style lang="scss" scoped>

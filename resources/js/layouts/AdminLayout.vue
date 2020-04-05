@@ -13,9 +13,20 @@
 
 <script>
 import { Sidebar } from "../components/Admin";
+import { mapGetters, mapActions } from "vuex";
+
 export default {
     components: {
         Sidebar
+    },
+
+    mounted() {
+        const token = document
+            .querySelector(`meta[name='tkn']`)
+            .getAttribute("content");
+
+        this.$http.defaults.headers["Accept"] = "application/json";
+        this.$http.defaults.headers["Authorization"] = `Bearer ${token}`;
     }
 };
 </script>

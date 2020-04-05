@@ -1,26 +1,17 @@
 export const state = () => ({
-    user: null,
-    role: null,
-    token: null
+    user: null
 });
 
 export const mutations = {
-    user: (state, user) => state.user = user,
-    role: (state, role) => state.role = role,
-    token: (state, token) => state.token = token
+    set: (state, user) => state.user = user
 }
 
 export const actions = {
-    user: ({ commit }) => commit('user', user),
-    role: ({ commit }) => commit('role', role),
-    token: ({ commit }) => commit('token', token)
-
+    set: ({ commit }, user) => commit('set', user)
 }
 
 export const getters = {
-    user: state => state.user,
-    role: state => state.role,
-    token: state => state.token
+    get: state => state.user
 }
 
 export default {
