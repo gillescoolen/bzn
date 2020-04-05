@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <h1>Gebruikers</h1>
-        <div class="users" v-if="users && users.length > 0">
-            <div v-for="user in users" :key="user.id" class="user">
-                <div class="name">{{user.name}}</div>
-                <div class="email">{{user.email}}</div>
-                <div @click="approve(user.id)" class="approve">Toelaten</div>
+        <div dusk="users" class="users" v-if="users && users.length > 0">
+            <div v-for="(user, index) in users" :key="index" :dusk="`user-${index}`" class="user">
+                <div :dusk="`name-${index}`" class="name">{{user.name}}</div>
+                <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
+                <div :dusk="`approve-${index}`" @click="approve(user.id)" class="approve">Toelaten</div>
             </div>
         </div>
         <div v-else class="message">
