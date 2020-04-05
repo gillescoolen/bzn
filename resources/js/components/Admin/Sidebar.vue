@@ -10,7 +10,7 @@
             >{{item.name}}</router-link>
         </div>
         <div class="user">
-            <button @click="logout">Uitloggen</button>
+            <button dusk="logout" @click="logout">Uitloggen</button>
         </div>
     </div>
 </template>
