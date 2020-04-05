@@ -3,11 +3,8 @@
         <transition name="fade" mode="out-in">
             <span v-if="show" key="on" @click="show = false">Sluiten</span>
             <span v-else key="off" dusk="municipality-button" @click="show = true">
-                {{(getMunicipality) ? getMunicipality.name : 'Selecteer een gemeente'}}
-                <img
-                    src="/assets/caret-down-solid.svg"
-                    alt="caret-dropdown"
-                />
+                {{(municipality) ? municipality.name : 'Selecteer een gemeente'}}
+                <img src="/assets/caret-down-solid.svg"/>
             </span>
         </transition>
         <transition name="dropdown">
@@ -75,14 +72,14 @@ export default {
     margin: 0.5rem;
 
     span {
+        display: flex;
         color: white;
         cursor: pointer;
         font-size: 1rem;
         font-weight: 700;
         user-select: none;
-        background-color: transparent;
-        display: flex;
         align-items: center;
+        background-color: transparent;
 
         &:focus {
             outline: none;

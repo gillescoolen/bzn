@@ -8,15 +8,11 @@ export const state = () => ({
 });
 
 export const mutations = {
-    set(state, municipality) {
-        state.selected = municipality
-    }
+    set: (state, municipality) => state.selected = municipality
 }
 
 export const actions = {
-    set({ commit }, municipality) {
-        commit('set', municipality);
-    }
+    set: ({ commit }, municipality) => commit('set', municipality)
 }
 
 export const getters = {

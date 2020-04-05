@@ -14,4 +14,4 @@ Auth::routes();
 
 Route::get('/', 'AppController@index')->where('any', '.*');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{opt?}', 'AppController@index')->where('opt', '.*')->middleware('auth');

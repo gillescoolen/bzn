@@ -12,7 +12,7 @@
 
 <script>
 import "leaflet/dist/leaflet.css";
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 import { LMap, LTileLayer } from 'vue2-leaflet';
 
 export default {
