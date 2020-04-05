@@ -1,15 +1,18 @@
 <template>
-    <div>
+    <div class="container">
         <h1>Gebruikers</h1>
-        <div class="users" v-if="users.length > 0">
+        <div class="users" v-if="users && users.length > 0">
             <div v-for="user in users" :key="user.id" class="user">
                 <div class="name">{{user.name}}</div>
                 <div class="email">{{user.email}}</div>
                 <div @click="approve(user.id)" class="approve">Toelaten</div>
             </div>
         </div>
-        <div v-else class="none-found">
-            <h1>Geen gebruikers gevonden...</h1>
+        <div v-else-if="!users" class="message">
+            <h2>Aan het laden...</h2>
+        </div>
+        <div v-else class="message">
+            <h2>Geen gebruikers gevonden...</h2>
         </div>
     </div>
 </template>
@@ -24,7 +27,7 @@ export default {
     },
 
     mounted() {
-        this.loadUsers();    
+        this.loadUsers();
     },
 
     methods: {
@@ -61,44 +64,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.users {
-    display: flex;
-    flex-direction: column;
+.container {
+    min-height: 50vh;
 
-    .user {
+    .users {
         display: flex;
-        padding: 0.5rem;
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between;
-        border-bottom: 1px solid #dde3ee;
+        flex-direction: column;
 
-        .name {
-            width: 20%;
-        }
+        .user {
+            display: flex;
+            padding: 0.5rem;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            border-bottom: 1px solid #dde3ee;
 
-        .email {
-            width: 20%;
-        }
+            .name {
+                width: 20%;
+            }
 
-        .approve {
-            cursor: pointer;
-            color: #3ba549;
-            font-weight: 700;
-            user-select: none;
+            .email {
+                width: 20%;
+            }
+
+            .approve {
+                cursor: pointer;
+                color: #3ba549;
+                font-weight: 700;
+                user-select: none;
+            }
         }
     }
-}
 
-.none-found {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    h1 {
+    .message {
+        width: 100%;
+        height: 30vh;
         opacity: 0.3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 </style>
