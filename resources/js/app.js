@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { modules } from "./store/index";
 import VueRouter from 'vue-router'
-import municipalities from "./store/municipalities";
 import SidebarLayout from './layouts/SidebarLayout';
 
 Vue.use(Vuex)
@@ -27,13 +27,13 @@ const router = new VueRouter({
         },
         {
             path: '/admin/questions',
-            name: 'users',
+            name: 'questions',
             meta: { layout: 'sidebar' },
             component: Questions
         },
         {
             path: '/admin/municipalities',
-            name: 'users',
+            name: 'municipalities',
             meta: { layout: 'sidebar' },
             component: Municipalities
         },
@@ -47,9 +47,7 @@ const router = new VueRouter({
 });
 
 const store = new Vuex.Store({
-    modules: {
-        municipalities: municipalities,
-    }
+    modules
 })
 
 const app = new Vue({
