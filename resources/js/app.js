@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 Vue.component('sidebar', SidebarLayout);
 
 import App from './views/App'
-import { Home, Admin, Users } from './pages'
+import { Home, Admin, Users, Questions, Municipalities } from './pages'
 
 const router = new VueRouter({
     mode: 'history',
@@ -26,11 +26,23 @@ const router = new VueRouter({
             component: Admin
         },
         {
+            path: '/admin/questions',
+            name: 'users',
+            meta: { layout: 'sidebar' },
+            component: Questions
+        },
+        {
+            path: '/admin/municipalities',
+            name: 'users',
+            meta: { layout: 'sidebar' },
+            component: Municipalities
+        },
+        {
             path: '/admin/users',
             name: 'users',
             meta: { layout: 'sidebar' },
             component: Users
-        },
+        }
     ],
 });
 

@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
         <div class="items">
-            <span class="title">BZM Admin Panel</span>
+            <span class="title">BZN Admin Panel</span>
             <router-link
                 v-for="(item, index) in items"
                 :key="index"
@@ -17,6 +17,18 @@ export default {
     data() {
         return {
             items: [
+                {
+                    name: "Dashboard",
+                    path: "/admin"
+                },
+                {
+                    name: "Vragen",
+                    path: "/admin/questions"
+                },
+                {
+                    name: "Gemeenten",
+                    path: "/admin/municipalities"
+                },
                 {
                     name: "Gebruikers",
                     path: "/admin/users"
@@ -40,13 +52,20 @@ export default {
         flex-direction: column;
 
         .title {
-            font-size: 24px;
+            font-size: 1.8rem;
             margin-bottom: 2rem;
         }
 
         .item {
+            font-size: 1.2rem;
             color: black;
+            padding: 0.8rem 0rem;
             text-decoration: none;
+            border-bottom: 1px solid #dde3ee;
+
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 }
