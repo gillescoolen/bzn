@@ -79,6 +79,10 @@ export default {
             justify-content: space-between;
             border-bottom: 1px solid #dde3ee;
 
+            &:first-child {
+                border-top: 1px solid #dde3ee;
+            }
+
             .name {
                 width: 20%;
             }
