@@ -15,13 +15,17 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
-    public function update(Request $request, $id)
+    public function unapproved() 
     {
+        $users = User::where('approved', '=', '0')->get();
         
+        return UserResource::collection($users);
     }
 
-    public function destroy($id)
+    public function approve($id)
     {
-        
+        $user = User::find($id);
+        $user->update(['approved' => 1]);
+        dd($user);
     }
 }
