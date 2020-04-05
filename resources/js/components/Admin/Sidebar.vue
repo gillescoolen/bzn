@@ -4,10 +4,13 @@
             <span class="title">BZN Admin Panel</span>
             <router-link
                 v-for="(item, index) in items"
-                :key="index"
                 :to="item.path"
+                :key="index"
                 class="item"
             >{{item.name}}</router-link>
+        </div>
+        <div class="user">
+            <button @click="logout">Uitloggen</button>
         </div>
     </div>
 </template>
@@ -35,12 +38,26 @@ export default {
                 }
             ]
         };
+    },
+
+    methods: {
+        async logout() {
+            try {
+                await fetch('/api/logout');
+            } catch (error) {
+                console.error(error);
+            }
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     width: 350px;
     height: 100%;
     background-color: #ffffff;
@@ -66,6 +83,23 @@ export default {
             &:last-child {
                 border-bottom: none;
             }
+        }
+    }
+
+    .user {
+        display: flex;
+        flex-direction: row-reverse;
+        margin: 1rem;
+
+        button {
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #4279c0;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            background-color: transparent;
         }
     }
 }
