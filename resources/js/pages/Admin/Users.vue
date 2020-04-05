@@ -23,11 +23,15 @@ export default {
         };
     },
 
-    async mounted() {
-        this.users = await this.fetchUsers();
+    mounted() {
+        this.loadUsers();    
     },
 
     methods: {
+        async loadUsers() {
+            this.users = await this.fetchUsers();
+        },
+
         async fetchUsers() {
             try {
                 const res = await fetch("/api/users/unapproved");
@@ -47,7 +51,7 @@ export default {
                     }
                 });
 
-                return await res.json();
+                res.status === 200 && this.loadUsers();
             } catch (error) {
                 console.error(error);
             }
