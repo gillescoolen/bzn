@@ -33,6 +33,20 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => now(),
                 'approved' => 1,
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
+            ],
+            [
+                'name' => 'Nota P. Proved',
+                'email' => 'notapproved@bzn.nl',
+                'email_verified_at' => now(),
+                'approved' => 0,
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
+            ],
+            [
+                'name' => 'Gemeen T.E.',
+                'email' => 'gemeente@bzn.nl',
+                'email_verified_at' => now(),
+                'approved' => 0,
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
             ]
         ]);
     }
