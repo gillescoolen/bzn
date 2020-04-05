@@ -1,12 +1,15 @@
 <template>
     <div>
-        <h1>Users</h1>
-        <div class="users">
+        <h1>Gebruikers</h1>
+        <div class="users" v-if="users.length > 0">
             <div v-for="user in users" :key="user.id" class="user">
                 <div class="name">{{user.name}}</div>
                 <div class="email">{{user.email}}</div>
                 <div @click="approve(user.id)" class="approve">Toelaten</div>
             </div>
+        </div>
+        <div v-else class="none-found">
+            <h1>Geen gebruikers gevonden...</h1>
         </div>
     </div>
 </template>
@@ -27,7 +30,8 @@ export default {
     methods: {
         async fetchUsers() {
             try {
-                const res = await fetch("/api/users");
+                const res = await fetch("/api/users/unapproved");
+
                 return await res.json();
             } catch (error) {
                 console.error(error);
@@ -36,12 +40,13 @@ export default {
 
         async approve(id) {
             try {
-                const res = await fetch(`/api/user/${id}`, {
+                const res = await fetch(`/api/users/${id}`, {
                     method: "PATCH",
                     body: {
-                        //TODO: Add proper request body.
+                        approved: 1
                     }
                 });
+
                 return await res.json();
             } catch (error) {
                 console.error(error);
@@ -78,6 +83,18 @@ export default {
             font-weight: 700;
             user-select: none;
         }
+    }
+}
+
+.none-found {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        opacity: 0.3;
     }
 }
 </style>

@@ -25,6 +25,8 @@ Route::get('legend', 'LegendController@index');
 Route::get('questions', 'QuestionController@index');
 
 Route::get('users', 'UserController@index');
+Route::get('users/unapproved', 'UserController@unapproved');
+Route::patch('users/{id}', 'UserController@approve');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/user', 'Auth\LoginController@authUser');
