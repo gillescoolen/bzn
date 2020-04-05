@@ -20,38 +20,13 @@ export default {
         Sidebar
     },
 
-    computed: {
-        ...mapGetters({
-            user: "user/get"
-        })
-    },
-
-    methods: {
-        ...mapActions({
-            setUser: "user/set"
-        }),
-
-        async setup() {
-            this.$http.defaults.headers["Accept"] = "application/json";
-
-            const id = document
-                .querySelector(`meta[name='id']`)
-                .getAttribute("content");
-
-            if (!id) return;
-
-            const { data: user } = await this.$http.get(`/api/users/${id}`);
-
-            this.setUser(user);
-
-            this.$http.defaults.headers[
-                "Authorization"
-            ] = `Bearer ${this.user.api_token}`;
-        },
-    },
-
     mounted() {
-        this.setup();
+        const token = document
+            .querySelector(`meta[name='tkn']`)
+            .getAttribute("content");
+
+        this.$http.defaults.headers["Accept"] = "application/json";
+        this.$http.defaults.headers["Authorization"] = `Bearer ${token}`;
     }
 };
 </script>

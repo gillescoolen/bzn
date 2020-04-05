@@ -51,11 +51,7 @@ export default {
 
         async user() {
             try {
-                const { data: res } = await this.$http.get("/api/user", {
-                    headers: {
-                        Accept: "application/json"
-                    }
-                });
+                const { data: res } = await this.$http.get("/api/current");
                 console.log(res);
             } catch (error) {
                 console.error(error);
