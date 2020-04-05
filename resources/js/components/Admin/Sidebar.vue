@@ -10,7 +10,7 @@
             >{{item.name}}</router-link>
         </div>
         <div class="user">
-            <button @click="logout">Uitloggen</button>
+            <button @click="user">Uitloggen</button>
         </div>
     </div>
 </template>
@@ -43,7 +43,20 @@ export default {
     methods: {
         async logout() {
             try {
-                await fetch('/api/logout');
+                await this.$http.get("/api/logout");
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        async user() {
+            try {
+                const { data: res } = await this.$http.get("/api/user", {
+                    headers: {
+                        Accept: "application/json"
+                    }
+                });
+                console.log(res);
             } catch (error) {
                 console.error(error);
             }

@@ -25,11 +25,12 @@ Route::get('legend', 'LegendController@index');
 Route::get('questions', 'QuestionController@index');
 
 Route::get('users', 'UserController@index');
+Route::get('users/{id}', 'UserController@current');
 Route::get('users/unapproved', 'UserController@unapproved');
-Route::patch('users/{id}', 'UserController@approve');
+Route::patch('users/{id}/approve', 'UserController@approve');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/user', 'Auth\LoginController@authUser');
-    Route::get('/username', 'Auth\LoginController@authUsername');
-    Route::get('/logout', 'Auth\LoginController@logout');
+    // Route::get('/user', 'Auth\LoginController@authUser');
+    // Route::get('/username', 'Auth\LoginController@authUsername');
+    // Route::get('/logout', 'Auth\LoginController@logout');
 });

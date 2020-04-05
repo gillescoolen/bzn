@@ -4,7 +4,9 @@
             <span v-if="show" key="on" @click="show = false">Sluiten</span>
             <span v-else key="off" dusk="municipality-button" @click="show = true">
                 {{(municipality) ? municipality.name : 'Selecteer een gemeente'}}
-                <img src="/assets/caret-down-solid.svg"/>
+                <img
+                    src="/assets/caret-down-solid.svg"
+                />
             </span>
         </transition>
         <transition name="dropdown">
@@ -19,8 +21,8 @@
 </template>
 
 <script>
-import { List } from '../UI'
-import { mapGetters, mapActions } from 'vuex';
+import { List } from "../UI";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
     components: {
@@ -31,7 +33,7 @@ export default {
         return {
             show: false,
             municipalities: null
-        }
+        };
     },
 
     async mounted() {
@@ -40,13 +42,13 @@ export default {
 
     computed: {
         ...mapGetters({
-            municipality: 'municipalities/get'
+            municipality: "municipalities/get"
         })
     },
 
     methods: {
         ...mapActions({
-            setMunicipality: 'municipalities/set'
+            setMunicipality: "municipalities/set"
         }),
 
         set(item) {
@@ -56,14 +58,16 @@ export default {
 
         async fetchMunicipalities() {
             try {
-                const res = await fetch('api/municipalities');
-                return await res.json()
+                const { data: res } = await this.$http.get(
+                    "api/municipalities"
+                );
+                return res;
             } catch (error) {
-                console.error('Error fetching questions: ', error);
+                console.error("Error fetching questions: ", error);
             }
         }
-    },
-}
+    }
+};
 </script>
 
 <style lang="scss" scoped>

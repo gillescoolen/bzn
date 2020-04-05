@@ -15,6 +15,11 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
+    public function current($id) 
+    {   
+        return User::find($id);
+    }
+
     public function unapproved() 
     {
         $users = User::where('approved', '=', '0')->get();

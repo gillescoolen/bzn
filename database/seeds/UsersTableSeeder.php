@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'tijsverbeek@gmail.com',
                 'email_verified_at' => now(),
                 'approved' => 1,
+                'api_token' => Str::random(60),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
             ],
             [
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'jraams@avans.nl',
                 'email_verified_at' => now(),
                 'approved' => 1,
+                'api_token' => Str::random(60),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
             ],
             [
@@ -32,6 +34,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'admin@bzn.nl',
                 'email_verified_at' => now(),
                 'approved' => 1,
+                'api_token' => Str::random(60),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
             ],
             [
@@ -39,6 +42,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'notapproved@bzn.nl',
                 'email_verified_at' => now(),
                 'approved' => 0,
+                'api_token' => Str::random(60),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
             ],
             [
@@ -46,6 +50,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'gemeente@bzn.nl',
                 'email_verified_at' => now(),
                 'approved' => 0,
+                'api_token' => Str::random(60),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
             ]
         ]);
