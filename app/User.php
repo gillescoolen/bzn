@@ -42,10 +42,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
-    public function abilities() {
-        return $this->roles->map->abilities->flatten()->pluck('ability')->unique();
-    }
-
     public function assignRole($role) {
 
         if (is_string($role)) {
