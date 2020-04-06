@@ -30,20 +30,20 @@ class AdminUserTest extends DuskTestCase
     }
 
     /**
-     * Tests if the login button works when a faulty email is entered.
+     * Tests if a user disappears when we accept them.
      *
      * @return void
      */
-    public function testFaultyEmail()
+    public function testUserAccepting()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit($this->url())
                     ->assertPathIs($this->url())
-                    ->assertVisible('@users')
-                    ->click('@approve-1')
-                    ->assertMissing('@user-1')
-                    ->click('@approve-2')
-                    ->assertMissing('@user-2')
+                    ->waitFor('@users')
+                    ->click('@approve-0')
+                    ->pause(1000)
+                    ->click('@approve-0')
+                    ->pause(1000)
                     ->assertSee('Geen gebruikers gevonden.');
         });
     }
