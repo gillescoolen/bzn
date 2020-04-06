@@ -5,16 +5,19 @@
             <Map dusk="map" />
             <Legend dusk="legend" />
             <Questionnaire dusk="questionnaire" />
+            <PDF/>
         </div>
     </div>
 </template>
 
 <script>
 import { NavigationBar } from "../components/Navigation";
+import { PDF } from "../components/UI";
 import { Map, Legend, Questionnaire } from "../components/Map";
 
 export default {
     components: {
+        PDF,
         Map,
         Legend,
         Questionnaire,
