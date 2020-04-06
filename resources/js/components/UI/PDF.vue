@@ -18,8 +18,8 @@ export default {
             const doc = new jsPDF();
             doc.text('Dit is een PDF gegenereerd op onze site!', 10, 10);
             doc.save('bzn.pdf');
-            downloaded = true;
-            text = 'Gedownload!';
+            this.downloaded = true;
+            this.text = 'Gedownload!';
         }
     }
 };
@@ -29,6 +29,7 @@ export default {
 button {
     right: 0;
     bottom: 0;
+    border: none;
     margin: 1rem;
     color: black;
     padding: 0.8rem;
