@@ -1,16 +1,25 @@
 <template>
-    <button dusk="pdf" @click="create" class="show">PDF</button>
+    <button :disabled="downloaded" dusk="pdf" @click="create" class="show">{{text}}</button>
 </template>
 
 <script>
 import jsPDF from "jspdf";
 
 export default {
+    data() {
+        return {
+            downloaded: false,
+            text: 'Download PDF'
+        }
+    },
+
     methods: {
         create() {
             const doc = new jsPDF();
             doc.text('Dit is een PDF gegenereerd op onze site!', 10, 10);
             doc.save('bzn.pdf');
+            downloaded = true;
+            text = 'Gedownload!';
         }
     }
 };
