@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/current', 'AuthController@current');
 
     Route::get('users', 'UserController@index');
+    Route::get('users/approved', 'UserController@approved');
     Route::get('users/unapproved', 'UserController@unapproved');
     Route::patch('users/{id}/approve', 'UserController@approve');
 });

@@ -9,7 +9,7 @@ class AdminUserTest extends DuskTestCase
 {
     public function url()
     {
-        return '/admin/users';
+        return '/admin/registrations';
     }
 
     /**
