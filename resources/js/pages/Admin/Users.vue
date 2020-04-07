@@ -21,10 +21,17 @@
 
 
 <script>
+import { Role } from "../../mixins";
+
 export default {
+    mixins: [
+        Role
+    ],
+
     data() {
         return {
-            users: null
+            users: null,
+            roles: ["admin"]
         };
     },
 

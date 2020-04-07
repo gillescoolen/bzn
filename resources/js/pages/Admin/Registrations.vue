@@ -25,11 +25,17 @@
 
 <script>
 export default {
+    mixins: [
+        Role
+    ],
+
     data() {
         return {
-            users: null
+            users: null,
+            roles: ["admin"]
         };
     },
+
 
     mounted() {
         this.loadUsers();
