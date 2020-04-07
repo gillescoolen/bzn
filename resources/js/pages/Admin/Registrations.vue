@@ -24,6 +24,8 @@
 
 
 <script>
+import { Role } from "../../mixins";
+
 export default {
     mixins: [
         Role
