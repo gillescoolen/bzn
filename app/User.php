@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use App\Role;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -37,35 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function roles() {
-        return $this->belongsToMany(Role::class)->withTimestamps();
-    }
-
-    public function abilities() {
-        return $this->roles->map->abilities->flatten()->pluck('ability')->unique();
-    }
-
-    public function assignRole($role) {
-
-        if (is_string($role)) {
-            $role = Role::all()->where('name', $role)->firstOrFail();
-        }
-
-        $this->roles()->sync($role, false);
-    }
-
-    public function hasRole($role) {
-        if (is_string($role)) {
-            $roleOut = $this->roles()->where('name', $role)->first();
-        } else {
-            $roleOut = $this->roles()->find($role)->first();
-        }
-
-        if($roleOut) {
-            return true;
-        }
-        return false;
+    
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
     }
 
 }

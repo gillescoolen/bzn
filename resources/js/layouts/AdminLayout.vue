@@ -20,6 +20,24 @@ export default {
         Sidebar
     },
 
+    methods: {
+        ...mapActions({
+            setUser: "user/set"
+        }),
+
+        async setCurrentUser() {
+            try {
+                const { data: res } = await this.$http.get(
+                    "/api/current"
+                );
+
+                this.setUser(res);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    },
+
     mounted() {
         const token = document
             .querySelector(`meta[name='tkn']`)
@@ -27,6 +45,8 @@ export default {
 
         this.$http.defaults.headers["Accept"] = "application/json";
         this.$http.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+        this.setCurrentUser();
     }
 };
 </script>

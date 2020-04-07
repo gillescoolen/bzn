@@ -3,7 +3,7 @@
         <div class="items">
             <span class="title">BZN Admin Panel</span>
             <router-link
-                v-for="(item, index) in items"
+                v-for="(item, index) in allowed"
                 :to="item.path"
                 :key="index"
                 class="item"
@@ -16,25 +16,37 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
     data() {
         return {
             items: [
                 {
                     name: "Dashboard",
-                    path: "/admin"
+                    path: "/admin",
+                    roles: ["admin", "moderator"],
                 },
                 {
                     name: "Vragen",
-                    path: "/admin/questions"
+                    path: "/admin/questions",
+                    roles: ["admin", "moderator"],
                 },
                 {
                     name: "Gemeenten",
-                    path: "/admin/municipalities"
+                    path: "/admin/municipalities",
+                    roles: ["admin", "moderator"],
                 },
                 {
                     name: "Gebruikers",
-                    path: "/admin/users"
+                    path: "/admin/users",
+                    roles: ["admin"],
+
+                },
+                {
+                    name: "Registraties",
+                    path: "/admin/registrations",
+                    roles: ["admin"],
                 }
             ]
         };
@@ -44,10 +56,23 @@ export default {
         async logout() {
             try {
                 await this.$http.post("/logout");
-                this.$router.go('/login')
+                this.$router.go("/login");
             } catch (error) {
                 console.error(error);
             }
+        }
+    },
+
+    computed: {
+        ...mapGetters({
+            user: "user/get"
+        }),
+
+        /**
+         * Returns the items the user is allowed to see.
+         */
+        allowed() {
+            return this.items.filter(item => item.roles.some(role => role === this.user.role));
         }
     }
 };

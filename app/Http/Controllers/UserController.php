@@ -22,6 +22,13 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
+    public function approved() 
+    {
+        $users = User::where('approved', '=', '1')->get();
+        
+        return UserResource::collection($users);
+    }
+
     public function approve($id)
     {
         $user = User::find($id);

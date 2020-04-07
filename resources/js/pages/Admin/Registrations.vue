@@ -1,16 +1,19 @@
 <template>
     <div class="container">
         <h1>Gebruikers</h1>
+
         <div dusk="users" class="users" v-if="users && users.length > 0">
             <div class="user header">
                 <div class="name">Naam</div>
                 <div class="email">Email</div>
                 <div>Rol</div>
+                <div>Toelaten?</div>
             </div>
             <div v-for="(user, index) in users" :key="index" :dusk="`user-${index}`" class="user">
                 <div :dusk="`name-${index}`" class="name">{{user.name}}</div>
                 <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
                 <div :dusk="`role-${index}`" class="role">{{user.role}}</div>
+                <div :dusk="`approve-${index}`" @click="approve(user.id)" class="approve">Toelaten</div>
             </div>
         </div>
         <div v-else class="message">
@@ -21,8 +24,6 @@
 
 
 <script>
-import { Role } from "../../mixins";
-
 export default {
     mixins: [
         Role
@@ -34,6 +35,7 @@ export default {
             roles: ["admin"]
         };
     },
+
 
     mounted() {
         this.loadUsers();
@@ -47,7 +49,7 @@ export default {
         async fetchUsers() {
             try {
                 const { data: res } = await this.$http.get(
-                    "/api/users/approved"
+                    "/api/users/unapproved"
                 );
 
                 return res;
@@ -91,6 +93,7 @@ export default {
             padding: 0.5rem;
             align-items: center;
             flex-direction: row;
+            justify-content: space-between;
             border-bottom: 1px solid #dde3ee;
 
             .role {
@@ -105,7 +108,7 @@ export default {
             }
 
             div {
-                width: 20%;
+                width: 10%;
             }
         }
     }

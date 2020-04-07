@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
-class MunicipalityTableSeeder extends Seeder
+class QuestionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +11,6 @@ class MunicipalityTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Municipality::class, 10)->create();
+        factory(App\Question::class, 10)->create();
     }
 }

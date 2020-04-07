@@ -3,16 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Ability;
 
 class Role extends Model
 {
-    public function abilities() {
-        return $this->belongsToMany(Ability::class);
+    protected $table = 'roles';
+    protected $primaryKey = 'role';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    
+    public function users()
+    {
+        return $this->hasMany('App\User');
     }
-
-    public function users() {
-        return $this->belongsToMany(User::class);
-    }
-
 }

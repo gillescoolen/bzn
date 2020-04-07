@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LegendTableSeeder extends Seeder
+class LegendSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -5,7 +5,7 @@ import App from './views/App'
 import VueRouter from 'vue-router'
 import { modules } from "./store/index";
 import AdminLayout from './layouts/AdminLayout';
-import { Home, Admin, Users, Questions, Municipalities } from './pages'
+import { Home, Admin, Users, Questions, Registrations, Municipalities } from './pages'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
@@ -44,6 +44,12 @@ const router = new VueRouter({
             name: 'users',
             meta: { layout: 'admin' },
             component: Users
+        },
+        {
+            path: '/admin/registrations',
+            name: 'registrations',
+            meta: { layout: 'admin' },
+            component: Registrations
         }
     ],
 });
