@@ -25,10 +25,10 @@ Route::get('legend', 'LegendController@index');
 Route::get('questions', 'QuestionController@index');
 
 Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('/current', 'AuthController@current');
+    Route::get('current', 'AuthController@current');
 
     Route::get('users', 'UserController@index');
-    Route::get('users/approved', 'UserController@approved');
-    Route::get('users/unapproved', 'UserController@unapproved');
-    Route::patch('users/{id}/approve', 'UserController@approve');
+    Route::get('users/approved', 'UserController@approved')->middleware('role:admin');
+    Route::get('users/unapproved', 'UserController@unapproved')->middleware('role:admin');
+    Route::patch('users/{id}/approve', 'UserController@approve')->middleware('role:admin');
 });
