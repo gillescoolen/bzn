@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    public function users() {
-        return $this->belongsToMany(User::class);
+    protected $table = 'role';
+    protected $primaryKey = 'role';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    
+    public function users()
+    {
+        return $this->hasMany('App\User');
     }
-
 }

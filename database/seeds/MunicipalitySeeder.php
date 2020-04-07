@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class QuestionTableSeeder extends Seeder
+class MunicipalitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class QuestionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Question::class, 10)->create();
+        factory(App\Municipality::class, 10)->create();
     }
 }

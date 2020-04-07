@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,40 +18,45 @@ class UsersTableSeeder extends Seeder
                 'email' => 'tijsverbeek@gmail.com',
                 'email_verified_at' => now(),
                 'approved' => 1,
+                'role' => 'moderator',
                 'api_token' => Str::random(60),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
+                'password' => bcrypt('password')
             ],
             [
                 'name' => 'Jeroen Raams',
                 'email' => 'jraams@avans.nl',
                 'email_verified_at' => now(),
                 'approved' => 1,
+                'role' => 'moderator',
                 'api_token' => Str::random(60),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
+                'password' => bcrypt('password')
             ],
             [
                 'name' => 'Ad Min',
                 'email' => 'admin@bzn.nl',
                 'email_verified_at' => now(),
                 'approved' => 1,
+                'role' => 'admin',
                 'api_token' => Str::random(60),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
+                'password' => bcrypt('password')
             ],
             [
                 'name' => 'Nota P. Proved',
                 'email' => 'notapproved@bzn.nl',
                 'email_verified_at' => now(),
                 'approved' => 0,
+                'role' => 'gebruiker',
                 'api_token' => Str::random(60),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
+                'password' => bcrypt('password')
             ],
             [
                 'name' => 'Gemeen T.E.',
                 'email' => 'gemeente@bzn.nl',
                 'email_verified_at' => now(),
                 'approved' => 0,
+                'role' => 'gebruiker',
                 'api_token' => Str::random(60),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password = password
+                'password' => bcrypt('password')
             ]
         ]);
     }
