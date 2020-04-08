@@ -5,7 +5,7 @@
     @csrf
 
     <div class="row">
-        <label for="email">{{ __('E-Mail Address') }}</label>
+        <label for="email">{{ __('E-Mail') }}</label>
 
         <input dusk="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -17,7 +17,7 @@
     </div>
 
     <div class="row">
-        <label for="password">{{ __('Password') }}</label>
+        <label for="password">{{ __('Wachtwoord') }}</label>
 
         <input dusk="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
@@ -33,7 +33,7 @@
             <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
             <label for="remember">
-                {{ __('Remember Me') }}
+                {{ __('Onthoud mij') }}
             </label>
         </div>
     </div>
@@ -43,9 +43,13 @@
             {{ __('Login') }}
         </button>
 
+        <a class="forgot" href="{{ route('register') }}">
+            {{ __('Nog geen account?') }}
+        </a>
+
         @if (Route::has('password.request'))
         <a class="forgot" href="{{ route('password.request') }}">
-            {{ __('Forgot Your Password?') }}
+            {{ __('Wachtwoord vergeten?') }}
         </a>
         @endif
     </div>
