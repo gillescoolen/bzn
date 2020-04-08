@@ -11,6 +11,27 @@ class LegendSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Legend::class, 5)->create();
+        DB::table('legend')->insert([
+            [
+                'label' => 'Snelweg',
+                'color' => '#E892A2'
+            ],
+            [
+                'label' => 'Normale weg',
+                'color' => '#FFFFFF'
+            ],
+            [
+                'label' => 'Water',
+                'color' => '#ABD3DF'
+            ],
+            [
+                'label' => 'Groengebied',
+                'color' => '#CDEBB0'
+            ],
+            [
+                'label' => 'Bebouwd',
+                'color' => '#D9D0C9'
+            ],
+        ]);        
     }
 }
