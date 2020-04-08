@@ -27,6 +27,7 @@ class QuestionnaireTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->waitFor($this->component(), 5)
+                ->click('@normal')
                 ->assertVisible($this->component());
         });
     }

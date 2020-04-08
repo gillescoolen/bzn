@@ -1,10 +1,10 @@
 <template>
     <transition name="bounce">
         <div v-if="!visitor" class="wrapper">
-            <div class="modal">
+            <div dusk="modal" class="modal">
                 <h3>Wat voor bezoeker bent u?</h3>
-                <button @click="setVisitor('normal')">Ik ben een normale bezoeker!</button>
-                <button @click="setVisitor('special')">Ik ben een opdrachtgever!</button>
+                <button dusk="normal" @click="setVisitor('normal')">Ik ben een normale bezoeker!</button>
+                <button dusk="special" @click="setVisitor('special')">Ik ben een opdrachtgever!</button>
             </div>
         </div>
     </transition>
@@ -24,10 +24,6 @@ export default {
         ...mapActions({
             setVisitor: "visitor/set"
         })
-    },
-
-    mounted() {
-        console.log(this.visitor);
     }
 };
 </script>
