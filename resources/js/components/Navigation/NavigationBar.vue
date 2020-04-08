@@ -2,10 +2,10 @@
     <nav class="navigation">
         <MunicipalityDropdown dusk="municipality-dropdown" />
 
-        <div>
-            <span @click="setVisitor(null)">Verander bezoeker</span>
-            <span v-if="visitor === 'special'">-</span>
-            <a v-if="visitor === 'special'" href="/login/">Inloggen</a>
+        <div class="items">
+            <span class="item" @click="setVisitor(null)">Verander bezoeker</span>
+            <span class="item" v-if="visitor === 'special'">-</span>
+            <a class="item" v-if="visitor === 'special'" href="/login/">Inloggen</a>
         </div>
     </nav>
 </template>
@@ -51,12 +51,14 @@ export default {
     z-index: 10000000;
     position: absolute;
 
-    * {
-        color: white;
-        cursor: pointer;
-        margin: 0 0.5rem;
-        font-weight: 700;
-        text-decoration: none;
+    .items {
+        .item {
+            color: white;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
     }
 }
 </style>

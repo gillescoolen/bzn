@@ -1,9 +1,9 @@
 export const state = () => ({
     selected: {
         id: 0,
-        name: 'Amsterdam',
-        longitude: 4.895168,
-        latitude: 52.370216
+        name: 'Horst',
+        longitude: 6.0303174,
+        latitude: 51.4232255
     },
 });
 
