@@ -5,7 +5,7 @@
     @csrf
 
     <div class="row">
-        <label for="name">{{ __('Name') }}</label>
+        <label for="name">{{ __('Naam') }}</label>
 
         <input dusk="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -17,7 +17,7 @@
     </div>
 
     <div class="row">
-        <label for="email">{{ __('E-Mail Address') }}</label>
+        <label for="email">{{ __('E-Mail') }}</label>
 
         <input dusk="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -29,7 +29,7 @@
     </div>
 
     <div class="row">
-        <label for="password">{{ __('Password') }}</label>
+        <label for="password">{{ __('Wachtwoord') }}</label>
 
         <input dusk="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
@@ -41,14 +41,20 @@
     </div>
 
     <div class="row">
-        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Bevestig wachtwoord') }}</label>
 
         <input dusk="password-conformation" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+    </div>
+    
+    <div class="row">
+        <a class="forgot" href="{{ route('register') }}">
+            {{ __('Al een account?') }}
+        </a>
     </div>
 
     <div class="row">
         <button dusk="register" type="submit">
-            {{ __('Register') }}
+            {{ __('Registreer') }}
         </button>
     </div>
 </form>
