@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import App from './views/App'
 import VueRouter from 'vue-router'
+import VuexPersist from 'vuex-persist'
 import { modules } from "./store/index";
 import AdminLayout from './layouts/AdminLayout';
 import { Home, Admin, Users, Questions, Registrations, Municipalities } from './pages'
@@ -54,8 +55,16 @@ const router = new VueRouter({
     ],
 });
 
+
+const persist = new VuexPersist({
+    key: 'bzn',
+    storage: window.localStorage
+  })
+  
+
 const store = new Vuex.Store({
-    modules
+    modules,
+    plugins: [persist.plugin]
 })
 
 const app = new Vue({
