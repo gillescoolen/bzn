@@ -1,5 +1,6 @@
 <template>
     <l-map
+        class="map"
         style="height: 100%; width: 100%;"
         :zoom="zoom"
         :minZoom="minZoom"
@@ -12,34 +13,44 @@
 
 <script>
 import "leaflet/dist/leaflet.css";
-import { mapGetters } from 'vuex';
-import { LMap, LTileLayer } from 'vue2-leaflet';
+import { mapGetters } from "vuex";
+import { LMap, LTileLayer } from "vue2-leaflet";
 
 export default {
     components: {
         LMap,
-        LTileLayer,
+        LTileLayer
     },
 
     data() {
         return {
             zoom: 12,
             minZoom: 12,
-            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             options: {
                 zoomControl: false
-            },
+            }
         };
     },
 
     computed: {
         ...mapGetters({
-            getMunicipality: 'municipalities/get'
+            municipality: "municipalities/get"
         }),
 
         center() {
-            return [this.getMunicipality.latitude, this.getMunicipality.longitude]
+            return [
+                this.municipality.latitude,
+                this.municipality.longitude
+            ];
         }
     }
-}
+};
 </script>
+
+<style lang="scss" scoped>
+.map {
+    width: 100%;
+    height: 100%;
+}
+</style>
