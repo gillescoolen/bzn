@@ -2,12 +2,16 @@
     <nav class="navigation">
         <MunicipalityDropdown dusk="municipality-dropdown" />
 
-        <a v-if="visitor === 'special'" href="/login/">Inloggen</a>
+        <div>
+            <span @click="setVisitor(null)">Verander bezoeker</span>
+            <span v-if="visitor === 'special'">-</span>
+            <a v-if="visitor === 'special'" href="/login/">Inloggen</a>
+        </div>
     </nav>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { MunicipalityDropdown } from "../UI";
 
 export default {
@@ -18,6 +22,12 @@ export default {
     computed: {
         ...mapGetters({
             visitor: "visitor/get"
+        })
+    },
+
+    methods: {
+        ...mapActions({
+            setVisitor: "visitor/set"
         })
     }
 };
@@ -41,11 +51,12 @@ export default {
     z-index: 10000000;
     position: absolute;
 
-    a {
+    * {
         color: white;
+        cursor: pointer;
+        margin: 0 0.5rem;
         font-weight: 700;
         text-decoration: none;
-        margin: 0 1.5rem;
     }
 }
 </style>
