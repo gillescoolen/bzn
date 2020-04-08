@@ -2,18 +2,23 @@
     <nav class="navigation">
         <MunicipalityDropdown dusk="municipality-dropdown" />
 
-        <UserDropdown />
+        <a v-if="visitor === 'special'" href="/login/">Inloggen</a>
     </nav>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { MunicipalityDropdown } from "../UI";
-import  UserDropdown  from "../UI/UserDropdown";
 
 export default {
     components: {
-        MunicipalityDropdown,
-        UserDropdown
+        MunicipalityDropdown
+    },
+
+    computed: {
+        ...mapGetters({
+            visitor: "visitor/get"
+        })
     }
 };
 </script>
@@ -36,7 +41,7 @@ export default {
     z-index: 10000000;
     position: absolute;
 
-    .item {
+    a {
         color: white;
         font-weight: 700;
         text-decoration: none;
