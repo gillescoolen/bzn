@@ -45,7 +45,7 @@ export default {
         color: white;
         font-weight: 700;
         text-decoration: none;
-        margin: 0 0.5rem 0 0.5rem;
+        margin: 0 1.5rem;
     }
 }
 </style>
