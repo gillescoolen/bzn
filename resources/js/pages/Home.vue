@@ -1,27 +1,37 @@
 <template>
     <div>
         <NavigationBar />
-        <div class="main">
+        <VisitorModal />
+
+        <div class="main" :class="!visitor && 'blur'">
             <Map dusk="map" />
             <Legend dusk="legend" />
             <Questionnaire dusk="questionnaire" />
-            <PDF/>
+            <PDF />
         </div>
     </div>
 </template>
 
 <script>
-import { NavigationBar } from "../components/Navigation";
+import { mapGetters } from "vuex";
 import { PDF } from "../components/UI";
-import { Map, Legend, Questionnaire } from "../components/Map";
+import { NavigationBar } from "../components/Navigation";
+import { Map, Legend, VisitorModal, Questionnaire } from "../components/Map";
 
 export default {
     components: {
         PDF,
         Map,
         Legend,
+        VisitorModal,
         Questionnaire,
         NavigationBar
+    },
+
+    computed: {
+        ...mapGetters({
+            visitor: "visitor/get"
+        })
     }
 };
 </script>
@@ -32,5 +42,9 @@ export default {
     height: 100vh;
     max-width: 100%;
     max-height: 100%;
+}
+
+.blur {
+    filter: blur(3px);
 }
 </style>

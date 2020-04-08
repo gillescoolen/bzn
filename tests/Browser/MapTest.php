@@ -28,6 +28,7 @@ class MapTest extends DuskTestCase
             $browser->visit('/')
                 // Check if the component exists in our page.
                 ->assertVisible($this->component())
+                ->click('@normal')
                 // Check that the 'ready' property is true, which means the component is ready.
                 ->assertVue('ready', true, $this->component());
         });

@@ -27,6 +27,7 @@ class PDFTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
+                ->click('@normal')
                 ->waitFor($this->component(), 5)
                 ->click($this->component())
                 ->assertVue('text', 'Gedownload!', $this->component())

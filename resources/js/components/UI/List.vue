@@ -22,7 +22,8 @@ export default {
 
 <style lang="scss" scoped>
 $width: 300px;
-$height: 400px;
+$min-height: 100px;
+$max-height: 400px;
 
 .menu {
     left: 0;
@@ -30,7 +31,8 @@ $height: 400px;
     z-index: 10;
     padding: 1rem;
     margin: 0.5rem;
-    height: $height;
+    min-height: $min-height;
+    max-height: $max-height;
     min-width: $width;
     overflow-y: auto;
     position: absolute;

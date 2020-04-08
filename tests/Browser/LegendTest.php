@@ -28,6 +28,7 @@ class LegendTest extends DuskTestCase
             $browser->visit('/')
                 // Wait for the component to load in.
                 ->waitFor($this->component(), 5)
+                ->click('@normal')
                 // Check if the component exists in our page.
                 ->assertVisible($this->component());
         });
