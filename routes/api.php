@@ -13,11 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/municipalities', function () {
-    $municipality = ['name' => 'Horn'];
-    return $municipality;
-});
-
 Route::get('municipalities', 'MunicipalityController@index');
 
 Route::get('legend', 'LegendController@index');
