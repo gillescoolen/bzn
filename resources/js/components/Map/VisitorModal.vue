@@ -81,6 +81,10 @@ export default {
     }
 }
 
+.bounce-enter-active {
+    animation: bounce-in 0.6s;
+}
+
 .bounce-leave-active {
     animation: bounce-in 0.4s reverse;
 }
