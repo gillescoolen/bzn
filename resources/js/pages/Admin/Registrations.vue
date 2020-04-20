@@ -79,9 +79,7 @@ export default {
         },
 
         async decline(user_id) {
-            this.$http.delete(`/api/users/${user_id}`, {
-                method: "DELETE"
-            })
+            this.$http.delete(`/api/users/${user_id}`)
             .then(res => {
                 res.status === 200 && this.loadUsers()
             })

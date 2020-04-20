@@ -2,11 +2,20 @@
 
 namespace Tests\Browser;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 class AdminUserTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
+    public function setUp() : void
+    {
+        parent::setUp();
+        $this->artisan('db:seed');
+    }
+
     public function url()
     {
         return '/admin/registrations';
@@ -30,11 +39,11 @@ class AdminUserTest extends DuskTestCase
     }
 
     /**
-     * Tests if a user disappears when we accept them.
+     * Tests if a user disappears when we accept or decline them.
      *
      * @return void
      */
-    public function testUserAccepting()
+    public function testUserAcceptingAndDeclining()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit($this->url())
@@ -42,7 +51,7 @@ class AdminUserTest extends DuskTestCase
                     ->waitFor('@users')
                     ->click('@approve-0')
                     ->pause(1000)
-                    ->click('@approve-0')
+                    ->click('@decline-0')
                     ->pause(1000)
                     ->assertSee('Geen gebruikers gevonden.');
         });
