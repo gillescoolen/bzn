@@ -45,8 +45,8 @@ class MapTest extends DuskTestCase
             $browser->visit('/')
                 // Check that the 'zoom' property is 12, which is our default.
                 ->assertVue('zoom', 12, $this->component())
-                // Check that the 'center' matches our defaults.
-                ->assertVue('center', [0 => 52.370216, 1 => 4.895168], $this->component());
+                // Check that the 'center' matches municipality Horst.
+                ->assertVue('center', [0 => 51.4232255, 1 => 6.0303174], $this->component());
         });
     }
 
