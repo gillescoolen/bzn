@@ -2,20 +2,11 @@
 
 namespace Tests\Browser;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 class AdminUserTest extends DuskTestCase
 {
-    use DatabaseMigrations;
-
-    public function setUp() : void
-    {
-        parent::setUp();
-        $this->artisan('db:seed');
-    }
-
     public function url()
     {
         return '/admin/registrations';
