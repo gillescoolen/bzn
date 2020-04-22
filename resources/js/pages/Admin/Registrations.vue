@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Gebruikers</h1>
+        <h1>Gebruikers in afwachting van toelating</h1>
 
         <div dusk="users" class="users" v-if="users && users.length > 0">
             <div class="user header">
@@ -13,7 +13,10 @@
                 <div :dusk="`name-${index}`" class="name">{{user.name}}</div>
                 <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
                 <div :dusk="`role-${index}`" class="role">{{user.role}}</div>
-                <div :dusk="`approve-${index}`" @click="approve(user.id)" class="approve">Toelaten</div>
+                <div class="action">
+                    <div :dusk="`approve-${index}`" @click="approve(user.id)" class="approve">Toelaten</div>
+                    <div :dusk="`decline-${index}`" @click="decline(user.id)" class="decline">Weigeren</div>
+                </div>
             </div>
         </div>
         <div v-else class="message">
@@ -73,6 +76,16 @@ export default {
             } catch (error) {
                 console.error(error);
             }
+        },
+
+        async decline(user_id) {
+            this.$http.delete(`/api/users/${user_id}`)
+            .then(res => {
+                res.status === 200 && this.loadUsers()
+            })
+            .catch(e => {
+                console.error(`Error declining user with id ${user_id}: ${e}`)
+            })
         }
     }
 };
@@ -95,22 +108,34 @@ export default {
             padding: 0.5rem;
             align-items: center;
             flex-direction: row;
-            justify-content: space-between;
             border-bottom: 1px solid #dde3ee;
 
             .role {
                 text-transform: capitalize;
             }
 
-            .approve {
-                cursor: pointer;
-                color: #3ba549;
-                font-weight: 700;
-                user-select: none;
+            .action {
+                display: flex;
+
+                .approve, .decline {
+                    cursor: pointer;
+                    font-weight: 700;
+                    user-select: none;
+                    width: 100%;
+                }
+
+                .approve {
+                    color: #3ba549;
+                }
+
+                .decline {
+                    color: #c53c53;
+                    margin-left: 10px;
+                }
             }
 
             div {
-                width: 10%;
+                width: 100%;
             }
         }
     }

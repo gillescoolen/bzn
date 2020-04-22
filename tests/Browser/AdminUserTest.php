@@ -25,25 +25,26 @@ class AdminUserTest extends DuskTestCase
                     ->type('@email', 'admin@bzn.nl')
                     ->type('@password', 'password')
                     ->click('@login')
+                    ->pause(1000)
                     ->assertPathIsNot('/login');
         });
     }
 
     /**
-     * Tests if a user disappears when we accept them.
+     * Tests if a user disappears when we accept or decline them.
      *
      * @return void
      */
-    public function testUserAccepting()
+    public function testUserAcceptingAndDeclining()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit($this->url())
                     ->assertPathIs($this->url())
                     ->waitFor('@users')
                     ->click('@approve-0')
-                    ->pause(1000)
-                    ->click('@approve-0')
-                    ->pause(1000)
+                    ->pause(2000)
+                    ->click('@decline-0')
+                    ->pause(2000)
                     ->assertSee('Geen gebruikers gevonden.');
         });
     }
