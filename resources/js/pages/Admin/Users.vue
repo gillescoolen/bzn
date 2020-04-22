@@ -21,11 +21,16 @@
             <h2>Geen gebruikers gevonden.</h2>
         </div>
 
-        <Modal :show="showModal" v-on:close="showModal = false">
-            <div>
-                <h1>Dit is een modal</h1>
-                <MunicipalityDropdown v-on:change_municipality="changeMunicipality"/>
-                <button @click="addMunicipalityToUser()">Kies deze gemeente</button>
+        <Modal 
+        :show="showModal" 
+        v-on:close="showModal = false">
+            <div v-if="editing_user" class="modal-content">
+                <h3>Voeg een gemeente toe aan <i>{{editing_user.name}}</i></h3>
+                <MunicipalityDropdown 
+                v-on:change_municipality="changeMunicipality"
+                :invert="true"
+                :menuFloat="true"/>
+                <button :dusk="`add-municipality`" class="add_municipality" @click="addMunicipalityToUser()">Kies deze gemeente</button>
             </div>
         </Modal>
     </div>
@@ -53,7 +58,7 @@ export default {
             showModal: false,
             municipalities: [],
 
-            editing_user_id: null,
+            editing_user: null,
             selected_municipality_id: null
         };
     },
@@ -108,7 +113,7 @@ export default {
 
         showAddMunicipalityModal (user_id) {
             this.showModal = true
-            this.editing_user_id = user_id
+            this.editing_user = this.users.find(u => u.id === user_id)
         },
 
         changeMunicipality(new_municipality) {
@@ -116,15 +121,12 @@ export default {
         },
 
         async addMunicipalityToUser() {
-            
-            const uri = `/api/users/${this.editing_user_id}/addmunicipality/${this.selected_municipality_id}`
-            console.warn(uri)
+            const uri = `/api/users/${this.editing_user.id}/addmunicipality/${this.selected_municipality_id}`
              try {
-                const { data: res } = await this.$http.get(
+                const { data: res } = await this.$http.patch(
                     uri
                 );
-                console.warn(res)
-                return res;
+                this.showModal = false;
             } catch (error) {
                 console.error("Error adding municipality to user: ", error);
             }
@@ -176,6 +178,13 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+
+    .modal-content {
+        h3 {
+            margin: 0;
+        }
     }
 }
 </style>

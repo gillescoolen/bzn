@@ -3,7 +3,9 @@
         <div class="backdrop"></div>
         <div class="container">
             <slot/>
-            <button class="close" @click="closeModal">x</button>
+            <button class="close" @click="closeModal">
+                <span>X</span>
+            </button>
         </div>
     </div>
 </template>
@@ -40,9 +42,6 @@ export default {
         padding: 50px;
         border-radius: 10px;
         box-shadow: 2px 4px 4px #3e3e3e;
-        width: 50%;
-        height: 50%;
-        background: lightgrey;
 
         button.close {
             position: absolute;
@@ -50,12 +49,19 @@ export default {
             right: 0;
             margin: 15px;
             border-radius: 10px;
-            border: none;
-            background: #e24141;
+            border: 2px solid #e24141;
+            background: white;
             height: 30px;
             width: 30px;
             color: white;
-            font-weight: bold;
+            cursor: pointer;
+
+            span {
+                font-size: 19px;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                color: #e24141;
+            }
         }
     }
 </style>

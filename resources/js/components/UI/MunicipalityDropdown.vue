@@ -1,5 +1,5 @@
 <template>
-    <div v-if="municipalities" class="wrapper">
+    <div v-if="municipalities" class="wrapper" :class="{ invert, 'float': menuFloat }">
         <transition name="fade" mode="out-in">
             <span v-if="show" key="on" @click="show = false">Sluiten</span>
             <span v-else key="off" dusk="municipality-button" @click="show = true">
@@ -28,6 +28,8 @@ export default {
     components: {
         List
     },
+
+    props: ['invert', 'menuFloat'],
 
     data() {
         return {
@@ -96,6 +98,24 @@ export default {
             height: 25px;
             filter: invert(1);
         }
+    }
+}
+
+.wrapper.float {
+    .menu {
+        padding: 1rem 1rem 1rem 0;
+        margin: 0;
+        position: relative;
+        box-shadow: none;
+    }
+}
+
+.wrapper.invert {
+    span {
+        color: black;
+    }
+    img {
+        filter: none;
     }
 }
 
