@@ -23,6 +23,6 @@ class RenameMunicipalityTable extends Migration
      */
     public function down()
     {
-        //
+    //
     }
 }

@@ -12,4 +12,8 @@ class Municipality extends Model
      * @var string
      */
     protected $table = 'municipality';
+
+    public function users() {
+        return $this->hasMany(User::class, 'municipality_id', 'id');
+    }
 }
