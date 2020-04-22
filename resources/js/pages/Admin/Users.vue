@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <h1>Gebruikers</h1>
-        <div dusk="users" class="users" v-if="users && users.length > 0">
+        <div v-if="showUsersSpinner">
+            <Spinner stroke="#744144"/>
+        </div>
+        <div v-else-if="users && users.length > 0" dusk="users" class="users" >
             <div class="user header">
                 <div class="name">Naam</div>
                 <div class="email">Email</div>
@@ -22,15 +25,21 @@
         </div>
 
         <Modal 
-        :show="showModal" 
-        v-on:close="showModal = false">
+            :show="showModal" 
+            v-on:close="showModal = false">
             <div v-if="editing_user" class="modal-content">
                 <h3>Voeg een gemeente toe aan <i>{{editing_user.name}}</i></h3>
                 <MunicipalityDropdown 
-                v-on:change_municipality="changeMunicipality"
-                :invert="true"
-                :menuFloat="true"/>
-                <button :dusk="`add-municipality`" class="add_municipality" @click="addMunicipalityToUser()">Kies deze gemeente</button>
+                        v-on:change_municipality="changeMunicipality"
+                        :invert="true"
+                        :menuFloat="true"/>
+
+                <div  v-if="showModalSpinner" class="spinner-container">
+                    <Spinner stroke="#744144"/>
+                </div>
+                <div v-else>
+                    <button :dusk="`add-municipality`" class="add_municipality" @click="addMunicipalityToUser()">Kies deze gemeente</button>
+                </div>
             </div>
         </Modal>
     </div>
@@ -39,12 +48,15 @@
 
 <script>
 import { Role } from "../../mixins";
-import { Modal, MunicipalityDropdown } from '../../components/UI'
+import { Modal, MunicipalityDropdown, Spinner } from '../../components/UI'
 
 export default {
+    name: 'Users',
+
     components: {
         'Modal': Modal,
-        'MunicipalityDropdown': MunicipalityDropdown
+        'MunicipalityDropdown': MunicipalityDropdown,
+        'Spinner': Spinner
     },
 
     mixins: [
@@ -54,10 +66,12 @@ export default {
     data() {
         return {
             users: null,
+            showUsersSpinner: true,
             roles: ["admin"],
+            
             showModal: false,
+            showModalSpinner: true,
             municipalities: [],
-
             editing_user: null,
             selected_municipality_id: null
         };
@@ -66,6 +80,7 @@ export default {
     async mounted() {
         this.loadUsers();
         this.municipalities = await this.fetchMunicipalities();
+        this.showUsersSpinner = false
     },
 
     methods: {
@@ -112,21 +127,23 @@ export default {
         },
 
         showAddMunicipalityModal (user_id) {
+            this.showModalSpinner = true
             this.showModal = true
             this.editing_user = this.users.find(u => u.id === user_id)
         },
 
         changeMunicipality(new_municipality) {
             this.selected_municipality_id = new_municipality.id
+            this.showModalSpinner = false
         },
 
         async addMunicipalityToUser() {
+            this.showModal = false;
             const uri = `/api/users/${this.editing_user.id}/addmunicipality/${this.selected_municipality_id}`
              try {
                 const { data: res } = await this.$http.patch(
                     uri
                 );
-                this.showModal = false;
             } catch (error) {
                 console.error("Error adding municipality to user: ", error);
             }
@@ -138,6 +155,7 @@ export default {
 <style lang="scss" scoped>
 .container {
     min-height: 50vh;
+    position: relative;
 
     .users {
         display: flex;
@@ -184,6 +202,11 @@ export default {
     .modal-content {
         h3 {
             margin: 0;
+        }
+
+        .spinner-container {
+            position: relative;
+            height: 100px;
         }
     }
 }

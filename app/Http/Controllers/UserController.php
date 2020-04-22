@@ -33,20 +33,32 @@ class UserController extends Controller
     public function approve($id)
     {
         $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Er is geen gebruiker gevonden met dit id...'
+            ], 400);
+        }
+
+        $username = $user->name;
         $user->update(['approved' => 1]);
-        dd($user);
+
+        return response()->json([
+            'success' => true,
+            'error' => sprintf('Gebruiker "%s" is succesvol geaccepteerd!', $username)
+        ], 200);
     }
 
     public function decline($user_id)
     {
         $user = User::find($user_id);
-        $username = $user->name;
         if (!$user) {
             return response()->json([
                 'success' => false,
-                'error' => 'Er is geen gebruiker gevonden met deze gebruikersnaam'
+                'error' => 'Er is geen gebruiker gevonden met deze gebruikersnaam...'
             ], 400);
         }
+        $username = $user->name;
 
         $destroy = User::destroy($user_id);
         if ($destroy) {
@@ -57,19 +69,35 @@ class UserController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'error' => sprintf('Er ging iets mis bij het weigeren van "%s"', $username)
+                'error' => sprintf('Er ging iets mis bij het weigeren van "%s"...', $username)
             ], 500);
         }
     }
 
-    public function addMunicipality($id, $municipality_id) {
-        if(!$id || !$municipality_id) {
+    public function addMunicipality($id, $municipality_id)
+    {
+        if (!$id || !$municipality_id) {
             return response()->json([
                 'success' => false,
                 'error' => 'De gebruiker of gemeente kon niet worden gevonden'
             ], 404);
         }
         $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Er bestaat geen gebruiker met dit id...'
+            ], 400);
+        }
+
+        $municipality = Municipality::find($municipality_id);
+        if (!$municipality) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Er bestaat geen gemeente met dit id...'
+            ], 400);
+        }
+
         $user->municipality_id = $municipality_id;
         $user->save();
 

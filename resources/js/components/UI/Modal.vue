@@ -27,13 +27,13 @@ export default {
         width: 100vw;
         height: 100vh;
         background: rgba(0,0,0,.5);
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         z-index: 999;
     }
     .container {
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
