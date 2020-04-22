@@ -63,7 +63,7 @@ class UserController extends Controller
     }
 
     public function addMunicipality($id, $municipality) {
-        if(!id || !$municipality) {
+        if(!$id || !$municipality) {
             return response()->json([
                 'success' => false,
                 'error' => 'De gebruiker of gemeente kon niet worden gevonden'
