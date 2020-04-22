@@ -70,9 +70,8 @@ class UserController extends Controller
             ], 404);
         }
         $user = User::find($id);
-        $user->update([
-           'municipality_id' => $municipality
-        ]);
+        $user->municipality_id = $municipality->id;
+        $user->save();
 
         dd($user);
 
