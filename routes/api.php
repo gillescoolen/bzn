@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('users', 'UserController@index');
     Route::get('users/approved', 'UserController@approved')->middleware('role:admin');
     Route::get('users/unapproved', 'UserController@unapproved')->middleware('role:admin');
+    Route::patch('users/{id}/removemunicipality', 'UserController@removeMunicipality')->middleware('role:admin');
     Route::patch('users/{id}/addmunicipality/{municipality_id}', 'UserController@addMunicipality')->middleware('role:admin');
     Route::patch('users/{id}/approve', 'UserController@approve')->middleware('role:admin');
     Route::delete('users/{id}', 'UserController@decline')->middleware('role:admin');

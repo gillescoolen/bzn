@@ -16,7 +16,10 @@
                 <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
                 <div :dusk="`role-${index}`" class="role">{{user.role}}</div>
                 <div>
-                    <button :dusk="`add-municipality-${index}`" @click="showAddMunicipalityModal(user.id)">Gemeente toevoegen</button>
+                    <p v-if="user.municipalityname" class="municipality-name">{{user.municipalityname}}</p>
+                    <button :dusk="`add-municipality-${index}`" @click="showAddMunicipalityModal(user.id)">
+                        {{ user.municipalityname ? 'Wijzigen' : 'Gemeente toewijzen' }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -39,6 +42,7 @@
                 </div>
                 <div v-else>
                     <button :dusk="`add-municipality`" class="add_municipality" @click="addMunicipalityToUser()">Kies deze gemeente</button>
+                    <button :dusk="`remove-municipality`" class="remove_municipality" @click="removeMunicipalityFromUser()">Gemeente weghalen</button>
                 </div>
             </div>
         </Modal>
@@ -78,16 +82,13 @@ export default {
     },
 
     async mounted() {
-        this.loadUsers();
+        this.users = await this.fetchUsers();
         this.municipalities = await this.fetchMunicipalities();
+        this.users.map(u => this.addMunicipalityNameToUser(u.id, u.municipality_id));
         this.showUsersSpinner = false
     },
 
     methods: {
-        async loadUsers() {
-            this.users = await this.fetchUsers();
-        },
-
         async fetchUsers() {
             try {
                 const { data: res } = await this.$http.get(
@@ -139,13 +140,34 @@ export default {
 
         async addMunicipalityToUser() {
             this.showModal = false;
+            this.addMunicipalityNameToUser(this.editing_user.id, this.selected_municipality_id)
             const uri = `/api/users/${this.editing_user.id}/addmunicipality/${this.selected_municipality_id}`
              try {
-                const { data: res } = await this.$http.patch(
-                    uri
-                );
+                await this.$http.patch(uri);
             } catch (error) {
                 console.error("Error adding municipality to user: ", error);
+            }
+        },
+
+        async removeMunicipalityFromUser() {
+            this.showModal = false;
+            this.addMunicipalityNameToUser(this.editing_user.id, null)
+            const uri = `/api/users/${this.editing_user.id}/removemunicipality`
+             try {
+               await this.$http.patch(uri);
+            } catch (error) {
+                console.error("Error removing municipality from user: ", error);
+            }
+        },
+
+        addMunicipalityNameToUser(user_id, municipality_id) {
+            const user = this.users.find(u => u.id === user_id)
+            if (municipality_id) {
+                const municipality = this.municipalities.find(m => m.id === municipality_id)
+                user.municipalityname = municipality ? municipality.name : null;
+            } else {
+                user.municipality_id = ''
+                user.municipalityname = ''
             }
         }
     }
@@ -181,6 +203,11 @@ export default {
                 color: #3ba549;
                 font-weight: 700;
                 user-select: none;
+            }
+
+            .municipality-name {
+                display: inline;
+                margin: 0;
             }
 
             div {

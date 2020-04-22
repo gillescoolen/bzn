@@ -14,12 +14,14 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
+        $municipality_id = $this->municipality ? $this->municipality->id : null;
         return [
             'id' => $this->id,
             'name' => $this->name,
             'role' => $this->role,
             'email' => $this->email,
-            'approved' => $this->approved
+            'approved' => $this->approved,
+            'municipality_id' => $municipality_id
         ];
     }
 }

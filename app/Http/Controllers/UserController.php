@@ -19,14 +19,12 @@ class UserController extends Controller
     public function unapproved()
     {
         $users = User::where('approved', '=', '0')->get();
-
         return UserResource::collection($users);
     }
 
     public function approved()
     {
-        $users = User::where('approved', '=', '1')->get();
-
+        $users = User::where('approved', '=', '1')->with('municipality')->get();
         return UserResource::collection($users);
     }
 
@@ -72,6 +70,37 @@ class UserController extends Controller
                 'error' => sprintf('Er ging iets mis bij het weigeren van "%s"...', $username)
             ], 500);
         }
+    }
+
+    public function removeMunicipality($id) {
+        if (!$id) {
+            return response()->json([
+                'success' => false,
+                'error' => 'De gebruiker kon niet worden gevonden'
+            ], 404);
+        }
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Er bestaat geen gebruiker met dit id...'
+            ], 400);
+        }
+
+        if (!$user->municipality) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Deze gebruiker heeft geen toegewezen gemeente...'
+            ], 400);
+        }
+
+        $user->municipality()->dissociate();
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gemeente is verwijderd van de gebruiker'
+        ], 200);
     }
 
     public function addMunicipality($id, $municipality_id)
