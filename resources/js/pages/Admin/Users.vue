@@ -12,9 +12,8 @@
                 <div :dusk="`name-${index}`" class="name">{{user.name}}</div>
                 <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
                 <div :dusk="`role-${index}`" class="role">{{user.role}}</div>
-                <!-- TODO: Add municipality -->
                 <div>
-                    <button @click="openAddMunicipalityModal">Gemeente toevoegen</button>
+                    <button :dusk="`add-municipality-${index}`" @click="showAddMunicipalityModal(user.id)">Gemeente toevoegen</button>
                 </div>
             </div>
         </div>
@@ -25,6 +24,8 @@
         <Modal :show="showModal" v-on:close="showModal = false">
             <div>
                 <h1>Dit is een modal</h1>
+                <MunicipalityDropdown v-on:change_municipality="changeMunicipality"/>
+                <button @click="addMunicipalityToUser()">Kies deze gemeente</button>
             </div>
         </Modal>
     </div>
@@ -33,11 +34,12 @@
 
 <script>
 import { Role } from "../../mixins";
-import { Modal } from '../../components/UI'
+import { Modal, MunicipalityDropdown } from '../../components/UI'
 
 export default {
     components: {
-        'Modal': Modal
+        'Modal': Modal,
+        'MunicipalityDropdown': MunicipalityDropdown
     },
 
     mixins: [
@@ -48,12 +50,17 @@ export default {
         return {
             users: null,
             roles: ["admin"],
-            showModal: false
+            showModal: false,
+            municipalities: [],
+
+            editing_user_id: null,
+            selected_municipality_id: null
         };
     },
 
-    mounted() {
+    async mounted() {
         this.loadUsers();
+        this.municipalities = await this.fetchMunicipalities();
     },
 
     methods: {
@@ -88,9 +95,39 @@ export default {
             }
         },
 
-        openAddMunicipalityModal() {
-            console.log('users.vue openaddmunicipalitymodal')
+        async fetchMunicipalities() {
+            try {
+                const { data: res } = await this.$http.get(
+                    "api/municipalities"
+                );
+                return res;
+            } catch (error) {
+                console.error("Error fetching questions: ", error);
+            }
+        },
+
+        showAddMunicipalityModal (user_id) {
             this.showModal = true
+            this.editing_user_id = user_id
+        },
+
+        changeMunicipality(new_municipality) {
+            this.selected_municipality_id = new_municipality.id
+        },
+
+        async addMunicipalityToUser() {
+            
+            const uri = `/api/users/${this.editing_user_id}/addmunicipality/${this.selected_municipality_id}`
+            console.warn(uri)
+             try {
+                const { data: res } = await this.$http.get(
+                    uri
+                );
+                console.warn(res)
+                return res;
+            } catch (error) {
+                console.error("Error adding municipality to user: ", error);
+            }
         }
     }
 };

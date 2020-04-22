@@ -3,7 +3,7 @@
         <div class="backdrop"></div>
         <div class="container">
             <slot/>
-            <button @click="closeModal">x</button>
+            <button class="close" @click="closeModal">x</button>
         </div>
     </div>
 </template>
@@ -40,8 +40,11 @@ export default {
         padding: 50px;
         border-radius: 10px;
         box-shadow: 2px 4px 4px #3e3e3e;
+        width: 50%;
+        height: 50%;
+        background: lightgrey;
 
-        button {
+        button.close {
             position: absolute;
             top: 0;
             right: 0;

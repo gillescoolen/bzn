@@ -38,6 +38,7 @@ export default {
 
     async mounted() {
         this.municipalities = await this.fetchMunicipalities();
+        this.$emit('change_municipality', this.municipalities[0])
     },
 
     computed: {
@@ -54,12 +55,13 @@ export default {
         set(item) {
             this.setMunicipality(item);
             this.show = false;
+            this.$emit('change_municipality', item)
         },
 
         async fetchMunicipalities() {
             try {
                 const { data: res } = await this.$http.get(
-                    "api/municipalities"
+                    "/api/municipalities"
                 );
                 return res;
             } catch (error) {
