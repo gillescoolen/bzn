@@ -108,7 +108,6 @@ export default {
             padding: 0.5rem;
             align-items: center;
             flex-direction: row;
-            justify-content: space-between;
             border-bottom: 1px solid #dde3ee;
 
             .role {
@@ -136,7 +135,7 @@ export default {
             }
 
             div {
-                width: 10%;
+                width: 100%;
             }
         }
     }
