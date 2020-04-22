@@ -6,24 +6,40 @@
                 <div class="name">Naam</div>
                 <div class="email">Email</div>
                 <div>Rol</div>
+                <div>Gemeente</div>
             </div>
             <div v-for="(user, index) in users" :key="index" :dusk="`user-${index}`" class="user">
                 <div :dusk="`name-${index}`" class="name">{{user.name}}</div>
                 <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
                 <div :dusk="`role-${index}`" class="role">{{user.role}}</div>
+                <!-- TODO: Add municipality -->
+                <div>
+                    <button @click="openAddMunicipalityModal">Gemeente toevoegen</button>
+                </div>
             </div>
         </div>
         <div v-else class="message">
             <h2>Geen gebruikers gevonden.</h2>
         </div>
+
+        <Modal :show="showModal" v-on:close="showModal = false">
+            <div>
+                <h1>Dit is een modal</h1>
+            </div>
+        </Modal>
     </div>
 </template>
 
 
 <script>
 import { Role } from "../../mixins";
+import { Modal } from '../../components/UI'
 
 export default {
+    components: {
+        'Modal': Modal
+    },
+
     mixins: [
         Role
     ],
@@ -31,7 +47,8 @@ export default {
     data() {
         return {
             users: null,
-            roles: ["admin"]
+            roles: ["admin"],
+            showModal: false
         };
     },
 
@@ -69,6 +86,11 @@ export default {
             } catch (error) {
                 console.error(error);
             }
+        },
+
+        openAddMunicipalityModal() {
+            console.log('users.vue openaddmunicipalitymodal')
+            this.showModal = true
         }
     }
 };
@@ -105,7 +127,7 @@ export default {
             }
 
             div {
-                width: 20%;
+                width: 100%;
             }
         }
     }
