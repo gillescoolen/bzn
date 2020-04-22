@@ -103,7 +103,7 @@ export default {
         async fetchMunicipalities() {
             try {
                 const { data: res } = await this.$http.get(
-                    "api/municipalities"
+                    "/api/municipalities"
                 );
                 return res;
             } catch (error) {
