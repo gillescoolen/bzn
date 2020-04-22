@@ -6,24 +6,42 @@
                 <div class="name">Naam</div>
                 <div class="email">Email</div>
                 <div>Rol</div>
+                <div>Gemeente</div>
             </div>
             <div v-for="(user, index) in users" :key="index" :dusk="`user-${index}`" class="user">
                 <div :dusk="`name-${index}`" class="name">{{user.name}}</div>
                 <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
                 <div :dusk="`role-${index}`" class="role">{{user.role}}</div>
+                <div>
+                    <button :dusk="`add-municipality-${index}`" @click="showAddMunicipalityModal(user.id)">Gemeente toevoegen</button>
+                </div>
             </div>
         </div>
         <div v-else class="message">
             <h2>Geen gebruikers gevonden.</h2>
         </div>
+
+        <Modal :show="showModal" v-on:close="showModal = false">
+            <div>
+                <h1>Dit is een modal</h1>
+                <MunicipalityDropdown v-on:change_municipality="changeMunicipality"/>
+                <button @click="addMunicipalityToUser()">Kies deze gemeente</button>
+            </div>
+        </Modal>
     </div>
 </template>
 
 
 <script>
 import { Role } from "../../mixins";
+import { Modal, MunicipalityDropdown } from '../../components/UI'
 
 export default {
+    components: {
+        'Modal': Modal,
+        'MunicipalityDropdown': MunicipalityDropdown
+    },
+
     mixins: [
         Role
     ],
@@ -31,12 +49,18 @@ export default {
     data() {
         return {
             users: null,
-            roles: ["admin"]
+            roles: ["admin"],
+            showModal: false,
+            municipalities: [],
+
+            editing_user_id: null,
+            selected_municipality_id: null
         };
     },
 
-    mounted() {
+    async mounted() {
         this.loadUsers();
+        this.municipalities = await this.fetchMunicipalities();
     },
 
     methods: {
@@ -68,6 +92,41 @@ export default {
                 res.status === 200 && this.loadUsers();
             } catch (error) {
                 console.error(error);
+            }
+        },
+
+        async fetchMunicipalities() {
+            try {
+                const { data: res } = await this.$http.get(
+                    "api/municipalities"
+                );
+                return res;
+            } catch (error) {
+                console.error("Error fetching questions: ", error);
+            }
+        },
+
+        showAddMunicipalityModal (user_id) {
+            this.showModal = true
+            this.editing_user_id = user_id
+        },
+
+        changeMunicipality(new_municipality) {
+            this.selected_municipality_id = new_municipality.id
+        },
+
+        async addMunicipalityToUser() {
+            
+            const uri = `/api/users/${this.editing_user_id}/addmunicipality/${this.selected_municipality_id}`
+            console.warn(uri)
+             try {
+                const { data: res } = await this.$http.get(
+                    uri
+                );
+                console.warn(res)
+                return res;
+            } catch (error) {
+                console.error("Error adding municipality to user: ", error);
             }
         }
     }
@@ -105,7 +164,7 @@ export default {
             }
 
             div {
-                width: 20%;
+                width: 100%;
             }
         }
     }
