@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Municipality;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
@@ -45,7 +46,7 @@ class UserController extends Controller
                 'success' => false,
                 'error' => 'Er is geen gebruiker gevonden met deze gebruikersnaam'
             ], 400);
-        } 
+        }
 
         $destroy = User::destroy($user_id);
         if ($destroy) {
@@ -59,5 +60,25 @@ class UserController extends Controller
                 'error' => sprintf('Er ging iets mis bij het weigeren van "%s"', $username)
             ], 500);
         }
+    }
+
+    public function addMunicipality($id, $municipality) {
+        if(!id || !$municipality) {
+            return response()->json([
+                'success' => false,
+                'error' => 'De gebruiker of gemeente kon niet worden gevonden'
+            ], 404);
+        }
+        $user = User::find($id);
+        $user->update([
+           'municipality_id' => $municipality
+        ]);
+
+        dd($user);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gemeente is toegevoegd aan de gebruiker'
+        ], 200);
     }
 }
