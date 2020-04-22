@@ -62,18 +62,16 @@ class UserController extends Controller
         }
     }
 
-    public function addMunicipality($id, $municipality) {
-        if(!$id || !$municipality) {
+    public function addMunicipality($id, $municipality_id) {
+        if(!$id || !$municipality_id) {
             return response()->json([
                 'success' => false,
                 'error' => 'De gebruiker of gemeente kon niet worden gevonden'
             ], 404);
         }
         $user = User::find($id);
-        $user->municipality_id = $municipality->id;
+        $user->municipality_id = $municipality_id;
         $user->save();
-
-        dd($user);
 
         return response()->json([
             'success' => true,
