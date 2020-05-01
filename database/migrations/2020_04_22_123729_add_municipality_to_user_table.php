@@ -29,7 +29,8 @@ class AddMunicipalityToUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             if (Schema::hasColumn('users', 'municipality_id')) {
-               $table->dropColumn('municipality_id');
+                $table->dropForeign('users_municipality_id_foreign');
+                $table->dropColumn('municipality_id');
             }
         });
     }

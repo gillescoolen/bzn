@@ -15,10 +15,11 @@ Browser tests are located in `~/tests/Browser/`.
 
 0. Copy env file `$ cp .env .env.dusk.local` and edit DB_DATABASE, DB_USERNAME, DB_PASSWORD
 1. Create a testing database with a testing user according to .env.dusk.local
-2. Serve the project in testing mode: 
+2. Build Vue assets:
+  1. `$ npm run production`
+3. Serve the project in testing mode: 
   1. `$ php artisan serve --env=dusk.local`
-  2. `$ npm run hot`
-3. Running tests:
+4. Running tests:
   1. Running all browser tests: `$ php artisan dusk`.
   2. Running a specific test: `$ php artisan dusk [file]` e.g. `$ php artisan dusk tests/Browser/MapTest.php`
 
