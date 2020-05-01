@@ -55,6 +55,7 @@
             :inverse="true"
           >Kies deze gemeente</Button>
           <Button
+            v-if="editing_user.municipality_id"
             :dusk="`remove-municipality`"
             class="remove_municipality"
             @click="removeMunicipalityFromUser()"
@@ -69,6 +70,7 @@
 
 
 <script>
+import { mapGetters } from "vuex";
 import { Role } from "../../mixins";
 import {
   Modal,
@@ -98,8 +100,7 @@ export default {
       showModal: false,
       showModalSpinner: true,
       municipalities: [],
-      editing_user: null,
-      selected_municipality_id: null
+      editing_user: null
     };
   },
 
@@ -153,18 +154,18 @@ export default {
       this.editing_user = this.users.find(u => u.id === user_id);
     },
 
-    changeMunicipality(new_municipality) {
-      this.selected_municipality_id = new_municipality.id;
+    changeMunicipality() {
       this.showModalSpinner = false;
     },
 
     async addMunicipalityToUser() {
       this.showModal = false;
-      this.addMunicipalityNameToUser(
-        this.editing_user.id,
-        this.selected_municipality_id
-      );
-      const uri = `/api/users/${this.editing_user.id}/addmunicipality/${this.selected_municipality_id}`;
+
+      const municipality_id = this.selectedMunicipality.id;
+      this.editing_user.municipality_id = municipality_id;
+      this.addMunicipalityNameToUser(this.editing_user.id, municipality_id);
+
+      const uri = `/api/users/${this.editing_user.id}/addmunicipality/${municipality_id}`;
       try {
         await this.$http.patch(uri);
       } catch (error) {
@@ -195,6 +196,11 @@ export default {
         user.municipalityname = "";
       }
     }
+  },
+  computed: {
+    ...mapGetters({
+      selectedMunicipality: "municipalities/get"
+    })
   }
 };
 </script>
