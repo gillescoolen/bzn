@@ -4,6 +4,7 @@ import Select from "./Select";
 import Spinner from './Spinner';
 import MunicipalityDropdown from "./MunicipalityDropdown";
 import Modal from './Modal';
+import Button from './Button';
 
 export {
     PDF,
@@ -11,5 +12,6 @@ export {
     Select,
     Spinner,
     MunicipalityDropdown,
-    Modal
+    Modal,
+    Button
 }

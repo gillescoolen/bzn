@@ -15,11 +15,17 @@
                 <div :dusk="`name-${index}`" class="name">{{user.name}}</div>
                 <div :dusk="`email-${index}`" class="email">{{user.email}}</div>
                 <div :dusk="`role-${index}`" class="role">{{user.role}}</div>
-                <div>
+                <div class="municipality-container">
                     <p v-if="user.municipalityname" class="municipality-name">{{user.municipalityname}}</p>
-                    <button :dusk="`add-municipality-${index}`" @click="showAddMunicipalityModal(user.id)">
+                    <Button 
+                        :dusk="`add-municipality-${index}`"
+                        v-on:click="showAddMunicipalityModal(user.id)"
+                        :variant="`primary`"
+                        :inverse="user.municipalityname"
+                        :flat="user.municipalityname"
+                    >
                         {{ user.municipalityname ? 'Wijzigen' : 'Gemeente toewijzen' }}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>
@@ -52,7 +58,7 @@
 
 <script>
 import { Role } from "../../mixins";
-import { Modal, MunicipalityDropdown, Spinner } from '../../components/UI'
+import { Modal, MunicipalityDropdown, Spinner, Button } from '../../components/UI'
 
 export default {
     name: 'Users',
@@ -60,7 +66,8 @@ export default {
     components: {
         'Modal': Modal,
         'MunicipalityDropdown': MunicipalityDropdown,
-        'Spinner': Spinner
+        'Spinner': Spinner,
+        'Button': Button
     },
 
     mixins: [
@@ -205,9 +212,15 @@ export default {
                 user-select: none;
             }
 
-            .municipality-name {
-                display: inline;
-                margin: 0;
+            .municipality-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                .municipality-name {
+                    display: inline;
+                    margin: 0;
+                }   
             }
 
             div {
