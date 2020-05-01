@@ -6,28 +6,29 @@
 
 <script>
 export default {
-  name: 'Button',
-  props: ['variant', 'flat', 'inverse'],
+  name: "Button",
+  props: ["variant", "flat", "inverse"],
   methods: {
-    handleClick (e) {
-      this.$emit('click', e);
+    handleClick(e) {
+      this.$emit("click", e);
     }
   },
   computed: {
-    classObject () {
-      const classlist = []
-      
+    classObject() {
+      if (!this.variant) return [];
+      const classlist = [];
+
       if (this.inverse) {
-        classlist.push(this.variant)
-        classlist.push(`border-${this.variant}`)
+        classlist.push(this.variant);
+        classlist.push(`border-${this.variant}`);
       } else {
-        classlist.push(`bg-${this.variant}`)
+        classlist.push(`bg-${this.variant}`);
       }
-      
-      return classlist
+
+      return classlist;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -45,7 +46,7 @@ button {
 }
 
 button.flat {
-  box-shadow: none ;
+  box-shadow: none;
 }
 
 button.inverse {
