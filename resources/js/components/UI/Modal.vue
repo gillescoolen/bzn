@@ -13,7 +13,7 @@ import { Button } from "../UI";
 
 export default {
   components: {
-    Button: Button
+    Button
   },
   name: "Modal",
   props: ["show"],
