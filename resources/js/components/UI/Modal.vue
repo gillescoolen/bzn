@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { Button } from "./";
+import Button from "./Button";
 
 export default {
   components: {
