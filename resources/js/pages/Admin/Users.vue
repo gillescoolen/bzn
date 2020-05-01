@@ -18,7 +18,7 @@
         <div class="municipality-container">
           <p v-if="user.municipalityname" class="municipality-name">{{user.municipalityname}}</p>
           <Button
-            :dusk="`add-municipality-${index}`"
+            :dusk="`edit-municipality-${index}`"
             v-on:click="showAddMunicipalityModal(user.id)"
             :variant="`primary`"
             :inverse="user.municipalityname"
@@ -31,7 +31,7 @@
       <h2>Geen gebruikers gevonden.</h2>
     </div>
 
-    <Modal :show="showModal" v-on:close="showModal = false">
+    <Modal :show="showModal" v-on:close="showModal = false" dusk="municipality-modal">
       <div v-if="editing_user" class="modal-content">
         <h3>
           Voeg een gemeente toe aan
@@ -48,7 +48,7 @@
         </div>
         <div v-else>
           <Button
-            :dusk="`add-municipality`"
+            :dusk="`add-municipality-button`"
             class="add_municipality"
             @click="addMunicipalityToUser()"
             :variant="`secondary`"
@@ -56,7 +56,7 @@
           >Kies deze gemeente</Button>
           <Button
             v-if="editing_user.municipality_id"
-            :dusk="`remove-municipality`"
+            :dusk="`remove-municipality-button`"
             class="remove_municipality"
             @click="removeMunicipalityFromUser()"
             :variant="`error`"
