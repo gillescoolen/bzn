@@ -233,7 +233,7 @@ export default {
       .municipality-container {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
 
         .municipality-name {
           display: inline;
