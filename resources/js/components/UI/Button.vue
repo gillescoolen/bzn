@@ -1,5 +1,5 @@
 <template>
-  <button :class="[variant, {'flat': flat, 'inverse': inverse}]" @click="handleClick">
+  <button :class="[classObject, {'flat': flat, 'inverse': inverse}]" @click="handleClick">
     <slot />
   </button>
 </template>
@@ -11,6 +11,20 @@ export default {
   methods: {
     handleClick (e) {
       this.$emit('click', e);
+    }
+  },
+  computed: {
+    classObject () {
+      const classlist = []
+      
+      if (this.inverse) {
+        classlist.push(this.variant)
+        classlist.push(`border-${this.variant}`)
+      } else {
+        classlist.push(`bg-${this.variant}`)
+      }
+      
+      return classlist
     }
   }
 }
@@ -26,54 +40,15 @@ button {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  color: white;
+  background-color: white;
 }
 
 button.flat {
-  box-shadow: none;
+  box-shadow: none ;
 }
 
-button.primary {
-  color: white;
-  background-color: $primary;
+button.inverse {
+  border: 2px solid black;
 }
-
-button.secondary {
-  color: white;
-  background-color: $secondary;
-}
-
-button.disabled {
-  color: white;
-  background-color: $disabled;
-}
-
-button.darkgray {
-  color: white;
-  background-color: $darkgray;
-}
-
-button.primary.inverse {
-  color: $primary;
-  background-color: white;
-  border: 2px solid $primary;
-}
-
-button.secondary.inverse {
-  color: $secondary;
-  background-color: white;
-  border: 2px solid $secondary;
-}
-
-button.disabled.inverse {
-  color: $disabled;
-  background-color: white;
-  border: 2px solid $disabled;
-}
-
-button.darkgray.inverse {
-  color: $darkgray;
-  background-color: white;
-  border: 2px solid $darkgray;
-}
-
 </style>
