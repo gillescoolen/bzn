@@ -4,22 +4,42 @@
 
 <script>
 import jsPDF from "jspdf";
+import domtoimage from "dom-to-image";
 
 export default {
     data() {
         return {
             downloaded: false,
-            text: 'Download PDF'
-        }
+            text: "Download PDF"
+        };
     },
 
     methods: {
-        create() {
-            const doc = new jsPDF();
-            doc.text('Dit is een PDF gegenereerd op onze site!', 10, 10);
-            doc.save('bzn.pdf');
+        async create() {
+            this.text = "Bezig...";
+
+            const doc = new jsPDF("l", "px");
+
+            doc.addImage(await this.generateMapImage(), "JPEG", 0, 0, 640, 360);
+
+            doc.addPage();
+            doc.text('Hier komen de vragen en antwoorden.', 40, 40)
+
+            doc.save();
+
             this.downloaded = true;
-            this.text = 'Gedownload!';
+            this.text = "Gedownload!";
+        },
+
+        async generateMapImage() {
+            const map = document.getElementById("map");
+            
+            return await domtoimage.toPng(map);
+        },
+
+        generateQuestionsTable(doc) {
+            doc.addPage();
+
         }
     }
 };
