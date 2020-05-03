@@ -10,15 +10,24 @@
             >{{item.name}}</router-link>
         </div>
         <div class="user">
-            <button dusk="logout" @click="logout">Uitloggen</button>
+            <Button 
+                dusk="logout" 
+                @click="logout"
+                :variant="`darkgray`"
+                :inverse="true"
+            >Uitloggen</Button>
         </div>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { Button } from '../UI'
 
 export default {
+    components: {
+        Button
+    },
     data() {
         return {
             items: [
@@ -116,17 +125,6 @@ export default {
         display: flex;
         flex-direction: row-reverse;
         margin: 1rem;
-
-        button {
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-            color: #4279c0;
-            font-weight: 700;
-            border-radius: 10px;
-            padding: 0.8rem 1rem;
-            background-color: transparent;
-        }
     }
 }
 </style>

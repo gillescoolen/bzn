@@ -5,41 +5,33 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class AdminUserTest extends DuskTestCase
+class AdminRegistrationsTest extends DuskTestCase
 {
-    public function url()
+    public function login_url()
+    {
+        return '/login';
+    }
+
+    public function admin_registrations_url()
     {
         return '/admin/registrations';
     }
 
-    /**
-     * Authenticate the user.
-     *
-     * @return void
-     */
     public function testLogin()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/login')
-                    ->assertPathIs('/login')
+            #1: Authenticate the user.
+            $browser->visit($this->login_url())
+                    ->assertPathIs($this->login_url())
                     ->type('@email', 'admin@bzn.nl')
                     ->type('@password', 'password')
                     ->click('@login')
                     ->pause(1000)
-                    ->assertPathIsNot('/login');
-        });
-    }
+                    ->assertPathIsNot($this->login_url());
 
-    /**
-     * Tests if a user disappears when we accept or decline them.
-     *
-     * @return void
-     */
-    public function testUserAcceptingAndDeclining()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit($this->url())
-                    ->assertPathIs($this->url())
+            #2: Tests if a user disappears when we accept or decline them.
+            $browser->visit($this->admin_registrations_url())
+                    ->assertPathIs($this->admin_registrations_url())
                     ->waitFor('@users')
                     ->click('@approve-0')
                     ->pause(2000)

@@ -45,9 +45,9 @@
 
         <input dusk="password-conformation" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
     </div>
-    
+
     <div class="row">
-        <a class="forgot" href="{{ route('register') }}">
+        <a class="forgot" href="{{ route('login') }}">
             {{ __('Al een account?') }}
         </a>
     </div>
