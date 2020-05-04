@@ -1,45 +1,59 @@
 <template>
-    <button :disabled="downloaded" dusk="pdf" @click="create" class="show">{{text}}</button>
+  <button :disabled="downloaded" dusk="pdf" @click="create" class="show">{{text}}</button>
 </template>
 
 <script>
-import jsPDF from "jspdf";
-import domtoimage from "dom-to-image";
+import pdfMake from 'pdfmake';
+import domtoimage from 'dom-to-image';
 
 export default {
     data() {
         return {
             downloaded: false,
-            text: "Download PDF"
+            text: 'Download PDF'
         };
     },
 
     methods: {
         async create() {
-            this.text = "Bezig...";
+            this.text = 'Bezig...';
+            // this.downloaded = true;
+            const image = await this.generateMapImage();
+            const dimensions = await this.getImageDimensions(image);
 
-            const doc = new jsPDF("l", "px");
+            const document = {
+                pageOrientation: 'landscape',
+                pageMargins: 0,
+                pageSize: {
+                    width: dimensions.width,
+                    height: dimensions.height
+                },
 
-            doc.addImage(await this.generateMapImage(), "JPEG", 0, 0, 640, 360);
+                content: [
+                    {
+                        image: image
+                    }
+                ]
+            };
 
-            doc.addPage();
-            doc.text('Hier komen de vragen en antwoorden.', 40, 40)
+            pdfMake.createPdf(document).open();
 
-            doc.save();
-
-            this.downloaded = true;
-            this.text = "Gedownload!";
+            this.text = 'Gedownload!';
         },
 
         async generateMapImage() {
-            const map = document.getElementById("map");
-            
+            const map = document.getElementById('map');
+
             return await domtoimage.toPng(map);
         },
 
-        generateQuestionsTable(doc) {
-            doc.addPage();
-
+        async getImageDimensions(url) {
+            return new Promise(resolve => {
+                const image = new Image();
+                image.onload = () =>
+                    resolve({ width: image.width, height: image.height });
+                image.src = url;
+            });
         }
     }
 };
