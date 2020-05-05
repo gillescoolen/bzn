@@ -9,11 +9,11 @@
   >
     <l-tile-layer :url="url"></l-tile-layer>
     <l-wms-tile-layer
-      :base-url="layer.url"
-      :layers="layer.layers"
-      :name="layer.name"
-      :opacity="0.3"
+      v-if="wms"
       layer-type="base"
+      :layers="layer"
+      :base-url="wms.url"
+      :opacity="wms.opacity"
     />
   </l-map>
 </template>
@@ -39,17 +39,17 @@ export default {
                 zoomControl: false,
                 preferCanvas: true
             },
-            layer: {
+            wms: {
                 url: 'http://gmd.has.nl:8080/geoserver/biodiversiteithorst/wms',
                 format: 'image/png',
-                opacity: '',
-                layers: 'biodiversiteithorst:Alle_insecten_std'
+                opacity: 0.3
             }
         };
     },
 
     computed: {
         ...mapGetters({
+            layer: 'map/get',
             municipality: 'municipalities/get'
         }),
 
