@@ -1,5 +1,6 @@
 <template>
     <l-map
+        id="map"
         class="map"
         style="height: 100%; width: 100%;"
         :zoom="zoom"
@@ -28,7 +29,8 @@ export default {
             minZoom: 12,
             url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             options: {
-                zoomControl: false
+                zoomControl: false,
+                preferCanvas: true
             }
         };
     },
