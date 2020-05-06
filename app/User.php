@@ -42,8 +42,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
-    public function municipality() {
+    public function municipality()
+    {
         return $this->belongsTo(Municipality::class, 'municipality_id', 'id');
     }
-
 }
