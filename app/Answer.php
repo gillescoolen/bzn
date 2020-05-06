@@ -15,8 +15,18 @@ class Answer extends Model
 
     public function __construct(array $data = array())
     {
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $this->$key = $value;
         }
+    }
+
+    public function layer()
+    {
+        return $this->belongsTo('App\Layer');
+    }
+
+    public function question()
+    {
+        return $this->belongsTo('App\Question');
     }
 }
