@@ -4,6 +4,7 @@
     class="map"
     style="height: 100%; width: 100%;"
     :zoom="zoom"
+    :minZoom="minZoom"
     :center="center"
     :options="options"
   >
