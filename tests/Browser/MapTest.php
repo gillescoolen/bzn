@@ -65,4 +65,14 @@ class MapTest extends DuskTestCase
                 ->assertVue('options', ['zoomControl' => false], $this->component());
         });
     }
+
+
+    public function testDefaultLayer()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                // Check that the 'minZoom' property is 12, which is our default.
+                ->assertVueIsNot('wms', null, $this->component());
+        });
+    }
 }

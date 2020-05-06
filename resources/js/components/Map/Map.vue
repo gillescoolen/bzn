@@ -13,6 +13,7 @@
     <l-wms-tile-layer
       v-if="wms"
       :key="layer"
+      dusk="map-layer"
       layer-type="base"
       :layers="layer"
       :base-url="wms.url"
