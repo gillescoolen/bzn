@@ -1,58 +1,67 @@
 <template>
-    <div class="select" v-if="answers && answers.length !== 0">
-        <div class="dropdown" :class="dropdownBorder" @click="expanded = !expanded">
-            <span>{{selected.answer}}</span>
+  <div class="select" v-if="answers && answers.length !== 0">
+    <div
+      class="dropdown"
+      @click="expanded = !expanded"
+      :class="expanded ? 'border-secondary' : 'border-primary'"
+    >
+      <span>{{selected.answer}}</span>
 
-            <button :class="dropdownButtonClass" >
-                <img src="/assets/caret-right-solid.svg" alt="caret-right">
-            </button>
-        </div>
-        
-        <ul v-if="expanded" class="answers">
-            <li v-for="answer_model in answers" v-bind:key="answer_model.id" class="answer" :class="selected == answer_model ? 'selected' : ''" @click="selected = answer_model">
-                <span>{{answer_model.answer}}</span>
-            </li>
-        </ul>
+      <button :class="expanded ? 'bg-secondary expanded' :'bg-primary'">
+        <img src="/assets/caret-right-solid.svg" alt="caret-right" />
+      </button>
     </div>
+
+    <ul v-if="expanded" class="answers">
+      <li
+        v-for="answer in answers"
+        class="answer"
+        v-bind:key="answer.id"
+        @click="setAnswer(answer)"
+        :class="selected == answer ? 'selected' : ''"
+      >
+        <span>{{answer.answer}}</span>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
     props: {
         Panswers: null
     },
-    data () {
+    data() {
         return {
             selected: undefined,
             answers: undefined,
             expanded: false
+        };
+    },
+
+    methods: {
+        ...mapActions({
+            setLayer: 'map/set'
+        }),
+
+        setAnswer(answer) {
+            this.setLayer(answer.layer);
+            this.selected = answer;
+            this.expanded = false;
         }
     },
+
     mounted() {
         this.answers = this.Panswers;
         this.selected = this.answers[0];
-    },
-    computed: {
-        dropdownBorder () {
-            if (this.expanded) {
-                return 'border-secondary'
-            } else {
-                return 'border-primary'
-            }
-        },
-        dropdownButtonClass() {
-            if (this.expanded) {
-                return 'bg-secondary expanded'
-            } else {
-                return 'bg-primary'
-            }
-        }
     }
-}
+};
 </script>
 
 <style lang="scss">
-@import "./resources/sass/app.scss";
+@import './resources/sass/app.scss';
 
 .select {
     width: 100%;
@@ -85,8 +94,8 @@ export default {
                 right: -1px;
                 filter: invert(1);
 
-                -webkit-transition: -webkit-transform .2s ease-in-out;
-                transition: transform .2s ease-in-out;
+                -webkit-transition: -webkit-transform 0.2s ease-in-out;
+                transition: transform 0.2s ease-in-out;
             }
         }
 

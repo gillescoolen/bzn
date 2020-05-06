@@ -5,12 +5,14 @@
     style="height: 100%; width: 100%;"
     :zoom="zoom"
     :minZoom="minZoom"
+    :maxZoom="maxZoom"
     :center="center"
     :options="options"
   >
     <l-tile-layer :url="url"></l-tile-layer>
     <l-wms-tile-layer
       v-if="wms"
+      :key="layer"
       layer-type="base"
       :layers="layer"
       :base-url="wms.url"
@@ -34,6 +36,7 @@ export default {
     data() {
         return {
             zoom: 12,
+            maxZoom: 15,
             minZoom: 12,
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             options: {
