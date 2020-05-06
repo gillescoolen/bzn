@@ -1,5 +1,5 @@
 <template>
-    <div v-if="municipalities" class="wrapper">
+    <div v-if="municipalities" class="wrapper" :class="{ invert, 'float': menuFloat }">
         <transition name="fade" mode="out-in">
             <span v-if="show" key="on" @click="show = false">Sluiten</span>
             <span v-else key="off" dusk="municipality-button" @click="show = true">
@@ -29,6 +29,8 @@ export default {
         List
     },
 
+    props: ['invert', 'menuFloat'],
+
     data() {
         return {
             show: false,
@@ -38,6 +40,7 @@ export default {
 
     async mounted() {
         this.municipalities = await this.fetchMunicipalities();
+        this.$emit('change_municipality', this.municipalities[0])
     },
 
     computed: {
@@ -54,12 +57,13 @@ export default {
         set(item) {
             this.setMunicipality(item);
             this.show = false;
+            this.$emit('change_municipality', item)
         },
 
         async fetchMunicipalities() {
             try {
                 const { data: res } = await this.$http.get(
-                    "api/municipalities"
+                    "/api/municipalities"
                 );
                 return res;
             } catch (error) {
@@ -94,6 +98,24 @@ export default {
             height: 25px;
             filter: invert(1);
         }
+    }
+}
+
+.wrapper.float {
+    .menu {
+        padding: 1rem 1rem 1rem 0;
+        margin: 0;
+        position: relative;
+        box-shadow: none;
+    }
+}
+
+.wrapper.invert {
+    span {
+        color: black;
+    }
+    img {
+        filter: none;
     }
 }
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-        /**
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -15,8 +15,13 @@ class Question extends Model
 
     public function __construct(array $data = array())
     {
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $this->$key = $value;
         }
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
     }
 }

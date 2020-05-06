@@ -42,7 +42,7 @@ class QuestionnaireTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->waitFor($this->component(), 5)
-                ->pause(500)
+                ->pause(2000)
                 ->assertVueIsNot('questions', null, $this->component());
         });
     }

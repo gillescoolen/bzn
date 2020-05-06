@@ -14,7 +14,7 @@ class CreateMunicipalityTable extends Migration
     public function up()
     {
         Schema::create('municipality', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name');
             $table->double('long', 12, 6);
             $table->double('lat', 12, 6);

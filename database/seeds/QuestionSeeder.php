@@ -11,6 +11,16 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Question::class, 10)->create();
+        DB::table('question')->insert([
+            [
+                'question' => 'Welk dier vind je belangrijk?',
+            ],
+            [
+                'question' => 'Welke kaas vind je goed bij de regio passen?'
+            ],
+            [
+                'question' => 'Welke soort bomen vind je mooi?'
+            ],
+        ]);
     }
 }

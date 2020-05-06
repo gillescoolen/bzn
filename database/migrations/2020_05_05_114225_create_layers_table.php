@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameMunicipalityTable extends Migration
+class CreateLayersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class RenameMunicipalityTable extends Migration
      */
     public function up()
     {
-        Schema::rename('municipality', 'municipalities');
+        Schema::create('layers', function (Blueprint $table) {
+            $table->string('name')->primary();
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class RenameMunicipalityTable extends Migration
      */
     public function down()
     {
-    //
+        Schema::dropIfExists('layers');
     }
 }

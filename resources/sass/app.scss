@@ -2,6 +2,7 @@ $primary: #744144;
 $secondary: #45BF63;
 $disabled: #A5A5A5;
 $darkgray: #585858;
+$error: #f54e4e;
 
 %basic-shadow {
     -webkit-box-shadow: 0px 10px 26px -4px rgba(0,0,0,0.6);
@@ -47,4 +48,14 @@ $darkgray: #585858;
 }
 .border-darkgray {
     border-color: $darkgray !important;
+}
+
+.error {
+    color: $error;
+}
+.bg-error {
+    background-color: $error;
+}
+.border-error {
+    border-color: $error !important;
 }

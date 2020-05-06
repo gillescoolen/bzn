@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameMunicipalityTable extends Migration
+class AddLayerToAnswer extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class RenameMunicipalityTable extends Migration
      */
     public function up()
     {
-        Schema::rename('municipality', 'municipalities');
+        Schema::table('answer', function (Blueprint $table) {
+            $table->string('layer')->default('');
+            $table->foreign('layer')->references('name')->on('layers');
+        });
     }
 
     /**
@@ -23,6 +26,5 @@ class RenameMunicipalityTable extends Migration
      */
     public function down()
     {
-    //
     }
 }

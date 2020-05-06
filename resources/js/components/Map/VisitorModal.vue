@@ -1,28 +1,28 @@
 <template>
-    <transition name="bounce">
-        <div v-if="!visitor" class="wrapper">
-            <div dusk="modal" class="modal">
-                <h3>Wat voor bezoeker bent u?</h3>
-                <button dusk="normal" @click="setVisitor('normal')">Ik ben een normale bezoeker!</button>
-                <button dusk="special" @click="setVisitor('special')">Ik ben een opdrachtgever!</button>
-            </div>
-        </div>
-    </transition>
+  <transition name="bounce">
+    <div v-if="!visitor" class="wrapper">
+      <div dusk="modal" class="modal">
+        <h3>Wat voor bezoeker bent u?</h3>
+        <button dusk="normal" @click="setVisitor('normal')">Ik ben een normale bezoeker!</button>
+        <button dusk="special" @click="setVisitor('special')">Ik ben een opdrachtgever!</button>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     computed: {
         ...mapGetters({
-            visitor: "visitor/get"
+            visitor: 'visitor/get'
         })
     },
 
     methods: {
         ...mapActions({
-            setVisitor: "visitor/set"
+            setVisitor: 'visitor/set'
         })
     }
 };
