@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Municipality;
 use App\User;
-use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 
 class UserController extends Controller
@@ -72,7 +71,8 @@ class UserController extends Controller
         }
     }
 
-    public function removeMunicipality($id) {
+    public function removeMunicipality($id)
+    {
         if (!$id) {
             return response()->json([
                 'success' => false,
