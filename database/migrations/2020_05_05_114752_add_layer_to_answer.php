@@ -26,5 +26,9 @@ class AddLayerToAnswer extends Migration
      */
     public function down()
     {
+        Schema::table('answer', function (Blueprint $table) {
+            $table->dropForeign('answer_layer_foreign');
+            $table->dropColumn('layer');
+        });
     }
 }
