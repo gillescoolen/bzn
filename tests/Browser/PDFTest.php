@@ -29,7 +29,7 @@ class PDFTest extends DuskTestCase
                 ->click('@normal')
                 ->waitFor($this->component(), 5)
                 ->click($this->component())
-                ->assertVue('text', 'Gedownload!', $this->component())
+                ->waitForText('Gedownload!', 5)
                 ->assertVue('downloaded', true, $this->component());
         });
     }
