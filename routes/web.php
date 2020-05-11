@@ -14,4 +14,8 @@ Auth::routes();
 
 Route::get('/', 'AppController@index')->where('any', '.*');
 
+Route::redirect('/config', '/');
+Route::redirect('/tasks', '/');
+Route::redirect('/guide-types', '/');
+
 Route::get('/{opt?}', 'AppController@index')->where('opt', '.*')->middleware('auth');
