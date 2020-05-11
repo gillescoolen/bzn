@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  name: "Button",
-  props: ["variant", "flat", "inverse"],
+  name: 'Button',
+  props: ['variant', 'flat', 'inverse'],
   methods: {
     handleClick(e) {
-      this.$emit("click", e);
+      this.$emit('click', e);
     }
   },
   computed: {
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./resources/sass/app.scss";
+@import './resources/sass/app.scss';
 
 button {
   font-weight: bold;
@@ -43,6 +43,7 @@ button {
   cursor: pointer;
   color: white;
   background-color: white;
+  transition: 0.2s all;
 }
 
 button.flat {
