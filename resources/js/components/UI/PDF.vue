@@ -19,7 +19,7 @@ export default {
     methods: {
         async create() {
             this.text = 'Bezig...';
-            // this.downloaded = true;
+            this.downloaded = true;
             const image = await this.generateMapImage();
             const dimensions = await this.getImageDimensions(image);
 
