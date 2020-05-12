@@ -3,6 +3,11 @@
     <div>
       <h1>Selecteer je stuff</h1>
       <p>ff mooie gemeente select</p>
+      <Button
+        class="button"
+        @click="setColor(`#${Math.floor(Math.random()*16777215).toString(16)}`)"
+        :style="{'background-color': color}"
+      >Gay Color Changer 3000</Button>
     </div>
 
     <div class="buttons">
@@ -17,12 +22,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { Button } from '../../components/UI';
 
 export default {
   components: {
     Button
+  },
+
+  methods: {
+    ...mapActions({
+      setColor: 'steps/setColor'
+    })
   },
 
   computed: {

@@ -29,6 +29,7 @@ export default {
   height: 100vh;
   max-width: 100%;
   max-height: 100%;
+  transition: background-color 0.2s;
 
   .content {
     width: 100%;
