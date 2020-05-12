@@ -11,12 +11,16 @@
     </div>
 
     <div class="buttons">
-      <router-link to="tasks">
-        <Button class="button" :style="{'background-color': color}">Aan de slag met biodiversiteit!</Button>
-      </router-link>
-      <router-link to="guide-types">
-        <Button class="button" :style="{'background-color': color}">Aan de slag met een opgave!</Button>
-      </router-link>
+      <Button
+        class="button"
+        @click="$router.push('tasks')"
+        :style="{'background-color': color}"
+      >Aan de slag met biodiversiteit!</Button>
+      <Button
+        class="button"
+        @click="$router.push('tasks')"
+        :style="{'background-color': color}"
+      >Aan de slag met een opgave!</Button>
     </div>
   </div>
 </template>

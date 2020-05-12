@@ -5,9 +5,11 @@
       <p>Prachtige placeholder tekst!</p>
     </div>
 
-    <router-link to="config">
-      <Button class="button" :style="{'background-color': color}">Verder</Button>
-    </router-link>
+    <Button
+      class="button"
+      @click="$router.push('config')"
+      :style="{'background-color': color}"
+    >Verder</Button>
   </div>
 </template>
 
