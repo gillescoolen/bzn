@@ -3,6 +3,7 @@
     <div>
       <h1>Informatie over de Website</h1>
       <p>Prachtige placeholder tekst!</p>
+      <router-link to="login">ff inloggen hiero</router-link>
     </div>
 
     <Button
@@ -39,7 +40,6 @@ export default {
 
   .button {
     width: 5rem;
-    padding: 1rem;
     color: white;
   }
 }

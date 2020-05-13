@@ -45,138 +45,136 @@
 import { Select, Spinner, Button } from '../UI';
 
 export default {
-    components: {
-        Select,
-        Spinner,
-        Button
-    },
+  components: {
+    Select,
+    Spinner,
+    Button
+  },
 
-    data() {
-        return {
-            show: false,
-            questions: null
-        };
-    },
+  data() {
+    return {
+      show: false,
+      questions: null
+    };
+  },
 
-    async mounted() {
-        this.questions = await this.fetchQuestions();
-    },
+  async mounted() {
+    this.questions = await this.fetchQuestions();
+  },
 
-    methods: {
-        async fetchQuestions() {
-            try {
-                const { data: res } = await this.$http.get('api/questions');
-                return res;
-            } catch (error) {
-                console.error('Error fetching questions: ', error);
-            }
-        }
+  methods: {
+    async fetchQuestions() {
+      try {
+        const { data: res } = await this.$http.get('api/questions');
+        return res;
+      } catch (error) {
+        console.error('Error fetching questions: ', error);
+      }
     }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import './resources/sass/app.scss';
-
 .wrapper {
-    position: absolute;
-    top: 48px;
-    z-index: 1000;
-    right: 0px;
-    margin: 1rem;
+  position: absolute;
+  top: 48px;
+  z-index: 1000;
+  right: 0px;
+  margin: 1rem;
 
-    .tree-icon {
-        height: 50px;
-        width: 50px;
-        cursor: pointer;
-        filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.7));
+  .tree-icon {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.7));
+  }
+  .tree-icon:hover {
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
+  }
+
+  .loader {
+    padding: 15px;
+    height: 150px;
+    position: relative;
+    margin-top: -10px;
+    border-radius: 10px;
+    background-color: white;
+
+    p {
+      color: #555;
+      text-align: center;
+      font-weight: bold;
     }
-    .tree-icon:hover {
-        filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
+  }
+
+  .questionnaire {
+    width: 300px;
+    padding: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: white;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h1 {
+        color: var(--primary);
+        margin: 0;
+      }
     }
 
-    .loader {
-        padding: 15px;
-        height: 150px;
-        position: relative;
-        margin-top: -10px;
-        border-radius: 10px;
-        background-color: white;
-
-        p {
-            color: #555;
-            text-align: center;
-            font-weight: bold;
-        }
+    > p {
+      color: #555;
     }
 
-    .questionnaire {
-        width: 300px;
-        padding: 15px;
-        max-height: 90vh;
-        overflow-y: auto;
-        border-radius: 10px;
-        background-color: white;
+    .questions {
+      margin: 25px 0;
 
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            h1 {
-                color: $primary;
-                margin: 0;
-            }
-        }
+      .question {
+        margin: 15px 0;
 
         > p {
-            color: #555;
+          margin: 5px 0;
+          color: var(--primary);
         }
 
-        .questions {
-            margin: 25px 0;
-
-            .question {
-                margin: 15px 0;
-
-                > p {
-                    margin: 5px 0;
-                    color: $primary;
-                }
-
-                .title {
-                    font-weight: bold;
-                }
-
-                .select {
-                    margin-top: 10px;
-                }
-            }
+        .title {
+          font-weight: bold;
         }
 
-        .buttons {
-            display: flex;
-            flex-direction: column;
-
-            button {
-                margin: 5px 0;
-                font-size: 15px;
-                text-transform: uppercase;
-            }
-
-            .bg-disabled {
-                cursor: not-allowed;
-            }
+        .select {
+          margin-top: 10px;
         }
+      }
     }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        margin: 5px 0;
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+
+      .bg-disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
 }
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 .fade-enter,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 </style>

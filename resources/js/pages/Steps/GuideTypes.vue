@@ -35,7 +35,6 @@ export default {
 
   .button {
     width: 5rem;
-    padding: 1rem;
     color: white;
   }
 }

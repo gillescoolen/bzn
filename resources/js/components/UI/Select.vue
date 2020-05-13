@@ -60,15 +60,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import './resources/sass/app.scss';
-
+<style lang="scss" scoped>
 .select {
     width: 100%;
 
     .dropdown {
         margin-top: 5px;
-        border: 2px solid $secondary;
+        border: 2px solid var(--secondary);
         border-radius: 5px;
         padding: 5px;
         display: flex;
@@ -131,7 +129,7 @@ export default {
         }
 
         .answer:hover {
-            background: $secondary;
+            background: var(--secondary);
 
             span {
                 color: white;

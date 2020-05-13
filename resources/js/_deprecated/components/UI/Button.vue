@@ -32,8 +32,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./resources/sass/app.scss";
-
 button {
   font-weight: bold;
   padding: 5px 15px;

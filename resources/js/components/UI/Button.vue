@@ -1,5 +1,5 @@
 <template>
-  <button :class="[classObject, {'flat': flat, 'inverse': inverse}]" @click="handleClick">
+  <button :class="[this.variant && classObject, {'flat': flat, 'inverse': inverse}]" @click="click">
     <slot />
   </button>
 </template>
@@ -8,42 +8,45 @@
 export default {
   name: 'Button',
   props: ['variant', 'flat', 'inverse'],
+
   methods: {
-    handleClick(e) {
+    click(e) {
       this.$emit('click', e);
     }
   },
+
   computed: {
     classObject() {
-      if (!this.variant) return [];
-      const classlist = [];
-
-      if (this.inverse) {
-        classlist.push(this.variant);
-        classlist.push(`border-${this.variant}`);
-      } else {
-        classlist.push(`bg-${this.variant}`);
-      }
-
-      return classlist;
+      return this.inverse
+        ? [this.variant, `border-${this.variant}`]
+        : [`bg-${this.variant}`];
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import './resources/sass/app.scss';
-
 button {
-  font-weight: bold;
-  padding: 5px 15px;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
   border: none;
+  color: black;
+  margin: 1rem 0;
   cursor: pointer;
-  color: white;
-  background-color: white;
+  font-weight: bold;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
   transition: 0.2s all;
+  background: white;
+  box-shadow: 0px 0px 2px 0px #0000004d;
+
+  &:hover {
+    transition: 0.1s all;
+    box-shadow: 0px 0px 4px 0px #0000006e;
+  }
+
+  &:focus {
+    transition: 0.1s all;
+    box-shadow: 0px 0px 1px 0px #0000004d;
+  }
 }
 
 button.flat {

@@ -5,13 +5,14 @@ import App from './views/App'
 import VueRouter from 'vue-router'
 import VuexPersist from 'vuex-persist'
 import { modules } from "./store/index";
-import { StepLayout, AdminLayout } from './layouts';
-import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, Tasks, GuideTypes } from './pages'
+import { StepLayout, AuthLayout, AdminLayout } from './layouts';
+import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, Tasks, GuideTypes, ForgotPassword, ResetPassword, Login, Register } from './pages'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
-Vue.component('admin', AdminLayout);
 Vue.component('step', StepLayout);
+Vue.component('auth', AuthLayout);
+Vue.component('admin', AdminLayout);
 
 Vue.prototype.$http = axios;
 
@@ -42,7 +43,31 @@ const router = new VueRouter({
       meta: { layout: 'step' },
       component: GuideTypes
     },
-    {
+    { 
+      path: '/login', 
+      name: 'login', 
+      meta: { layout: 'auth' },
+      component: Login, 
+    },
+    { 
+      path: '/register', 
+      name: 'register', 
+      meta: { layout: 'auth' },
+      component: Register, 
+    },
+    { 
+      path: '/forgot-password', 
+      name: 'forgot-password', 
+      meta: { layout: 'auth' },
+      component: ForgotPassword, 
+    },
+    { 
+      path: '/reset-password/:token', 
+      name: 'reset-password', 
+      meta: { layout: 'auth' },
+      component: ResetPassword, 
+    },
+        {
       path: '/admin',
       name: 'admin',
       meta: { layout: 'admin' },

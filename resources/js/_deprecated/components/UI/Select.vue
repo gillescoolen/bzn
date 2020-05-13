@@ -60,9 +60,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import './resources/sass/app.scss';
-
+<style lang="scss" scoped>
 .select {
     width: 100%;
 

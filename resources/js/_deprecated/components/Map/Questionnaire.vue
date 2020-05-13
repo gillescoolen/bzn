@@ -76,8 +76,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './resources/sass/app.scss';
-
 .wrapper {
     position: absolute;
     top: 48px;
@@ -124,7 +122,7 @@ export default {
             justify-content: space-between;
 
             h1 {
-                color: $primary;
+                color:  var(--primary);
                 margin: 0;
             }
         }
@@ -141,7 +139,7 @@ export default {
 
                 > p {
                     margin: 5px 0;
-                    color: $primary;
+                    color: var(--primary);
                 }
 
                 .title {

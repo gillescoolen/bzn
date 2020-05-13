@@ -59,11 +59,10 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
 
-    .button {
-      padding: 1rem;
-      color: white;
-    }
+  .button {
+    color: white;
   }
 }
 </style>
