@@ -1,21 +1,17 @@
 export const state = () => ({
-  user: {
-    name: '',
-    email: '',
-    role: ''
-  }
+  color: '#568c65'
 });
 
 export const mutations = {
-  set: (state, user) => state.user = user
+  setColor: (state, color) => state.color = color
 }
 
 export const actions = {
-  set: ({ commit }, user) => commit('set', user)
+  setColor: ({ commit }, color) => commit('setColor', color)
 }
 
 export const getters = {
-  get: state => state.user
+  color: state => state.color
 }
 
 export default {
