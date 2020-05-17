@@ -19,8 +19,8 @@ Route::get('legend', 'LegendController@index');
 
 Route::get('questions', 'QuestionController@index');
 
-Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('current', 'AuthController@current');
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('user', 'AuthController@user');
 
     Route::get('users', 'UserController@index');
     Route::get('users/approved', 'UserController@approved')->middleware('role:admin');
@@ -30,3 +30,9 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::patch('users/{id}/approve', 'UserController@approve')->middleware('role:admin');
     Route::delete('users/{id}', 'UserController@decline')->middleware('role:admin');
 });
+
+Route::post('login', 'AuthController@login');
+Route::post('logout', 'AuthController@logout');
+Route::post('register', 'AuthController@register');
+Route::post('forgot-password', 'AuthController@sendPasswordResetLink');
+Route::post('reset-password', 'AuthController@callResetPassword');

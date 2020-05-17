@@ -10,12 +10,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
-Route::get('/', 'AppController@index')->where('any', '.*');
-
-Route::redirect('/config', '/');
-Route::redirect('/tasks', '/');
-Route::redirect('/guide-types', '/');
-
-Route::get('/{opt?}', 'AppController@index')->where('opt', '.*')->middleware('auth');
+Route::get('/{any}', 'AppController@index')->where('any', '.*');

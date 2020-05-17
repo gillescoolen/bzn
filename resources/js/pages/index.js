@@ -4,6 +4,11 @@ import Questions from "./Admin/Questions";
 import Registrations from "./Admin/Registrations";
 import Municipalities from "./Admin/Municipalities";
 
+import Login from "./Auth/Login";
+import Register from "./Auth/Register";
+import ResetPassword from "./Auth/ResetPassword";
+import ForgotPassword from "./Auth/ForgotPassword";
+
 import Intro from "./Steps/Intro";
 import Tasks from "./Steps/Tasks";
 import Config from "./Steps/Config";
@@ -16,6 +21,11 @@ export {
   Questions,
   Registrations,
   Municipalities,
+
+  Login,
+  Register,
+  ResetPassword,
+  ForgotPassword,
 
   Intro,
   Tasks,

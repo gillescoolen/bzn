@@ -2,13 +2,13 @@
 
 namespace App;
 
-use App\Role;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use \App\Notifications\MailResetPasswordNotification;
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'approved', 'api_token'
+        'name', 'email', 'password', 'approved'
     ];
 
     /**
@@ -45,5 +45,10 @@ class User extends Authenticatable
     public function municipality()
     {
         return $this->belongsTo(Municipality::class, 'municipality_id', 'id');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MailResetPasswordNotification($token));
     }
 }

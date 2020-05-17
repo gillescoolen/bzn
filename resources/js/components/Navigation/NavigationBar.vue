@@ -34,8 +34,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './resources/sass/app.scss';
-
 .navigation {
   height: 3rem;
   display: flex;

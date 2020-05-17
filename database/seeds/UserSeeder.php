@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'approved' => 1,
                 'role' => 'moderator',
-                'api_token' => Str::random(60),
                 'password' => bcrypt('password')
             ],
             [
@@ -28,7 +27,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'approved' => 1,
                 'role' => 'moderator',
-                'api_token' => Str::random(60),
                 'password' => bcrypt('password')
             ],
             [
@@ -37,7 +35,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'approved' => 1,
                 'role' => 'admin',
-                'api_token' => Str::random(60),
                 'password' => bcrypt('password')
             ],
             [
@@ -46,7 +43,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'approved' => 0,
                 'role' => 'gebruiker',
-                'api_token' => Str::random(60),
                 'password' => bcrypt('password')
             ],
             [
@@ -55,7 +51,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'approved' => 0,
                 'role' => 'gebruiker',
-                'api_token' => Str::random(60),
                 'password' => bcrypt('password')
             ]
         ]);
