@@ -14,8 +14,6 @@ class RenameTables extends Migration
     public function up()
     {
         Schema::rename('municipalities', 'municipality');
-        Schema::rename('questions', 'question');
-        Schema::rename('answers', 'answer');
     }
 
     /**
