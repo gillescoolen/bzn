@@ -14,11 +14,12 @@ class AddMeasureTypeTable extends Migration
     public function up()
     {
         Schema::create('measure_types', function (Blueprint $table) {
-            $table->string('measure_type')->primary();
+            $table->increments('id');
+            $table->string('measure_type');
         });
 
         Schema::table('measures', function (Blueprint $table) {
-            $table->foreign('measure_type')->references('measure_type')->on('measure_types');
+            $table->foreign('measure_type_id')->references('id')->on('measure_types');
         });
     }
 

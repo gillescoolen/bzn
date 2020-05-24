@@ -29,6 +29,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::patch('users/{id}/addmunicipality/{municipality_id}', 'UserController@addMunicipality')->middleware('role:admin');
     Route::patch('users/{id}/approve', 'UserController@approve')->middleware('role:admin');
     Route::delete('users/{id}', 'UserController@decline')->middleware('role:admin');
+
+    Route::get('statements', 'StatementController@allStatements');
+    Route::get('statement/{statement}', 'StatementController@getStatement');
+
+    Route::get('measure/{measure}', 'MeasureController@getMeasure');
 });
 
 Route::post('login', 'AuthController@login');

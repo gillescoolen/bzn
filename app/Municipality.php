@@ -17,7 +17,7 @@ class Municipality extends Model
         return $this->hasMany(User::class, 'municipality_id', 'id');
     }
 
-    public function measures() {
-        return $this->belongsToMany(Measure::class, 'measures_municipality', 'municipality_id', 'measures_id');
+    public function statements() {
+        return $this->belongsToMany(Statement::class, 'statements_municipality', 'municipality_id', 'statement_id');
     }
 }
