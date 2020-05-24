@@ -14,7 +14,17 @@ class StatementResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'measures' => $this->measures
+            'measure_ids' => $this->getMeasureIds()
         ];
+    }
+
+    private function getMeasureIds () {
+        $ids = [];
+
+        foreach ($this->measures as $measure) {
+            array_push($ids, $measure->id);
+        }
+
+        return $ids;
     }
 }

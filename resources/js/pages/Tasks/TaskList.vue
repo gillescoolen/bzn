@@ -9,13 +9,9 @@
                     <h3 class="title">{{`Opgave ${task.id}: ${task.name}`}}</h3>
                 </template>
                 <template v-slot:content>
-                    <b>Maatregelen:</b>
-                    <ul class="measures">
-                        <li v-for="measure in task.measures" v-bind:key="measure.id">
-                            {{ measure.name }}
-                        </li>
-                    </ul>
-
+                    <p v-if="task.description" class="desc">{{task.description}}</p>
+                    <p v-else class="desc">Deze opgave heeft (nog) geen beschrijving...</p>
+                    
                     <a class="read-more" @click="gotoTask(task.id)">Lees meer</a>
                 </template>
               </Collapsible>
@@ -52,7 +48,7 @@ export default {
 
     methods: {
         async loadTasks () {
-           const res = await this.$http.get('api/statements')
+           const res = await this.$http.get('/api/statements')
             .catch(e => console.error(e));
            const data = await res.data
            this.tasks = data
@@ -88,6 +84,11 @@ export default {
             font-weight: normal;
         }
 
+        .desc {
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+
         .read-more {
             color: green;
             cursor: pointer;
@@ -96,10 +97,6 @@ export default {
 }
 
 @media only screen and (max-width: 1350px) {
-    .header {
-        flex-direction: column;
-    }
-
     .task {
         width: 100% !important;
     }
