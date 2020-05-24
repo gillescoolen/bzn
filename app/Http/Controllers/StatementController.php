@@ -4,7 +4,17 @@
 namespace App\Http\Controllers;
 
 
-class StatementController
-{
+use App\Http\Resources\StatementResource;
+use App\Statement;
 
+class StatementController extends Controller
+{
+    public function allStatements() {
+        $statements = Statement::all();
+        return StatementResource::collection($statements);
+    }
+
+    public function getStatement(Statement $statement) {
+        return StatementResource::make($statement);
+    }
 }

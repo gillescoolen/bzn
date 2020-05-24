@@ -9,8 +9,7 @@ use App\Measure;
 
 class MeasureController extends Controller
 {
-    public function allMeasures() {
-        $measures = MeasureResource::collection(Measure::all());
-        return $measures;
+    public function getMeasure(Measure $measure) {
+        return MeasureResource::make($measure);
     }
 }

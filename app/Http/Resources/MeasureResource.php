@@ -16,9 +16,9 @@ class MeasureResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'question' => $this->name,
-            'answers' => $this->description,
-            'measure_type' => $this->measure_type
+            'description' => $this->description,
+            'measure_type' => $this->measuretype,
+            'guidetypes' => $this->guidetypes,
         ];
     }
 }

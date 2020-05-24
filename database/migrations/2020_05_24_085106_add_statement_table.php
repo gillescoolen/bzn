@@ -16,6 +16,7 @@ class AddStatementTable extends Migration
         Schema::create('statements', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('description')->nullable();
         });
     }
 
