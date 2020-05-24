@@ -9,7 +9,13 @@
                     <h3 class="title">{{`Opgave ${task.id}: ${task.name}`}}</h3>
                 </template>
                 <template v-slot:content>
-                    <span class="desc">{{task.desc.substr(0, 150)}}...</span>
+                    <b>Maatregelen:</b>
+                    <ul class="measures">
+                        <li v-for="measure in task.measures" v-bind:key="measure.id">
+                            {{ measure.name }}
+                        </li>
+                    </ul>
+
                     <a class="read-more" @click="gotoTask(task.id)">Lees meer</a>
                 </template>
               </Collapsible>
@@ -24,7 +30,7 @@ import { TaskHeader } from "../../components/Tasks"
 
 export default {
     name: "TaskList",
-    
+
     components: {
         Collapsible,
         TaskHeader
@@ -40,19 +46,16 @@ export default {
         }
     },
 
-    mounted() {
-        this.loadTasks()
+    async mounted() {
+        await this.loadTasks()
     },
 
     methods: {
-        loadTasks () {
-            for (let i = 1; i <= 10; i++) {
-                this.tasks.push({
-                    id: i,
-                    name: 'Lorem ipsum dolor sit amet',
-                    desc: '(Beschrijving) Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quod id aliquam ratione qui fugiat fuga tempora minima autem excepturi nobis est, aspernatur odio deserunt? Id vero similique natus esse temporibus aliquid vel totam sunt corrupti, voluptas architecto ipsam recusandae error in alias. Aliquam explicabo dolorem tenetur eos qui labore.'
-                })
-            }
+        async loadTasks () {
+           const res = await this.$http.get('api/statements')
+            .catch(e => console.error(e));
+           const data = await res.data
+           this.tasks = data
         },
 
         gotoTask(id) {
@@ -76,7 +79,7 @@ export default {
 
     .task {
         margin: 10px;
-        max-width: 400px;
+        width: calc(50% - 20px);
 
         .title {
             padding: 5px;
@@ -92,7 +95,7 @@ export default {
     }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1350px) {
     .header {
         flex-direction: column;
     }
@@ -101,18 +104,5 @@ export default {
         width: 100% !important;
     }
 }
-
-@media only screen and (min-width: 1000px){
-    .task {
-        width: calc(50% - 20px) !important;
-    }
-}
-
-@media only screen and (min-width: 1400px){
-    .task {
-        width: 30% !important;
-    }
-}
-
 
 </style>

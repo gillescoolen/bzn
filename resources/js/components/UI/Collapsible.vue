@@ -22,10 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title {
+div.title {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #ebebeb;
 
     img {
         width: 20px;
@@ -35,5 +36,16 @@ export default {
     img.rotate {
         transform: rotate(90deg);
     }
+}
+
+div.title, .content {
+    border: 1px solid #e6e6e6;
+    padding: 0 10px;
+    box-shadow: 1px 2px 3px #e6e6e6;
+}
+
+.content {
+    margin-top: 5px;
+    padding: 15px;
 }
 </style>
