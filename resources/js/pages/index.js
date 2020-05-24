@@ -10,13 +10,12 @@ import ResetPassword from "./Auth/ResetPassword";
 import ForgotPassword from "./Auth/ForgotPassword";
 
 import Intro from "./Steps/Intro";
-import Tasks from "./Steps/Tasks";
 import Config from "./Steps/Config";
 import GuideTypes from "./Steps/GuideTypes";
 import GuideDetails from "./Steps/GuideDetails";
 
-import Measures from "./Measures/Measures";
-import Measure from "./Measures/Measure"
+import TaskList from "./Tasks/TaskList"
+import Task from "./Tasks/Task"
 
 export {
   Admin,
@@ -31,11 +30,10 @@ export {
   ForgotPassword,
 
   Intro,
-  Tasks,
   Config,
   GuideTypes,
   GuideDetails,
 
-  Measures,
-  Measure
+  TaskList,
+  Task
 }

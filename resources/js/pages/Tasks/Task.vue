@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-      <MeasureHeader :municipality="municipality" :title="`Opgave ${measure.id}`"/>
+      <TaskHeader :municipality="municipality" :title="`Opgave ${task.id}`"/>
   </div>
 </template>
 
 <script>
-import { MeasureHeader } from "../../components/Measures"
+import { TaskHeader } from "../../components/Tasks"
 
 export default {
-    name: "Measure",
+    name: "Task",
 
     components: {
-        MeasureHeader
+        TaskHeader
     },
 
     data () {
@@ -20,21 +20,21 @@ export default {
                 name: 'Den Haag',
                 img: '/assets/logo-gemeente-denhaag.png'
             },
-            measure: {
+            task: {
                 id: undefined
             }
         }
     },
 
     mounted() {
-        this.loadMeasure()
+        this.loadTask()
     },
 
     methods: {
-        loadMeasure () {
-            this.measure.id = this.$route.params.id;
-            if (!this.measure.id) {
-                return this.$router.push('/measures');
+        loadTask () {
+            this.task.id = this.$route.params.id;
+            if (!this.task.id) {
+                return this.$router.push('/tasks');
             }
         },
     }

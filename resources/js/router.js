@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, Tasks, GuideTypes, ForgotPassword, ResetPassword, Login, Register, Measures, Measure } from './pages'
+import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, TaskList, Task, GuideTypes, ForgotPassword, ResetPassword, Login, Register } from './pages'
 
 Vue.use(VueRouter)
 
@@ -21,28 +21,22 @@ export default new VueRouter({
             component: Config
         },
         {
-            path: '/tasks',
-            name: 'tasks',
-            meta: { layout: 'step' },
-            component: Tasks
-        },
-        {
             path: '/guide-types',
             name: 'guide-types',
             meta: { layout: 'step' },
             component: GuideTypes
         },
         {
-            path: '/measures',
-            name: 'measures',
+            path: '/tasks',
+            name: 'tasklist',
             meta: { layout: 'step' },
-            component: Measures
+            component: TaskList
         },
         {
-            path: '/measure/:id',
-            name: 'measure',
+            path: '/task/:id',
+            name: 'task',
             meta: { layout: 'step' },
-            component: Measure
+            component: Task
         },
 
         // Authentication

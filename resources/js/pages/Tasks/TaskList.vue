@@ -1,16 +1,16 @@
 <template>
   <div class="container">
-      <MeasureHeader :municipality="municipality" title="Aan welke opgave werkt u?"/>
+      <TaskHeader :municipality="municipality" title="Aan welke opgave werkt u?"/>
       
-      <div class="measures-list">
-          <div class="measure" v-for="measure in measures" v-bind:key="measure.id">
+      <div class="tasks-list">
+          <div class="task" v-for="task in tasks" v-bind:key="task.id">
               <Collapsible>
                 <template v-slot:title>
-                    <h3 class="title">{{`Opgave ${measure.id}: ${measure.name}`}}</h3>
+                    <h3 class="title">{{`Opgave ${task.id}: ${task.name}`}}</h3>
                 </template>
                 <template v-slot:content>
-                    <span class="desc">{{measure.desc.substr(0, 150)}}...</span>
-                    <a class="read-more" @click="gotoMeasure(measure.id)">Lees meer</a>
+                    <span class="desc">{{task.desc.substr(0, 150)}}...</span>
+                    <a class="read-more" @click="gotoTask(task.id)">Lees meer</a>
                 </template>
               </Collapsible>
           </div>
@@ -20,12 +20,14 @@
 
 <script>
 import { Collapsible } from "../../components/UI"
-import { MeasureHeader } from "../../components/Measures"
+import { TaskHeader } from "../../components/Tasks"
 
 export default {
+    name: "TaskList",
+    
     components: {
         Collapsible,
-        MeasureHeader
+        TaskHeader
     },
 
     data() {
@@ -34,18 +36,18 @@ export default {
                 name: 'Den Haag',
                 img: '/assets/logo-gemeente-denhaag.png'
             },
-            measures: []
+            tasks: []
         }
     },
 
     mounted() {
-        this.loadMeasures()
+        this.loadTasks()
     },
 
     methods: {
-        loadMeasures () {
+        loadTasks () {
             for (let i = 1; i <= 10; i++) {
-                this.measures.push({
+                this.tasks.push({
                     id: i,
                     name: 'Lorem ipsum dolor sit amet',
                     desc: '(Beschrijving) Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quod id aliquam ratione qui fugiat fuga tempora minima autem excepturi nobis est, aspernatur odio deserunt? Id vero similique natus esse temporibus aliquid vel totam sunt corrupti, voluptas architecto ipsam recusandae error in alias. Aliquam explicabo dolorem tenetur eos qui labore.'
@@ -53,8 +55,8 @@ export default {
             }
         },
 
-        gotoMeasure(id) {
-            this.$router.push(`/measure/${id}`)
+        gotoTask(id) {
+            this.$router.push(`/task/${id}`)
         }
     }
 };
@@ -67,12 +69,12 @@ export default {
   flex-direction: column;
 }
 
-.measures-list {
+.tasks-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 
-    .measure {
+    .task {
         margin: 10px;
         max-width: 400px;
 
@@ -95,19 +97,19 @@ export default {
         flex-direction: column;
     }
 
-    .measure {
+    .task {
         width: 100% !important;
     }
 }
 
 @media only screen and (min-width: 1000px){
-    .measure {
+    .task {
         width: calc(50% - 20px) !important;
     }
 }
 
 @media only screen and (min-width: 1400px){
-    .measure {
+    .task {
         width: 30% !important;
     }
 }

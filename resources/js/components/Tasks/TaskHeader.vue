@@ -10,6 +10,8 @@
 import { BackButton } from "../UI"
 
 export default {
+    name: "TaskHeader",
+    
     components: {
         BackButton
     },
