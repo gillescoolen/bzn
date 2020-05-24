@@ -1,10 +1,7 @@
 <template>
   <div class="container">
-      <div class="header">
-          <img :src="municipality.img" :alt="`Een afbeelding van gemeente ${municipality.name}`">
-          <h2 class="title">Aan welke opgave werkt u?</h2>
-          <BackButton />
-      </div>
+      <MeasureHeader :municipality="municipality" title="Aan welke opgave werkt u?"/>
+      
       <div class="measures-list">
           <div class="measure" v-for="measure in measures" v-bind:key="measure.id">
               <Collapsible>
@@ -22,12 +19,13 @@
 </template>
 
 <script>
-import { BackButton, Collapsible } from "../../components/UI"
+import { Collapsible } from "../../components/UI"
+import { MeasureHeader } from "../../components/Measures"
 
 export default {
     components: {
-        BackButton,
-        Collapsible
+        Collapsible,
+        MeasureHeader
     },
 
     data() {
@@ -56,7 +54,7 @@ export default {
         },
 
         gotoMeasure(id) {
-            console.log('Gotomeasure:', id)
+            this.$router.push(`/measure/${id}`)
         }
     }
 };
@@ -67,21 +65,6 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    img {
-        width: 100px;
-    }
-
-    .title {
-        color: #d2ad15;
-        font-weight: bold;
-    }
 }
 
 .measures-list {
