@@ -17,7 +17,7 @@ class AddMeasuresTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('measure_type');
+            $table->unsignedInteger('measure_type_id');
         });
     }
 

@@ -18,12 +18,11 @@ class Measure extends Model
         return $this->belongsToMany(GuideType::class, 'measures_guide_type', 'measures_id', 'guide_type_id');
     }
 
-    public function municipalities()
-    {
-        return $this->belongsToMany(Municipality::class, 'measures_municipality', 'measures_id', 'municipality_id');
+    public function statements() {
+        return $this->belongsToMany(Statement::class, 'statements_measures', 'measure_id', 'statement_id');
     }
 
     public function measuretype() {
-        return $this->hasOne(MeasureType::class, 'measure_type');
+        return $this->hasOne(MeasureType::class, 'id');
     }
 }

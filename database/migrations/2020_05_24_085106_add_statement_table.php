@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGuideTypesTable extends Migration
+class AddStatementTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class AddGuideTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('guide_types', function (Blueprint $table) {
+        Schema::create('statements', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('layer_name')->nullable();
-            $table->foreign('layer_name')->references('name')->on('layers');
         });
     }
 
@@ -28,6 +26,6 @@ class AddGuideTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guide_types');
+        Schema::dropIfExists('statements');
     }
 }
