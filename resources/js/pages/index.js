@@ -14,6 +14,7 @@ import Tasks from "./Steps/Tasks";
 import Config from "./Steps/Config";
 import GuideTypes from "./Steps/GuideTypes";
 import GuideDetails from "./Steps/GuideDetails";
+import Measures from "./Steps/Measures";
 
 export {
   Admin,
@@ -31,5 +32,6 @@ export {
   Tasks,
   Config,
   GuideTypes,
-  GuideDetails
+  GuideDetails,
+  Measures
 }

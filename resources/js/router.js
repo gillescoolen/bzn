@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, Tasks, GuideTypes, ForgotPassword, ResetPassword, Login, Register } from './pages'
+import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, Tasks, GuideTypes, ForgotPassword, ResetPassword, Login, Register, Measures } from './pages'
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
     mode: 'history',
     routes: [
+        // 'Normal users'
         {
             path: '/',
             name: 'intro',
@@ -32,6 +33,14 @@ export default new VueRouter({
             component: GuideTypes
         },
         {
+            path: '/measures',
+            name: 'measures',
+            meta: { layout: 'step' },
+            component: Measures
+        },
+
+        // Authentication
+        {
             path: '/login',
             name: 'login',
             meta: { layout: 'auth' },
@@ -55,6 +64,8 @@ export default new VueRouter({
             meta: { layout: 'auth' },
             component: ResetPassword,
         },
+
+        // Admin
         {
             path: '/admin',
             name: 'admin',
