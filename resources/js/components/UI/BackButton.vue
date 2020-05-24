@@ -1,7 +1,7 @@
 <template>
     <div class="back" @click="$router.go(-1)">
         <div class="txt">
-            <img src="/assets/arrow-left-solid.svg" alt="Arrow back">
+            <img src="/assets/icons/arrow-left-solid.svg" alt="Arrow back">
             <p>Terug</p>
         </div>
         <img src="/assets/BIO_logo.png" alt="Biodiversiteitsstresstest logo">

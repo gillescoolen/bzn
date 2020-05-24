@@ -39,6 +39,7 @@ export default {
     border-radius: 15px;
     background-color: #ffffff;
     box-shadow: 0px 0px 4px 0px #7a7a7a10;
+    overflow-y: auto;
   }
 }
 

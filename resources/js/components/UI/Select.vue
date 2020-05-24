@@ -8,7 +8,7 @@
       <span>{{selected.answer}}</span>
 
       <button :class="expanded ? 'bg-secondary expanded' :'bg-primary'">
-        <img src="/assets/caret-right-solid.svg" alt="caret-right" />
+        <img src="/assets/icons/caret-right-solid.svg" alt="caret-right" />
       </button>
     </div>
 
