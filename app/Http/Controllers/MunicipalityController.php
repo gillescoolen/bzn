@@ -8,7 +8,7 @@ use App\Http\Resources\MunicipalityResource;
 
 class MunicipalityController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $municipalities = Municipality::all();
 

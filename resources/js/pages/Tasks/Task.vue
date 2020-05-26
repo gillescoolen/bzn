@@ -49,10 +49,14 @@ export default {
 
   data() {
     return {
-      municipality: {
+      /*municipality: {
         name: 'Den Haag',
-        img: '/assets/logo-gemeente-denhaag.png'
-      },
+        img: '/assets/logo-gemeente-denhaag.png',
+          long: '',
+          lat: '',
+          hexcolor: '#BBB',
+
+      },*/
       task: null,
 
       measures: null
@@ -86,7 +90,7 @@ export default {
         this.task.measure_ids.forEach(measure_id => {
             promises.push(this.loadMeasure(measures, measure_id))
         })
-        await Promise.all(promises) 
+        await Promise.all(promises)
             .catch(e => console.error(e))
         this.measures = measures
     },

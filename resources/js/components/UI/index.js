@@ -8,6 +8,7 @@ import Spinner from './Spinner';
 import MunicipalityDropdown from "./MunicipalityDropdown";
 import BackButton from "./BackButton";
 import Collapsible from "./Collapsible";
+import ContentBox from "./ContentBox";
 
 export {
     PDF,
@@ -19,5 +20,6 @@ export {
     Spinner,
     MunicipalityDropdown,
     BackButton,
+    ContentBox,
     Collapsible
 }
