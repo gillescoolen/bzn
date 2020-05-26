@@ -1,11 +1,4 @@
 export const state = () => ({
-  // selected: {
-  //     id: 1,
-  //     name: 'Horst',
-  //     longitude: 6.0303174,
-  //     latitude: 51.4232255
-  //     statements: [...]
-  // },
   selected: {}
 });
 
