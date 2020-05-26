@@ -15,13 +15,22 @@
                 </ContentBox>
             </div>
         </div>
+        <div class="buttons">
+            <!-- verander route -->
+            <Button
+                class="button"
+                @click="$router.push('tasks')"
+                :style="{'background-color': color}"
+            >Aan de slag met biodiversiteit!</Button>
+        </div>
     </div>
+
 </template>
 
 <script>
     import { ContentBox } from "../../components/UI"
     import Button from "../../components/UI/Button";
-    import {mapActions} from "vuex";
+    import {mapActions, mapGetters} from "vuex";
     export default {
         name: "MunicipalityList",
 
@@ -46,7 +55,6 @@
                     const { data: res } = await this.$http.get(
                         "/api/municipalities"
                     );
-                    console.log(`BOOP! : ${JSON.stringify(res)}`);
                     return res;
                 } catch (error) {
                     console.error("Error fetching questions: ", error);
@@ -59,6 +67,12 @@
                 setMunicipality: 'municipalities/set',
             })
 
+        },
+
+        computed: {
+            ...mapGetters({
+                color: 'steps/color'
+            })
         }
     };
 </script>

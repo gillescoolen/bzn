@@ -40,13 +40,13 @@ export default {
         })
     },
 
+    //Ik bezig storage link
     data() {
         return {
-          /*  municipality: {
-                name: 'Den Haag',
-                hexcolor: ''
+            municipality: {
+                name: 'Den Haag'
 
-            },*/
+            },
 
             tasks: []
         }
