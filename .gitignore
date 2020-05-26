@@ -2,7 +2,8 @@
 /public/hot
 /public/storage
 /public/mix-manifest.json
-/public/css
+/public/css/*
+!fontawesome-5.13.0-web-all.css
 /public/js
 /storage/*.key
 /vendor

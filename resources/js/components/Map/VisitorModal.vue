@@ -14,17 +14,17 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    computed: {
-        ...mapGetters({
-            visitor: 'visitor/get'
-        })
-    },
+  computed: {
+    ...mapGetters({
+      visitor: 'visitor/get'
+    })
+  },
 
-    methods: {
-        ...mapActions({
-            setVisitor: 'visitor/set'
-        })
-    }
+  methods: {
+    ...mapActions({
+      setVisitor: 'visitor/set'
+    })
+  }
 };
 </script>
 

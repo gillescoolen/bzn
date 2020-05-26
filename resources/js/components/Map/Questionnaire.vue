@@ -51,19 +51,19 @@ export default {
     Button
   },
 
-  data() {
+  data () {
     return {
       show: false,
       questions: null
     };
   },
 
-  async mounted() {
+  async mounted () {
     this.questions = await this.fetchQuestions();
   },
 
   methods: {
-    async fetchQuestions() {
+    async fetchQuestions () {
       try {
         const { data: res } = await this.$http.get('api/questions');
         return res;

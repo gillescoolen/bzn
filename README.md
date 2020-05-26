@@ -25,6 +25,9 @@ Browser tests are located in `~/tests/Browser/`.
 
 For more information about browser testing, read the [Dusk documentation](https://laravel.com/docs/6.x/dusk).
 
+## Linting the project
+`$ npm run lint`
+
 ## Common issues
 Due to PHP being PHP, there are some common issues we will face which are resolved pretty easily.
 

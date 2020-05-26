@@ -12,42 +12,42 @@
 </template>
 
 <script>
-import { Sidebar } from "../components/Admin";
-import { mapGetters, mapActions } from "vuex";
+import { Sidebar } from '../components/Admin';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    components: {
-        Sidebar
-    },
+  components: {
+    Sidebar
+  },
 
-    methods: {
-        ...mapActions({
-            setUser: "user/set"
-        }),
+  methods: {
+    ...mapActions({
+      setUser: 'user/set'
+    }),
 
-        async setCurrentUser() {
-            try {
-                const { data: res } = await this.$http.get(
-                    "/api/current"
-                );
+    async setCurrentUser () {
+      try {
+        const { data: res } = await this.$http.get(
+          '/api/current'
+        );
 
-                this.setUser(res);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    },
-
-    mounted() {
-        const token = document
-            .querySelector(`meta[name='tkn']`)
-            .getAttribute("content");
-
-        this.$http.defaults.headers["Accept"] = "application/json";
-        this.$http.defaults.headers["Authorization"] = `Bearer ${token}`;
-
-        this.setCurrentUser();
+        this.setUser(res);
+      } catch (error) {
+        console.error(error);
+      }
     }
+  },
+
+  mounted () {
+    const token = document
+      .querySelector('meta[name=\'tkn\']')
+      .getAttribute('content');
+
+    this.$http.defaults.headers.Accept = 'application/json';
+    this.$http.defaults.headers.Authorization = `Bearer ${token}`;
+
+    this.setCurrentUser();
+  }
 };
 </script>
 

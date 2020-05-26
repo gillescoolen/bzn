@@ -1,32 +1,35 @@
 <template>
     <div class="header">
-          <img :src="municipality.img" :alt="`Een afbeelding van gemeente ${municipality.name}`">
-          <h2 class="title">{{title}}</h2>
+          <img :src="`/assets/municipalities/${municipality.imgpath}`" :alt="`Een afbeelding van gemeente ${municipality.name}`">
+          <h2 class="title" v-if="title">Gemeente {{title}}</h2>
           <BackButton />
       </div>
 </template>
 
 <script>
-import { BackButton } from "../UI"
+import { BackButton } from '../UI';
+import { mapGetters } from 'vuex';
 
 export default {
-    name: "TaskHeader",
-    
-    components: {
-        BackButton
-    },
+  name: 'TaskHeader',
 
-    props: {
-        municipality: {
-            type: Object,
-            required: true
-        },
-        title: {
-            type: String,
-            required: true
-        }
+  components: {
+    BackButton
+  },
+
+  props: {
+    title: {
+      type: String,
+      required: false
     }
-}
+  },
+
+  computed: {
+    ...mapGetters({
+      municipality: 'municipalities/get'
+    })
+  }
+};
 </script>
 
 <style lang="scss" scoped>

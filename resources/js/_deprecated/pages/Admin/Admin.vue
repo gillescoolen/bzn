@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
-    computed: {
-        ...mapGetters({
-            user: "user/get"
-        })
-    }
+  computed: {
+    ...mapGetters({
+      user: 'user/get'
+    })
+  }
 };
 </script>
 

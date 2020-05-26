@@ -1,23 +1,22 @@
-import Admin from "./Admin/Admin";
-import Users from "./Admin/Users";
-import Questions from "./Admin/Questions";
-import Registrations from "./Admin/Registrations";
-import Municipalities from "./Admin/Municipalities";
+import Admin from './Admin/Admin';
+import Users from './Admin/Users';
+import Questions from './Admin/Questions';
+import Registrations from './Admin/Registrations';
+import Municipalities from './Admin/Municipalities';
 
-import Login from "./Auth/Login";
-import Register from "./Auth/Register";
-import ResetPassword from "./Auth/ResetPassword";
-import ForgotPassword from "./Auth/ForgotPassword";
+import Login from './Auth/Login';
+import Register from './Auth/Register';
+import ResetPassword from './Auth/ResetPassword';
+import ForgotPassword from './Auth/ForgotPassword';
 
-import Intro from "./Steps/Intro";
-import Config from "./Steps/Config";
-import GuideTypes from "./Steps/GuideTypes";
-import GuideDetails from "./Steps/GuideDetails";
+import Intro from './Steps/Intro';
+import Config from './Steps/Config';
+import GuideTypes from './Steps/GuideTypes';
+import GuideDetails from './Steps/GuideDetails';
+import TasksOrGuidetypesSelection from './Steps/TasksOrGuidetypesSelection';
 
-import TaskList from "./Tasks/TaskList"
-import Task from "./Tasks/Task"
-
-import MunicipalityList from "./Municipalities/MunicipalityList";
+import TaskList from './Tasks/TaskList';
+import Task from './Tasks/Task';
 
 export {
   Admin,
@@ -35,9 +34,8 @@ export {
   Config,
   GuideTypes,
   GuideDetails,
+  TasksOrGuidetypesSelection,
 
   TaskList,
-  Task,
-
-    MunicipalityList
-}
+  Task
+};

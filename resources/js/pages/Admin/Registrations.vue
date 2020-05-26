@@ -42,10 +42,9 @@
   </div>
 </template>
 
-
 <script>
-import { Role } from "../../mixins";
-import { Spinner, Button } from "../../components/UI";
+import { Role } from '../../mixins';
+import { Spinner, Button } from '../../components/UI';
 
 export default {
   mixins: [Role],
@@ -55,26 +54,26 @@ export default {
     Button
   },
 
-  data() {
+  data () {
     return {
       users: null,
       showFetchingUsersSpinner: true,
-      roles: ["admin"]
+      roles: ['admin']
     };
   },
 
-  mounted() {
+  mounted () {
     this.loadUsers();
   },
 
   methods: {
-    async loadUsers() {
+    async loadUsers () {
       this.users = await this.fetchUsers();
     },
 
-    async fetchUsers() {
+    async fetchUsers () {
       try {
-        const { data: res } = await this.$http.get("/api/users/unapproved");
+        const { data: res } = await this.$http.get('/api/users/unapproved');
 
         return res;
       } catch (error) {
@@ -84,10 +83,10 @@ export default {
       }
     },
 
-    async approve(id) {
+    async approve (id) {
       try {
         const res = await this.$http.patch(`/api/users/${id}/approve`, {
-          method: "PATCH",
+          method: 'PATCH',
           body: {
             approved: 1
           }
@@ -99,14 +98,14 @@ export default {
       }
     },
 
-    async decline(user_id) {
+    async decline (userId) {
       this.$http
-        .delete(`/api/users/${user_id}`)
+        .delete(`/api/users/${userId}`)
         .then(res => {
           res.status === 200 && this.loadUsers();
         })
         .catch(e => {
-          console.error(`Error declining user with id ${user_id}: ${e}`);
+          console.error(`Error declining user with id ${userId}: ${e}`);
         });
     }
   }

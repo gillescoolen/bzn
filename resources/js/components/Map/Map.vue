@@ -28,40 +28,40 @@ import { mapGetters } from 'vuex';
 import { LMap, LWMSTileLayer, LTileLayer } from 'vue2-leaflet';
 
 export default {
-    components: {
-        LMap,
-        'l-wms-tile-layer': LWMSTileLayer,
-        LTileLayer
-    },
+  components: {
+    LMap,
+    'l-wms-tile-layer': LWMSTileLayer,
+    LTileLayer
+  },
 
-    data() {
-        return {
-            zoom: 12,
-            maxZoom: 15,
-            minZoom: 12,
-            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            options: {
-                zoomControl: false,
-                preferCanvas: true
-            },
-            wms: {
-                url: 'http://gmd.has.nl:8080/geoserver/biodiversiteithorst/wms',
-                format: 'image/png',
-                opacity: 0.3
-            }
-        };
-    },
+  data () {
+    return {
+      zoom: 12,
+      maxZoom: 15,
+      minZoom: 12,
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      options: {
+        zoomControl: false,
+        preferCanvas: true
+      },
+      wms: {
+        url: 'http://gmd.has.nl:8080/geoserver/biodiversiteithorst/wms',
+        format: 'image/png',
+        opacity: 0.3
+      }
+    };
+  },
 
-    computed: {
-        ...mapGetters({
-            layer: 'map/get',
-            municipality: 'municipalities/get'
-        }),
+  computed: {
+    ...mapGetters({
+      layer: 'map/get',
+      municipality: 'municipalities/get'
+    }),
 
-        center() {
-            return [this.municipality.latitude, this.municipality.longitude];
-        }
+    center () {
+      return [this.municipality.latitude, this.municipality.longitude];
     }
+  }
 };
 </script>
 

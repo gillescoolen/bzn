@@ -1,11 +1,11 @@
-import Map from "./Map";
-import Legend from "./Legend";
+import Map from './Map';
+import Legend from './Legend';
 import VisitorModal from './VisitorModal';
 import Questionnaire from './Questionnaire';
 
 export {
-    Map,
-    Legend,
-    VisitorModal,
-    Questionnaire
-}
+  Map,
+  Legend,
+  VisitorModal,
+  Questionnaire
+};

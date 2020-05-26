@@ -10,8 +10,8 @@
             >{{item.name}}</router-link>
         </div>
         <div class="user">
-            <Button 
-                dusk="logout" 
+            <Button
+                dusk="logout"
                 @click="logout"
                 :variant="`darkgray`"
                 :inverse="true"
@@ -21,69 +21,69 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import { Button } from '../UI'
+import { mapGetters, mapActions } from 'vuex';
+import { Button } from '../UI';
 
 export default {
-    components: {
-        Button
-    },
-    data() {
-        return {
-            items: [
-                {
-                    name: "Dashboard",
-                    path: "/admin",
-                    roles: ["admin", "moderator"],
-                },
-                {
-                    name: "Vragen",
-                    path: "/admin/questions",
-                    roles: ["admin", "moderator"],
-                },
-                {
-                    name: "Gemeenten",
-                    path: "/admin/municipalities",
-                    roles: ["admin", "moderator"],
-                },
-                {
-                    name: "Gebruikers",
-                    path: "/admin/users",
-                    roles: ["admin"],
+  components: {
+    Button
+  },
+  data () {
+    return {
+      items: [
+        {
+          name: 'Dashboard',
+          path: '/admin',
+          roles: ['admin', 'moderator']
+        },
+        {
+          name: 'Vragen',
+          path: '/admin/questions',
+          roles: ['admin', 'moderator']
+        },
+        {
+          name: 'Gemeenten',
+          path: '/admin/municipalities',
+          roles: ['admin', 'moderator']
+        },
+        {
+          name: 'Gebruikers',
+          path: '/admin/users',
+          roles: ['admin']
 
-                },
-                {
-                    name: "Registraties",
-                    path: "/admin/registrations",
-                    roles: ["admin"],
-                }
-            ]
-        };
-    },
-
-    methods: {
-        async logout() {
-            try {
-                await this.$http.post("/logout");
-                this.$router.go("/login");
-            } catch (error) {
-                console.error(error);
-            }
+        },
+        {
+          name: 'Registraties',
+          path: '/admin/registrations',
+          roles: ['admin']
         }
-    },
+      ]
+    };
+  },
 
-    computed: {
-        ...mapGetters({
-            user: "user/get"
-        }),
+  methods: {
+    async logout () {
+      try {
+        await this.$http.post('/logout');
+        this.$router.go('/login');
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
 
-        /**
+  computed: {
+    ...mapGetters({
+      user: 'user/get'
+    }),
+
+    /**
          * Returns the items the user is allowed to see.
          */
-        allowed() {
-            return this.items.filter(item => item.roles.some(role => role === this.user.role));
-        }
+    allowed () {
+      return this.items.filter(item => item.roles.some(role => role === this.user.role));
     }
+  }
 };
 </script>
 

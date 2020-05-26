@@ -1,3 +1,3 @@
-import TaskHeader from "./TaskHeader"
+import TaskHeader from './TaskHeader';
 
-export { TaskHeader }
+export { TaskHeader };

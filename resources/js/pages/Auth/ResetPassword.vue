@@ -36,7 +36,7 @@ export default {
     Button
   },
 
-  data() {
+  data () {
     return {
       email: null,
       password: null,
@@ -45,7 +45,7 @@ export default {
     };
   },
   methods: {
-    async reset() {
+    async reset () {
       try {
         await this.$http.post('/api/reset-password', {
           token: this.$route.params.token,
@@ -62,7 +62,6 @@ export default {
   }
 };
 </script>
-
 
 <style lang="scss" scoped>
 form {

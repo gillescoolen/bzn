@@ -8,16 +8,16 @@
 
 <script>
 export default {
-    props: {
-        items: null
-    },
+  props: {
+    items: null
+  },
 
-    data() {
-        return {
-            show: false
-        }
-    }
-}
+  data () {
+    return {
+      show: false
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>

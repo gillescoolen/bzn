@@ -23,6 +23,10 @@ Route::get('statements', 'StatementController@allStatements');
 Route::get('statement/{statement}', 'StatementController@getStatement');
 Route::get('measure/{measure}', 'MeasureController@getMeasure');
 
+Route::get('textblocks', 'TextBlockController@index');
+
+Route::get('partners', 'PartnerController@index');
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('user', 'AuthController@user');
 

@@ -1,7 +1,7 @@
 <template>
     <div class="back" @click="$router.go(-1)">
         <div class="txt">
-            <img src="/assets/icons/arrow-left-solid.svg" alt="Arrow back">
+            <i class="fas fa-arrow-left"></i>
             <p>Terug</p>
         </div>
         <img src="/assets/BIO_logo.png" alt="Biodiversiteitsstresstest logo">
@@ -15,6 +15,7 @@
     justify-content: center;
     cursor: pointer;
     padding: 5px;
+    margin-right: 5px;
 
     .txt {
         display: flex;
@@ -23,8 +24,8 @@
         justify-content: center;
         margin-right: 10px;
 
-        img {
-            width: 20px;
+        i {
+            color: #66a930;
         }
 
         p {
@@ -42,5 +43,5 @@
 
 .back:hover {
     box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);
-} 
+}
 </style>

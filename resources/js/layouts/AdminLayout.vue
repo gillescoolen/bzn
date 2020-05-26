@@ -26,10 +26,10 @@ export default {
     })
   },
 
-created() {
+  created () {
     !this.user && this.$router.push('/login');
-    
-    this.$http.defaults.headers['Authorization'] = `Bearer ${this.user.api_token}`;
+
+    this.$http.defaults.headers.Authorization = `Bearer ${this.user.api_token}`;
   }
 };
 </script>
