@@ -72,7 +72,12 @@ export default {
         display: inline-block;
         width: 500px;
         text-align: center;
-        cursor: pointer
+        cursor: pointer;
+        transition: transform 0.1s ease-in-out;
+    }
+
+    .tasks:hover, .guidetypes:hover {
+        transform: scale(1.1);
     }
 
     h5 {
