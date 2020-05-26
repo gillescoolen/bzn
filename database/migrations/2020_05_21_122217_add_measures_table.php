@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameTables extends Migration
+class AddMeasuresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class RenameTables extends Migration
      */
     public function up()
     {
-        Schema::rename('municipalities', 'municipality');
+        Schema::create('measures', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+            $table->unsignedInteger('measure_type_id');
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class RenameTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('measures');
     }
 }

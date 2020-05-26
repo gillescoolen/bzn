@@ -19,6 +19,10 @@ Route::get('legend', 'LegendController@index');
 
 Route::get('questions', 'QuestionController@index');
 
+Route::get('statements', 'StatementController@allStatements');
+Route::get('statement/{statement}', 'StatementController@getStatement');
+Route::get('measure/{measure}', 'MeasureController@getMeasure');
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('user', 'AuthController@user');
 

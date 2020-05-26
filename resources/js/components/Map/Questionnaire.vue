@@ -34,7 +34,7 @@
         v-else
         @click="show = true"
         class="tree-icon"
-        src="/assets/tree-solid.svg"
+        src="/assets/icons/tree-solid.svg"
         alt="tree-icon"
       />
     </transition>

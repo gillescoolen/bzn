@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionsTable extends Migration
+class AddGuideTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('question');
-            $table->timestamps();
+        Schema::create('guide_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('layer_name')->nullable();
+            $table->foreign('layer_name')->references('name')->on('layers');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('guide_types');
     }
 }

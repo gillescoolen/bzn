@@ -5,7 +5,7 @@
             <span v-else key="off" dusk="municipality-button" @click="show = true">
                 {{(municipality) ? municipality.name : 'Selecteer een gemeente'}}
                 <img
-                    src="/assets/caret-down-solid.svg"
+                    src="/assets/icons/caret-down-solid.svg"
                 />
             </span>
         </transition>
