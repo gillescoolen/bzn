@@ -1,16 +1,13 @@
 export const state = () => ({
-  color: '#568c65',
-  municipalityID: '1'
+  color: '#568c65'
 });
 
 export const mutations = {
-  setColor: (state, color) => state.color = color,
-  setMunicipalityID: (state, municipalityID) => state.municipalityID = municipalityID
+  setColor: (state, color) => state.color = color
 };
 
 export const actions = {
-  setColor: ({ commit }, color) => commit('setColor', color),
-  setMunicipalityID: ({ commit }, MunicipalityID) => commit('setMunicipalityID', MunicipalityID)
+  setColor: ({ commit }, color) => commit('setColor', color)
 };
 
 export const getters = {

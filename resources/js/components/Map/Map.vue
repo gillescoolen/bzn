@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import 'leaflet/dist/leaflet.css';
 import { mapGetters } from 'vuex';
 import { LMap, LWMSTileLayer, LTileLayer } from 'vue2-leaflet';
 

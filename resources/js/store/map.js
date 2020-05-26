@@ -1,17 +1,17 @@
 export const state = () => ({
-  selected: {}
+  layer: ''
 });
 
 export const mutations = {
-  set: (state, municipality) => state.selected = municipality
+  set: (state, layer) => state.layer = layer
 };
 
 export const actions = {
-  set: ({ commit }, municipality) => commit('set', municipality)
+  set: ({ commit }, layer) => commit('set', layer)
 };
 
 export const getters = {
-  get: state => state.selected
+  get: state => state.layer
 };
 
 export default {

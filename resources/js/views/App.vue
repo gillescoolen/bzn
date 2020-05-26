@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <!-- Do this because the css-loader isn't very nice to use. -->
+    <link rel="stylesheet" href="//unpkg.com/leaflet/dist/leaflet.css" />
     <component v-if="layout" :is="layout">
       <router-view></router-view>
     </component>
@@ -28,5 +30,6 @@ export default {
 body {
   margin: 0;
   font-family: 'Arial';
+  overflow-x: hidden;
 }
 </style>
