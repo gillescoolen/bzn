@@ -25,6 +25,8 @@ Route::get('measure/{measure}', 'MeasureController@getMeasure');
 
 Route::get('textblocks', 'TextBlockController@index');
 
+Route::get('partners', 'PartnerController@index');
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('user', 'AuthController@user');
 
