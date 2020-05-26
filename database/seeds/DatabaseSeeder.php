@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StatementSeeder::class);
         $this->call(MunicipalityStatementSeeder::class);
         $this->call(TextblocksSeeder::class);
+        $this->call(PartnersSeeder::class);
     }
 }
