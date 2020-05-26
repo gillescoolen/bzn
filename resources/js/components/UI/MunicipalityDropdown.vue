@@ -4,9 +4,7 @@
             <span v-if="show" key="on" @click="show = false">Sluiten</span>
             <span v-else key="off" dusk="municipality-button" @click="show = true">
                 {{(municipality) ? municipality.name : 'Selecteer een gemeente'}}
-                <img
-                    src="/assets/icons/caret-down-solid.svg"
-                />
+                <i class="fas fa-caret-down"></i>
             </span>
         </transition>
         <transition name="dropdown">
@@ -93,7 +91,7 @@ export default {
             outline: none;
         }
 
-        img {
+        i {
             width: 25px;
             height: 25px;
             filter: invert(1);
@@ -114,7 +112,7 @@ export default {
     span {
         color: black;
     }
-    img {
+    i {
         filter: none;
     }
 }

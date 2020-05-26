@@ -2,7 +2,7 @@
     <div class="collapsible">
         <div class="title" @click="open = !open">
             <slot name="title" />
-            <img src="/assets/icons/chevron-right-solid.svg" alt="A dropdown arrow icon" :class="open ? 'rotate' : ''">
+            <i class="fas fa-chevron-right" :class="open ? 'rotate' : ''"></i>
         </div>
         <div class="content" v-if="open">
             <slot name="content" />
@@ -28,12 +28,12 @@ div.title {
     justify-content: space-between;
     background-color: #ebebeb;
 
-    img {
+    i {
         width: 20px;
         height: 20px;
         transition: transform 0.2s ease-in-out;
     }
-    img.rotate {
+    i.rotate {
         transform: rotate(90deg);
     }
 }

@@ -8,7 +8,7 @@
       <span>{{selected.answer}}</span>
 
       <button :class="expanded ? 'bg-secondary expanded' :'bg-primary'">
-        <img src="/assets/icons/caret-right-solid.svg" alt="caret-right" />
+        <i class="fas fa-caret-right"></i>
       </button>
     </div>
 
@@ -83,7 +83,7 @@ export default {
             border-radius: 50%;
             border: none;
 
-            img {
+            i {
                 position: absolute;
                 height: 20px;
                 width: 20px;
@@ -98,7 +98,7 @@ export default {
         }
 
         button.expanded {
-            img {
+            i {
                 transform: rotate(90deg);
                 right: 0;
                 top: 2px;
