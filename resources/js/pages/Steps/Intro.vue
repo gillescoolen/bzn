@@ -23,7 +23,7 @@
         <h4>Over het project</h4>
       </div>
     </div>
-    
+
     <div class="about" v-if="textblocksLoaded">
       <div class="boxes">
         <div class="project_explanation">
@@ -36,12 +36,27 @@
         </div>
       </div>
     </div>
+
+    <div class="title">
+      <span>
+        <i class="fas fa-arrow-down"></i>
+      </span>
+      <h4>Partners</h4>
+    </div>
+
+    <PartnerList />
   </div>
 </template>
 
 <script>
+import { PartnerList } from "../../components/Intro"
+
 export default {
-  name: "Intro",
+  name: 'Intro',
+
+  components: {
+    PartnerList
+  },
 
   data() {
     return {
@@ -50,16 +65,16 @@ export default {
         project_purpose: undefined
       },
       textblocksLoaded: false
-    }
+    };
   },
 
   mounted() {
-    this.fetchTextblocks()
+    this.fetchTextblocks();
   },
 
   methods: {
-    async fetchTextblocks () {
-      let textBlockKeysToFetch = Object.keys(this.textblocks).map(k => k)
+    async fetchTextblocks() {
+      let textBlockKeysToFetch = Object.keys(this.textblocks).map(k => k);
       const res = await this.$http.get('/api/textblocks', {
         params: {
           keys: textBlockKeysToFetch
@@ -67,10 +82,10 @@ export default {
       });
 
       res.data.forEach(d => {
-        this.textblocks[d.key] = d.content
-      })
+        this.textblocks[d.key] = d.content;
+      });
 
-      this.textblocksLoaded = true
+      this.textblocksLoaded = true;
     }
   }
 };
@@ -126,35 +141,35 @@ export default {
         font-size: 40px;
       }
     }
+  }
 
-    .title {
-      display: flex;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      display: inline-flex;
       justify-content: center;
       align-items: center;
+      height: 30px;
+      width: 30px;
+      margin-right: 10px;
+      background-color: orange;
+      border-radius: 50%;
 
-      span {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        height: 30px;
-        width: 30px;
-        margin-right: 10px;
-        background-color: orange;
-        border-radius: 50%;
-
-        i {
-          color: white;
-          font-size: 20px;
-        }
+      i {
+        color: white;
+        font-size: 20px;
       }
+    }
 
-      h4 {
-        font-family: 'Midnight Champion';
-        font-size: 30px;
-        font-weight: normal;
-        text-transform: uppercase;
-        margin-left: 10px;
-      }
+    h4 {
+      font-family: 'Midnight Champion';
+      font-size: 30px;
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-left: 10px;
     }
   }
 
