@@ -95,7 +95,7 @@ export default {
 
   .logo {
     transform: rotate(-20deg);
-    width: 350px;
+    width: 300px;
     z-index: 0;
     position: absolute;
     right: -30px;
@@ -153,6 +153,12 @@ export default {
         font-size: 26px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .logo {
+    width: 30% !important;
   }
 }
 </style>

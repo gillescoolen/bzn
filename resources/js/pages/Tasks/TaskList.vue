@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <TaskHeader :municipality="municipality" title="Aan welke opgave werkt u?"/>
+      <TaskHeader title="Aan welke opgave werkt u?"/>
 
       <div class="tasks-list">
           <div class="task" v-for="task in tasks" v-bind:key="task.id">
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
 import { Collapsible } from "../../components/UI"
 import { TaskHeader } from "../../components/Tasks"
 
@@ -31,13 +30,6 @@ export default {
     components: {
         Collapsible,
         TaskHeader
-    },
-
-
-    computed: {
-        ...mapGetters({
-            municipalityID: 'steps/municipalityID'
-        })
     },
 
     //Ik bezig storage link

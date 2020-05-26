@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <TaskHeader :municipality="municipality" :title="`Opgave bekijken`" />
+    <TaskHeader :title="`Opgave bekijken`" />
 
     <div v-if="!task" class="loading">
       <h1>Opgave laden...</h1>
@@ -49,16 +49,7 @@ export default {
 
   data() {
     return {
-      /*municipality: {
-        name: 'Den Haag',
-        img: '/assets/logo-gemeente-denhaag.png',
-          long: '',
-          lat: '',
-          hexcolor: '#BBB',
-
-      },*/
       task: null,
-
       measures: null
     };
   },
@@ -77,7 +68,10 @@ export default {
 
       const res = await this.$http
         .get(`/api/statement/${taskId}`)
-        .catch(e => console.error(e));
+        .catch(e => {
+          this.$router.push('/tasks');
+        });
+      if (!res) return
       const data = await res.data;
       this.task = data
     },
