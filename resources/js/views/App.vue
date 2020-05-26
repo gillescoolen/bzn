@@ -30,5 +30,6 @@ export default {
 body {
   margin: 0;
   font-family: 'Arial';
+  overflow-x: hidden;
 }
 </style>
