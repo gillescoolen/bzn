@@ -17,6 +17,8 @@ import GuideDetails from "./Steps/GuideDetails";
 import TaskList from "./Tasks/TaskList"
 import Task from "./Tasks/Task"
 
+import MunicipalityList from "./Municipalities/MunicipalityList";
+
 export {
   Admin,
   Users,
@@ -35,5 +37,7 @@ export {
   GuideDetails,
 
   TaskList,
-  Task
+  Task,
+
+    MunicipalityList
 }

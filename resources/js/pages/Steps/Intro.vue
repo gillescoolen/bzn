@@ -8,7 +8,7 @@
 
     <Button
       class="button"
-      @click="$router.push('config')"
+      @click="$router.push('municipalities')"
       :style="{'background-color': color}"
     >Verder</Button>
   </div>

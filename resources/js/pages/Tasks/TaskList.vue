@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <TaskHeader :municipality="municipality" title="Aan welke opgave werkt u?"/>
-      
+
       <div class="tasks-list">
           <div class="task" v-for="task in tasks" v-bind:key="task.id">
               <Collapsible>
@@ -11,7 +11,7 @@
                 <template v-slot:content>
                     <p v-if="task.description" class="desc">{{task.description}}</p>
                     <p v-else class="desc">Deze opgave heeft (nog) geen beschrijving...</p>
-                    
+
                     <a class="read-more" @click="gotoTask(task.id)">Lees meer</a>
                 </template>
               </Collapsible>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
 import { Collapsible } from "../../components/UI"
 import { TaskHeader } from "../../components/Tasks"
 
@@ -32,12 +33,21 @@ export default {
         TaskHeader
     },
 
+
+    computed: {
+        ...mapGetters({
+            municipalityID: 'steps/municipalityID'
+        })
+    },
+
+    //Ik bezig storage link
     data() {
         return {
             municipality: {
-                name: 'Den Haag',
-                img: '/assets/logo-gemeente-denhaag.png'
+                name: 'Den Haag'
+
             },
+
             tasks: []
         }
     },
@@ -48,10 +58,13 @@ export default {
 
     methods: {
         async loadTasks () {
-           const res = await this.$http.get('/api/statements')
-            .catch(e => console.error(e));
-           const data = await res.data
-           this.tasks = data
+           // const res = await this.$http.get('/api/statements')
+           //  .catch(e => console.error(e));
+           // const data = await res.data
+           // this.tasks = data;
+            const a = this.$store.state.municipalities.selected.statements;
+           this.tasks = a
+
         },
 
         gotoTask(id) {

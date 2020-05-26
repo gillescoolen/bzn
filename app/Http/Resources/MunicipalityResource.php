@@ -19,6 +19,9 @@ class MunicipalityResource extends JsonResource
             'name' => $this->name,
             'longitude' => $this->long,
             'latitude' => $this->lat,
+            'imgpath' => $this->imgpath,
+            'hexcolor' => $this->hexcolor,
+            'statements' => $this->statements
         ];
     }
 }

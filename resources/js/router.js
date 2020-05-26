@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, TaskList, Task, GuideTypes, ForgotPassword, ResetPassword, Login, Register } from './pages'
+import MunicipalityList from "./pages/Municipalities/MunicipalityList";
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,12 @@ export default new VueRouter({
             name: 'tasklist',
             meta: { layout: 'step' },
             component: TaskList
+        },
+        {
+            path: '/municipalities',
+            name: 'municipalitylist',
+            meta: { layout: 'step' },
+            component: MunicipalityList
         },
         {
             path: '/task/:id',

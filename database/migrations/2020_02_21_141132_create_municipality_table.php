@@ -18,6 +18,8 @@ class CreateMunicipalityTable extends Migration
             $table->string('name');
             $table->double('long', 12, 6);
             $table->double('lat', 12, 6);
+            $table->string('imgpath')->nullable();
+            $table->string('hexcolor');
             $table->timestamps();
         });
     }
