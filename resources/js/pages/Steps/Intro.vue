@@ -23,16 +23,16 @@
         <h4>Over het project</h4>
       </div>
     </div>
-
-    <div class="about">
+    
+    <div class="about" v-if="textblocksLoaded">
       <div class="boxes">
-        <div class="explanation">
+        <div class="project_explanation">
           <h3>Uitleg project</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, accusamus beatae dolore fuga optio, delectus reiciendis eaque fugiat cumque doloribus molestiae numquam nesciunt! Dolore obcaecati doloremque error facilis pariatur adipisci perferendis ipsum cumque iusto dicta est amet, quod debitis eligendi expedita molestias sed, asperiores accusantium unde ad reprehenderit. Sunt, impedit.</p>
+          <p>{{textblocks.project_explanation}}</p>
         </div>
-        <div class="purpose">
+        <div class="project_purpose">
           <h3>Doel project</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam sit repellat distinctio quis expedita, reiciendis et! Voluptas eos autem, facilis distinctio sequi vero aliquam modi deserunt perspiciatis reprehenderit odit nihil inventore adipisci corrupti, dolores nesciunt voluptatum! Ex excepturi vero impedit. Asperiores, sed cupiditate accusamus quisquam iusto est adipisci ratione aspernatur.</p>
+          <p>{{textblocks.project_purpose}}</p>
         </div>
       </div>
     </div>
@@ -40,7 +40,40 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Intro",
+
+  data() {
+    return {
+      textblocks: {
+        project_explanation: undefined,
+        project_purpose: undefined
+      },
+      textblocksLoaded: false
+    }
+  },
+
+  mounted() {
+    this.fetchTextblocks()
+  },
+
+  methods: {
+    async fetchTextblocks () {
+      let textBlockKeysToFetch = Object.keys(this.textblocks).map(k => k)
+      const res = await this.$http.get('/api/textblocks', {
+        params: {
+          keys: textBlockKeysToFetch
+        }
+      });
+
+      res.data.forEach(d => {
+        this.textblocks[d.key] = d.content
+      })
+
+      this.textblocksLoaded = true
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
