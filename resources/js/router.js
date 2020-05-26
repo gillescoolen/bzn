@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, TaskList, Task, GuideTypes, ForgotPassword, ResetPassword, Login, Register } from './pages'
-import MunicipalityList from "./pages/Municipalities/MunicipalityList";
+import { Admin, Config, Intro, Users, Questions, Registrations, Municipalities, TaskList, Task, TasksOrGuidetypesSelection, GuideTypes, ForgotPassword, ResetPassword, Login, Register } from './pages'
 
 Vue.use(VueRouter)
 
@@ -34,10 +33,10 @@ export default new VueRouter({
             component: TaskList
         },
         {
-            path: '/municipalities',
-            name: 'municipalitylist',
+            path: '/tasks-or-guidetypes',
+            name: 'tasks-or-guidetypes',
             meta: { layout: 'step' },
-            component: MunicipalityList
+            component: TasksOrGuidetypesSelection
         },
         {
             path: '/task/:id',

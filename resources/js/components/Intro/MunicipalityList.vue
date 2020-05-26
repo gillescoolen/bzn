@@ -6,6 +6,7 @@
         class="municipality"
         v-for="municipality in this.municipalities"
         v-bind:key="municipality.id"
+        @click="handleClickMunicipality(municipality)"
       >
         <img :src="`/assets/municipalities/${municipality.imgpath}`" :alt="municipality.imgpath"/>
         <p>{{municipality.name}}</p>
@@ -51,7 +52,13 @@ export default {
       setColor: 'steps/setColor',
       setMunicipalityID: 'steps/setMunicipalityID',
       setMunicipality: 'municipalities/set'
-    })
+    }),
+
+    handleClickMunicipality (municipality) {
+        this.setMunicipality(municipality);
+        this.setColor(municipality.hexcolor);
+        this.$router.push('tasks-or-guidetypes');
+    }
   },
 
   computed: {

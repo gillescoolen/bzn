@@ -1,13 +1,14 @@
 <template>
     <div class="header">
-          <img :src="municipality.img" :alt="`Een afbeelding van gemeente ${municipality.name}`">
-          <h2 class="title">{{title}}</h2>
+          <img :src="`/assets/municipalities/${municipality.imgpath}`" :alt="`Een afbeelding van gemeente ${municipality.name}`">
+          <h2 class="title" v-if="title">{{title}}</h2>
           <BackButton />
       </div>
 </template>
 
 <script>
 import { BackButton } from "../UI"
+import { mapGetters } from 'vuex';
 
 export default {
     name: "TaskHeader",
@@ -17,14 +18,16 @@ export default {
     },
 
     props: {
-        municipality: {
-            type: Object,
-            required: true
-        },
         title: {
             type: String,
-            required: true
+            required: false
         }
+    },
+
+    computed: {
+        ...mapGetters({
+            municipality: 'municipalities/get'
+        })
     }
 }
 </script>

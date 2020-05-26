@@ -15,6 +15,7 @@
     justify-content: center;
     cursor: pointer;
     padding: 5px;
+    margin-right: 5px;
 
     .txt {
         display: flex;

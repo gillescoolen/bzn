@@ -13,11 +13,10 @@ import Intro from "./Steps/Intro";
 import Config from "./Steps/Config";
 import GuideTypes from "./Steps/GuideTypes";
 import GuideDetails from "./Steps/GuideDetails";
+import TasksOrGuidetypesSelection from "./Steps/TasksOrGuidetypesSelection"
 
 import TaskList from "./Tasks/TaskList"
 import Task from "./Tasks/Task"
-
-import MunicipalityList from "./Municipalities/MunicipalityList";
 
 export {
   Admin,
@@ -35,9 +34,8 @@ export {
   Config,
   GuideTypes,
   GuideDetails,
+  TasksOrGuidetypesSelection,
 
   TaskList,
-  Task,
-
-    MunicipalityList
+  Task
 }

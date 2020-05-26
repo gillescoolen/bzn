@@ -37,5 +37,6 @@ export default {
 .partner-list {
     max-width: 950px;
     margin: 50px auto;
+    padding: 0 10px;
 }
 </style>
