@@ -48,7 +48,7 @@ export default {
     Title
   },
 
-  data() {
+  data () {
     return {
       textblocks: {
         project_explanation: undefined,
@@ -58,12 +58,12 @@ export default {
     };
   },
 
-  mounted() {
+  mounted () {
     this.fetchTextblocks();
   },
 
   methods: {
-    async fetchTextblocks() {
+    async fetchTextblocks () {
       const textBlockKeysToFetch = Object.keys(this.textblocks).map(k => k);
       const res = await this.$http.get('/api/textblocks', {
         params: {

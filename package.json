@@ -12,6 +12,7 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "css-loader": "^3.5.3",
     "dom-to-image": "^2.6.0",
     "leaflet": "^1.6.0",
     "pdfmake": "^0.1.65",
@@ -28,7 +29,6 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "axios": "^0.19",
     "cross-env": "^7.0.2",
-    "css-loader": "^3.5.3",
     "eslint": "^7.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",

@@ -18,6 +18,7 @@ Route::get('municipalities', 'MunicipalityController@index');
 Route::get('legend', 'LegendController@index');
 
 Route::get('questions', 'QuestionController@index');
+Route::get('guidetypes', 'GuideTypeController@index');
 
 Route::get('statements', 'StatementController@allStatements');
 Route::get('statement/{statement}', 'StatementController@getStatement');
