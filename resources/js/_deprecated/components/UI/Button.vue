@@ -6,15 +6,15 @@
 
 <script>
 export default {
-  name: "Button",
-  props: ["variant", "flat", "inverse"],
+  name: 'Button',
+  props: ['variant', 'flat', 'inverse'],
   methods: {
-    handleClick(e) {
-      this.$emit("click", e);
+    handleClick (e) {
+      this.$emit('click', e);
     }
   },
   computed: {
-    classObject() {
+    classObject () {
       if (!this.variant) return [];
       const classlist = [];
 

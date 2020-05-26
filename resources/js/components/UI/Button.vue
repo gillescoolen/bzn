@@ -10,13 +10,13 @@ export default {
   props: ['variant', 'flat', 'inverse'],
 
   methods: {
-    click(e) {
+    click (e) {
       this.$emit('click', e);
     }
   },
 
   computed: {
-    classObject() {
+    classObject () {
       return this.inverse
         ? [this.variant, `border-${this.variant}`]
         : [`bg-${this.variant}`];

@@ -7,16 +7,16 @@
 </template>
 
 <script>
-    export default {
-        name: "ContentBox",
+export default {
+  name: 'ContentBox',
 
-        props: {
-            municipality: {
-                type: Object,
-                required: true
-            }
-        }
+  props: {
+    municipality: {
+      type: Object,
+      required: true
     }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

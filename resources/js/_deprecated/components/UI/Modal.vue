@@ -9,17 +9,17 @@
 </template>
 
 <script>
-import Button from "./Button";
+import Button from './Button';
 
 export default {
   components: {
     Button
   },
-  name: "Modal",
-  props: ["show"],
+  name: 'Modal',
+  props: ['show'],
   methods: {
-    closeModal() {
-      this.$emit("close");
+    closeModal () {
+      this.$emit('close');
     }
   }
 };

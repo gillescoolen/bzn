@@ -23,7 +23,7 @@ export default {
   components: {
     Button
   },
-  data() {
+  data () {
     return {
       items: [
         {
@@ -60,13 +60,12 @@ export default {
       setUser: 'user/set'
     }),
 
-    async logout() {
-      
+    async logout () {
       try {
         this.setUser(null);
         await this.$http.post('/api/logout');
-        this.$http.defaults.headers['Authorization'] = null;
-        
+        this.$http.defaults.headers.Authorization = null;
+
         this.$router.push('/login');
       } catch (error) {
         console.error(error);
@@ -82,7 +81,7 @@ export default {
     /**
      * Returns the items the user is allowed to see.
      */
-    allowed() {
+    allowed () {
       return this.items.filter(item =>
         item.roles.some(role => role === this.user.role)
       );

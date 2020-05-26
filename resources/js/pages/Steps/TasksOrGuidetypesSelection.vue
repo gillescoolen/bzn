@@ -15,38 +15,38 @@
 </template>
 
 <script>
-import { TaskHeader } from "../../components/Tasks"
+import { TaskHeader } from '../../components/Tasks';
 import { mapGetters } from 'vuex';
 
 export default {
-    name: "TasksOrGuidetypesSelection",
+  name: 'TasksOrGuidetypesSelection',
 
-    components: {
-        TaskHeader
-    },
+  components: {
+    TaskHeader
+  },
 
-    mounted() {
-        if (!this.municipality.id) {
-            this.$router.push('/');
-        }
-    },
-
-    methods: {
-        handleClickTasks () {
-            this.$router.push('/tasks');
-        },
-
-        handleClickGuidetypes () {
-            this.$router.push('/guide-types');
-        }
-    },
-
-    computed: {
-        ...mapGetters({
-            municipality: 'municipalities/get'
-        })
+  mounted () {
+    if (!this.municipality.id) {
+      this.$router.push('/');
     }
-}
+  },
+
+  methods: {
+    handleClickTasks () {
+      this.$router.push('/tasks');
+    },
+
+    handleClickGuidetypes () {
+      this.$router.push('/guide-types');
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      municipality: 'municipalities/get'
+    })
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -74,7 +74,7 @@ export default {
         text-align: center;
         cursor: pointer
     }
-    
+
     h5 {
         font-family: "Midnight Champion";
         font-size: 25px;

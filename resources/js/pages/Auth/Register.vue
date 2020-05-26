@@ -38,7 +38,7 @@ export default {
     Button
   },
 
-  data() {
+  data () {
     return {
       name: null,
       email: null,
@@ -59,10 +59,9 @@ export default {
       setUser: 'user/set'
     }),
 
-    async register() {
+    async register () {
       try {
-        if (this.password !== this.confirmation)
-          throw { response: { data: { message: 'De wachtwoorden komen niet overeen.' } } };
+        if (this.password !== this.confirmation) { throw { response: { data: { message: 'De wachtwoorden komen niet overeen.' } } }; }
 
         const { data: res } = await this.$http.post('/api/register', {
           name: this.name,
@@ -70,7 +69,7 @@ export default {
           password: this.password
         });
 
-        this.$http.defaults.headers['Authorization'] = `Bearer ${res.token}`;
+        this.$http.defaults.headers.Authorization = `Bearer ${res.token}`;
 
         await this.setCurrentUser();
 
@@ -80,7 +79,7 @@ export default {
       }
     },
 
-    async setCurrentUser() {
+    async setCurrentUser () {
       try {
         const { data: res } = await this.$http.get('/api/user');
 

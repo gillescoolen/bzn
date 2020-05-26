@@ -7,29 +7,29 @@
 </template>
 
 <script>
-import { BackButton } from "../UI"
+import { BackButton } from '../UI';
 import { mapGetters } from 'vuex';
 
 export default {
-    name: "TaskHeader",
-    
-    components: {
-        BackButton
-    },
+  name: 'TaskHeader',
 
-    props: {
-        title: {
-            type: String,
-            required: false
-        }
-    },
+  components: {
+    BackButton
+  },
 
-    computed: {
-        ...mapGetters({
-            municipality: 'municipalities/get'
-        })
+  props: {
+    title: {
+      type: String,
+      required: false
     }
-}
+  },
+
+  computed: {
+    ...mapGetters({
+      municipality: 'municipalities/get'
+    })
+  }
+};
 </script>
 
 <style lang="scss" scoped>

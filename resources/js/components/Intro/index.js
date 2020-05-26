@@ -1,5 +1,5 @@
-import PartnerList from "./PartnerList"
-import MunicipalityList from "./MunicipalityList"
-import Title from "./Title"
+import PartnerList from './PartnerList';
+import MunicipalityList from './MunicipalityList';
+import Title from './Title';
 
-export { PartnerList, MunicipalityList, Title }
+export { PartnerList, MunicipalityList, Title };

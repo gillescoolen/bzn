@@ -16,23 +16,23 @@
 
 <script>
 export default {
-    data() {
-        return {
-            show: false,
-            items: null
-        };
-    },
+  data () {
+    return {
+      show: false,
+      items: null
+    };
+  },
 
-    async mounted() {
-        this.items = await this.fetchLegendItems();
-    },
+  async mounted () {
+    this.items = await this.fetchLegendItems();
+  },
 
-    methods: {
-        async fetchLegendItems() {
-            const { data: res } = await this.$http.get("api/legend");
-            return await res;
-        }
+  methods: {
+    async fetchLegendItems () {
+      const { data: res } = await this.$http.get('api/legend');
+      return await res;
     }
+  }
 };
 </script>
 

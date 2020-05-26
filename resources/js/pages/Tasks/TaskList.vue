@@ -21,48 +21,47 @@
 </template>
 
 <script>
-import { Collapsible } from "../../components/UI"
-import { TaskHeader } from "../../components/Tasks"
+import { Collapsible } from '../../components/UI';
+import { TaskHeader } from '../../components/Tasks';
 
 export default {
-    name: "TaskList",
+  name: 'TaskList',
 
-    components: {
-        Collapsible,
-        TaskHeader
+  components: {
+    Collapsible,
+    TaskHeader
+  },
+
+  // Ik bezig storage link
+  data () {
+    return {
+      municipality: {
+        name: 'Den Haag'
+
+      },
+
+      tasks: []
+    };
+  },
+
+  async mounted () {
+    await this.loadTasks();
+  },
+
+  methods: {
+    async loadTasks () {
+      // const res = await this.$http.get('/api/statements')
+      //  .catch(e => console.error(e));
+      // const data = await res.data
+      // this.tasks = data;
+      const a = this.$store.state.municipalities.selected.statements;
+      this.tasks = a;
     },
 
-    //Ik bezig storage link
-    data() {
-        return {
-            municipality: {
-                name: 'Den Haag'
-
-            },
-
-            tasks: []
-        }
-    },
-
-    async mounted() {
-        await this.loadTasks()
-    },
-
-    methods: {
-        async loadTasks () {
-           // const res = await this.$http.get('/api/statements')
-           //  .catch(e => console.error(e));
-           // const data = await res.data
-           // this.tasks = data;
-            const a = this.$store.state.municipalities.selected.statements;
-           this.tasks = a
-
-        },
-
-        gotoTask(id) {
-            this.$router.push(`/task/${id}`)
-        }
+    gotoTask (id) {
+      this.$router.push(`/task/${id}`);
     }
+  }
 };
 </script>
 

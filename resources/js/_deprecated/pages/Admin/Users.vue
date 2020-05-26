@@ -68,19 +68,18 @@
   </div>
 </template>
 
-
 <script>
-import { mapGetters } from "vuex";
-import { Role } from "../../mixins";
+import { mapGetters } from 'vuex';
+import { Role } from '../../mixins';
 import {
   Modal,
   MunicipalityDropdown,
   Spinner,
   Button
-} from "../../components/UI";
+} from '../../components/UI';
 
 export default {
-  name: "Users",
+  name: 'Users',
 
   components: {
     Modal: Modal,
@@ -91,11 +90,11 @@ export default {
 
   mixins: [Role],
 
-  data() {
+  data () {
     return {
       users: null,
       showUsersSpinner: true,
-      roles: ["admin"],
+      roles: ['admin'],
 
       showModal: false,
       showModalSpinner: true,
@@ -104,7 +103,7 @@ export default {
     };
   },
 
-  async mounted() {
+  async mounted () {
     this.users = await this.fetchUsers();
     this.municipalities = await this.fetchMunicipalities();
     this.users.map(u =>
@@ -114,9 +113,9 @@ export default {
   },
 
   methods: {
-    async fetchUsers() {
+    async fetchUsers () {
       try {
-        const { data: res } = await this.$http.get("/api/users/approved");
+        const { data: res } = await this.$http.get('/api/users/approved');
 
         return res;
       } catch (error) {
@@ -124,10 +123,10 @@ export default {
       }
     },
 
-    async approve(id) {
+    async approve (id) {
       try {
         const res = await this.$http.patch(`/api/users/${id}/approve`, {
-          method: "PATCH",
+          method: 'PATCH',
           body: {
             approved: 1
           }
@@ -139,26 +138,26 @@ export default {
       }
     },
 
-    async fetchMunicipalities() {
+    async fetchMunicipalities () {
       try {
-        const { data: res } = await this.$http.get("/api/municipalities");
+        const { data: res } = await this.$http.get('/api/municipalities');
         return res;
       } catch (error) {
-        console.error("Error fetching questions: ", error);
+        console.error('Error fetching questions: ', error);
       }
     },
 
-    showAddMunicipalityModal(user_id) {
+    showAddMunicipalityModal (user_id) {
       this.showModalSpinner = true;
       this.showModal = true;
       this.editing_user = this.users.find(u => u.id === user_id);
     },
 
-    changeMunicipality() {
+    changeMunicipality () {
       this.showModalSpinner = false;
     },
 
-    async addMunicipalityToUser() {
+    async addMunicipalityToUser () {
       this.showModal = false;
 
       const municipality_id = this.selectedMunicipality.id;
@@ -169,22 +168,22 @@ export default {
       try {
         await this.$http.patch(uri);
       } catch (error) {
-        console.error("Error adding municipality to user: ", error);
+        console.error('Error adding municipality to user: ', error);
       }
     },
 
-    async removeMunicipalityFromUser() {
+    async removeMunicipalityFromUser () {
       this.showModal = false;
       this.addMunicipalityNameToUser(this.editing_user.id, null);
       const uri = `/api/users/${this.editing_user.id}/removemunicipality`;
       try {
         await this.$http.patch(uri);
       } catch (error) {
-        console.error("Error removing municipality from user: ", error);
+        console.error('Error removing municipality from user: ', error);
       }
     },
 
-    addMunicipalityNameToUser(user_id, municipality_id) {
+    addMunicipalityNameToUser (user_id, municipality_id) {
       const user = this.users.find(u => u.id === user_id);
       if (municipality_id) {
         const municipality = this.municipalities.find(
@@ -192,14 +191,14 @@ export default {
         );
         user.municipalityname = municipality ? municipality.name : null;
       } else {
-        user.municipality_id = "";
-        user.municipalityname = "";
+        user.municipality_id = '';
+        user.municipalityname = '';
       }
     }
   },
   computed: {
     ...mapGetters({
-      selectedMunicipality: "municipalities/get"
+      selectedMunicipality: 'municipalities/get'
     })
   }
 };

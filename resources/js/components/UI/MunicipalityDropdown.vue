@@ -19,56 +19,56 @@
 </template>
 
 <script>
-import { List } from "../UI";
-import { mapGetters, mapActions } from "vuex";
+import { List } from '../UI';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    components: {
-        List
+  components: {
+    List
+  },
+
+  props: ['invert', 'menuFloat'],
+
+  data () {
+    return {
+      show: false,
+      municipalities: null
+    };
+  },
+
+  async mounted () {
+    this.municipalities = await this.fetchMunicipalities();
+    this.$emit('change_municipality', this.municipalities[0]);
+  },
+
+  computed: {
+    ...mapGetters({
+      municipality: 'municipalities/get'
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      setMunicipality: 'municipalities/set'
+    }),
+
+    set (item) {
+      this.setMunicipality(item);
+      this.show = false;
+      this.$emit('change_municipality', item);
     },
 
-    props: ['invert', 'menuFloat'],
-
-    data() {
-        return {
-            show: false,
-            municipalities: null
-        };
-    },
-
-    async mounted() {
-        this.municipalities = await this.fetchMunicipalities();
-        this.$emit('change_municipality', this.municipalities[0])
-    },
-
-    computed: {
-        ...mapGetters({
-            municipality: "municipalities/get"
-        })
-    },
-
-    methods: {
-        ...mapActions({
-            setMunicipality: "municipalities/set"
-        }),
-
-        set(item) {
-            this.setMunicipality(item);
-            this.show = false;
-            this.$emit('change_municipality', item)
-        },
-
-        async fetchMunicipalities() {
-            try {
-                const { data: res } = await this.$http.get(
-                    "/api/municipalities"
-                );
-                return res;
-            } catch (error) {
-                console.error("Error fetching questions: ", error);
-            }
-        }
+    async fetchMunicipalities () {
+      try {
+        const { data: res } = await this.$http.get(
+          '/api/municipalities'
+        );
+        return res;
+      } catch (error) {
+        console.error('Error fetching questions: ', error);
+      }
     }
+  }
 };
 </script>
 

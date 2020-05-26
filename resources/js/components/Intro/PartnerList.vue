@@ -5,32 +5,32 @@
 </template>
 
 <script>
-import Partner from "./Partner"
+import Partner from './Partner';
 
 export default {
-    name: "PartnerList",
+  name: 'PartnerList',
 
-    components: {
-        Partner
-    },
+  components: {
+    Partner
+  },
 
-    data () {
-        return {
-            partners: []
-        }
-    },
+  data () {
+    return {
+      partners: []
+    };
+  },
 
-    mounted () {
-        this.fetchPartners()
-    },
+  mounted () {
+    this.fetchPartners();
+  },
 
-    methods: {
-        async fetchPartners () {
-            const res = await this.$http.get('/api/partners');
-            this.partners = res.data
-        }
+  methods: {
+    async fetchPartners () {
+      const res = await this.$http.get('/api/partners');
+      this.partners = res.data;
     }
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>

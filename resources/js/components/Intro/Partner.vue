@@ -6,15 +6,15 @@
 
 <script>
 export default {
-    name: "Partner",
+  name: 'Partner',
 
-    props: {
-        partner: {
-            type: Object,
-            required: true
-        }
+  props: {
+    partner: {
+      type: Object,
+      required: true
     }
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>

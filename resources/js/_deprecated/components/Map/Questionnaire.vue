@@ -45,33 +45,33 @@
 import { Select, Spinner, Button } from '../UI';
 
 export default {
-    components: {
-        Select,
-        Spinner,
-        Button
-    },
+  components: {
+    Select,
+    Spinner,
+    Button
+  },
 
-    data() {
-        return {
-            show: false,
-            questions: null
-        };
-    },
+  data () {
+    return {
+      show: false,
+      questions: null
+    };
+  },
 
-    async mounted() {
-        this.questions = await this.fetchQuestions();
-    },
+  async mounted () {
+    this.questions = await this.fetchQuestions();
+  },
 
-    methods: {
-        async fetchQuestions() {
-            try {
-                const { data: res } = await this.$http.get('api/questions');
-                return res;
-            } catch (error) {
-                console.error('Error fetching questions: ', error);
-            }
-        }
+  methods: {
+    async fetchQuestions () {
+      try {
+        const { data: res } = await this.$http.get('api/questions');
+        return res;
+      } catch (error) {
+        console.error('Error fetching questions: ', error);
+      }
     }
+  }
 };
 </script>
 

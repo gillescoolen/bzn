@@ -9,20 +9,20 @@
 
 <script>
 export default {
-    computed: {
-        layout() {
-            return this.$route.meta.layout;
-        }
-    },
-
-    created() {
-        const token = document
-            .querySelector(`meta[name='tkn']`)
-            .getAttribute("content");
-
-        this.$http.defaults.headers["Accept"] = "application/json";
-        this.$http.defaults.headers["Authorization"] = `Bearer ${token}`;
+  computed: {
+    layout () {
+      return this.$route.meta.layout;
     }
+  },
+
+  created () {
+    const token = document
+      .querySelector('meta[name=\'tkn\']')
+      .getAttribute('content');
+
+    this.$http.defaults.headers.Accept = 'application/json';
+    this.$http.defaults.headers.Authorization = `Bearer ${token}`;
+  }
 };
 </script>
 

@@ -34,7 +34,7 @@ export default {
   },
 
   methods: {
-    input(event) {
+    input (event) {
       this.$emit('input', event.target.value);
     }
   }
@@ -59,7 +59,6 @@ export default {
   user-select: none;
   background: transparent;
   border-bottom: 2px solid gray;
-
 
   &::placeholder {
     color: transparent;

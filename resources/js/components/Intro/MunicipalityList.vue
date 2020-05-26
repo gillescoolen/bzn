@@ -28,18 +28,18 @@ export default {
     ContentBox
   },
 
-  data() {
+  data () {
     return {
       municipalities: []
     };
   },
 
-  async mounted() {
+  async mounted () {
     this.municipalities = await this.fetchMunicipalities();
   },
 
   methods: {
-    async fetchMunicipalities() {
+    async fetchMunicipalities () {
       try {
         const { data: res } = await this.$http.get('/api/municipalities');
         return res;
@@ -55,9 +55,9 @@ export default {
     }),
 
     handleClickMunicipality (municipality) {
-        this.setMunicipality(municipality);
-        this.setColor(municipality.hexcolor);
-        this.$router.push('tasks-or-guidetypes');
+      this.setMunicipality(municipality);
+      this.setColor(municipality.hexcolor);
+      this.$router.push('tasks-or-guidetypes');
     }
   },
 

@@ -30,33 +30,33 @@
 import { mapActions } from 'vuex';
 
 export default {
-    props: {
-        Panswers: null
-    },
-    data() {
-        return {
-            selected: undefined,
-            answers: undefined,
-            expanded: false
-        };
-    },
+  props: {
+    Panswers: null
+  },
+  data () {
+    return {
+      selected: undefined,
+      answers: undefined,
+      expanded: false
+    };
+  },
 
-    methods: {
-        ...mapActions({
-            setLayer: 'map/set'
-        }),
+  methods: {
+    ...mapActions({
+      setLayer: 'map/set'
+    }),
 
-        setAnswer(answer) {
-            this.setLayer(answer.layer);
-            this.selected = answer;
-            this.expanded = false;
-        }
-    },
-
-    mounted() {
-        this.answers = this.Panswers;
-        this.selected = this.answers[0];
+    setAnswer (answer) {
+      this.setLayer(answer.layer);
+      this.selected = answer;
+      this.expanded = false;
     }
+  },
+
+  mounted () {
+    this.answers = this.Panswers;
+    this.selected = this.answers[0];
+  }
 };
 </script>
 

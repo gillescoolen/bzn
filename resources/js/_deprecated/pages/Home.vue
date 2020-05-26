@@ -13,26 +13,26 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { PDF } from "../components/UI";
-import { NavigationBar } from "../components/Navigation";
-import { Map, Legend, VisitorModal, Questionnaire } from "../components/Map";
+import { mapGetters } from 'vuex';
+import { PDF } from '../components/UI';
+import { NavigationBar } from '../components/Navigation';
+import { Map, Legend, VisitorModal, Questionnaire } from '../components/Map';
 
 export default {
-    components: {
-        PDF,
-        Map,
-        Legend,
-        VisitorModal,
-        Questionnaire,
-        NavigationBar
-    },
+  components: {
+    PDF,
+    Map,
+    Legend,
+    VisitorModal,
+    Questionnaire,
+    NavigationBar
+  },
 
-    computed: {
-        ...mapGetters({
-            visitor: "visitor/get"
-        })
-    }
+  computed: {
+    ...mapGetters({
+      visitor: 'visitor/get'
+    })
+  }
 };
 </script>
 

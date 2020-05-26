@@ -17,8 +17,8 @@ export default {
       getUser: 'user/get'
     })
   },
-  
-  created() {
+
+  created () {
     if (this.getUser) this.$router.push('admin');
   }
 };

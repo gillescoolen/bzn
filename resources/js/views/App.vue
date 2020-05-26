@@ -10,7 +10,7 @@
 <script>
 export default {
   computed: {
-    layout() {
+    layout () {
       return this.$route.meta.layout;
     }
   }
@@ -26,7 +26,7 @@ export default {
 }
 
 body {
-  margin: 0;  
+  margin: 0;
   font-family: 'Arial';
 }
 </style>

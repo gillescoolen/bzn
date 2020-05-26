@@ -31,7 +31,7 @@ export default {
     Button
   },
 
-  data() {
+  data () {
     return {
       email: null,
       password: null,
@@ -44,7 +44,7 @@ export default {
       getUser: 'user/get'
     }),
 
-    enabled() {
+    enabled () {
       return this.email && this.password && this.password === this.confirmation;
     }
   },
@@ -54,14 +54,14 @@ export default {
       setUser: 'user/set'
     }),
 
-    async login() {
+    async login () {
       try {
         const { data: res } = await this.$http.post('/api/login', {
           email: this.email,
           password: this.password
         });
 
-        this.$http.defaults.headers['Authorization'] = `Bearer ${res.token}`;
+        this.$http.defaults.headers.Authorization = `Bearer ${res.token}`;
 
         await this.setCurrentUser();
 
@@ -71,7 +71,7 @@ export default {
       }
     },
 
-    async setCurrentUser() {
+    async setCurrentUser () {
       try {
         const { data: res } = await this.$http.get('/api/user');
 

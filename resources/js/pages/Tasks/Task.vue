@@ -47,20 +47,20 @@ export default {
     Collapsible
   },
 
-  data() {
+  data () {
     return {
       task: null,
       measures: null
     };
   },
 
-  async mounted() {
+  async mounted () {
     await this.loadTask();
     await this.loadMeasures();
   },
 
   methods: {
-    async loadTask() {
+    async loadTask () {
       const taskId = this.$route.params.id;
       if (!taskId) {
         return this.$router.push('/tasks');
@@ -71,30 +71,30 @@ export default {
         .catch(e => {
           this.$router.push('/tasks');
         });
-      if (!res) return
+      if (!res) return;
       const data = await res.data;
-      this.task = data
+      this.task = data;
     },
 
-    async loadMeasures() {
-        if (!this.task || !this.task.measure_ids) return;
+    async loadMeasures () {
+      if (!this.task || !this.task.measure_ids) return;
 
-        let measures = []
-        let promises = []
-        this.task.measure_ids.forEach(measure_id => {
-            promises.push(this.loadMeasure(measures, measure_id))
-        })
-        await Promise.all(promises)
-            .catch(e => console.error(e))
-        this.measures = measures
+      const measures = [];
+      const promises = [];
+      this.task.measure_ids.forEach(measure_id => {
+        promises.push(this.loadMeasure(measures, measure_id));
+      });
+      await Promise.all(promises)
+        .catch(e => console.error(e));
+      this.measures = measures;
     },
 
-    async loadMeasure(measures, id) {
-        const res = await this.$http
-            .get(`/api/measure/${id}`)
-            .catch(e => console.error(e));
-        const data = await res.data;
-        measures.push(data)
+    async loadMeasure (measures, id) {
+      const res = await this.$http
+        .get(`/api/measure/${id}`)
+        .catch(e => console.error(e));
+      const data = await res.data;
+      measures.push(data);
     }
   }
 };

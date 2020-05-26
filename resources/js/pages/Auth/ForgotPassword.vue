@@ -21,7 +21,7 @@ export default {
     Button
   },
 
-  data() {
+  data () {
     return {
       email: null,
       error: null
@@ -29,7 +29,7 @@ export default {
   },
 
   methods: {
-    async reset() {
+    async reset () {
       try {
         const { data: res } = await this.$http.post('/api/forgot-password', {
           email: this.email

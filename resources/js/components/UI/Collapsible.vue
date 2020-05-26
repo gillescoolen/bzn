@@ -12,13 +12,13 @@
 
 <script>
 export default {
-    name: "Collapsible",
-    data() {
-        return {
-            open: false
-        }
-    }
-}
+  name: 'Collapsible',
+  data () {
+    return {
+      open: false
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
