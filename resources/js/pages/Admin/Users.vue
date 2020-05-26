@@ -147,10 +147,10 @@ export default {
       }
     },
 
-    showAddMunicipalityModal (user_id) {
+    showAddMunicipalityModal (userId) {
       this.showModalSpinner = true;
       this.showModal = true;
-      this.editing_user = this.users.find(u => u.id === user_id);
+      this.editing_user = this.users.find(u => u.id === userId);
     },
 
     changeMunicipality () {
@@ -160,11 +160,11 @@ export default {
     async addMunicipalityToUser () {
       this.showModal = false;
 
-      const municipality_id = this.selectedMunicipality.id;
-      this.editing_user.municipality_id = municipality_id;
-      this.addMunicipalityNameToUser(this.editing_user.id, municipality_id);
+      const municipalityId = this.selectedMunicipality.id;
+      this.editing_user.municipalityId = municipalityId;
+      this.addMunicipalityNameToUser(this.editing_user.id, municipalityId);
 
-      const uri = `/api/users/${this.editing_user.id}/addmunicipality/${municipality_id}`;
+      const uri = `/api/users/${this.editing_user.id}/addmunicipality/${municipalityId}`;
       try {
         await this.$http.patch(uri);
       } catch (error) {
@@ -183,15 +183,15 @@ export default {
       }
     },
 
-    addMunicipalityNameToUser (user_id, municipality_id) {
-      const user = this.users.find(u => u.id === user_id);
-      if (municipality_id) {
+    addMunicipalityNameToUser (userId, municipalityId) {
+      const user = this.users.find(u => u.id === userId);
+      if (municipalityId) {
         const municipality = this.municipalities.find(
-          m => m.id === municipality_id
+          m => m.id === municipalityId
         );
         user.municipalityname = municipality ? municipality.name : null;
       } else {
-        user.municipality_id = '';
+        user.municipalityId = '';
         user.municipalityname = '';
       }
     }

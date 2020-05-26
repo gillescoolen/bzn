@@ -98,14 +98,14 @@ export default {
       }
     },
 
-    async decline (user_id) {
+    async decline (userId) {
       this.$http
-        .delete(`/api/users/${user_id}`)
+        .delete(`/api/users/${userId}`)
         .then(res => {
           res.status === 200 && this.loadUsers();
         })
         .catch(e => {
-          console.error(`Error declining user with id ${user_id}: ${e}`);
+          console.error(`Error declining user with id ${userId}: ${e}`);
         });
     }
   }

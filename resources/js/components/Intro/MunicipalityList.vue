@@ -16,17 +16,10 @@
 </template>
 
 <script>
-import { ContentBox } from '../../components/UI';
-import Button from '../../components/UI/Button';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'MunicipalityList',
-
-  components: {
-    Button,
-    ContentBox
-  },
 
   data () {
     return {

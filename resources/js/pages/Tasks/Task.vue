@@ -36,15 +36,14 @@
 
 <script>
 import { TaskHeader } from '../../components/Tasks';
-import { Spinner, Collapsible } from '../../components/UI';
+import { Spinner } from '../../components/UI';
 
 export default {
   name: 'Task',
 
   components: {
     TaskHeader,
-    Spinner,
-    Collapsible
+    Spinner
   },
 
   data () {
@@ -81,8 +80,8 @@ export default {
 
       const measures = [];
       const promises = [];
-      this.task.measure_ids.forEach(measure_id => {
-        promises.push(this.loadMeasure(measures, measure_id));
+      this.task.measure_ids.forEach(measureId => {
+        promises.push(this.loadMeasure(measures, measureId));
       });
       await Promise.all(promises)
         .catch(e => console.error(e));

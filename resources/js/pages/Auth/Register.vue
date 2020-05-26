@@ -61,7 +61,7 @@ export default {
 
     async register () {
       try {
-        if (this.password !== this.confirmation) { throw { response: { data: { message: 'De wachtwoorden komen niet overeen.' } } }; }
+        if (this.password !== this.confirmation) { throw new Error({ response: { data: { message: 'De wachtwoorden komen niet overeen.' } } }); }
 
         const { data: res } = await this.$http.post('/api/register', {
           name: this.name,

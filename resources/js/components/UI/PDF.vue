@@ -21,7 +21,6 @@ export default {
       this.text = 'Bezig...';
       this.downloaded = true;
       const image = await this.generateMapImage();
-      const dimensions = await this.getImageDimensions(image);
 
       const document = {
         pageOrientation: 'landscape',
@@ -30,10 +29,6 @@ export default {
           width: 800,
           height: 500
         },
-        // pageSize: {
-        //     width: dimensions.width,
-        //     height: dimensions.height
-        // },
 
         content: [
           {

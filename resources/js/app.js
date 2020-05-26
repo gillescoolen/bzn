@@ -29,3 +29,5 @@ const app = new Vue({
   router,
   store
 });
+
+export default app;
