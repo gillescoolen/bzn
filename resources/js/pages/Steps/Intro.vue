@@ -21,11 +21,11 @@
       <div class="boxes">
         <div class="project_explanation">
           <h3>Uitleg project</h3>
-          <p>{{textblocks.project_explanation}}</p>
+          <p>{{ textblocks.project_explanation }}</p>
         </div>
         <div class="project_purpose">
           <h3>Doel project</h3>
-          <p>{{textblocks.project_purpose}}</p>
+          <p>{{ textblocks.project_purpose }}</p>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@ export default {
     Title
   },
 
-  data () {
+  data() {
     return {
       textblocks: {
         project_explanation: undefined,
@@ -58,12 +58,12 @@ export default {
     };
   },
 
-  mounted () {
+  mounted() {
     this.fetchTextblocks();
   },
 
   methods: {
-    async fetchTextblocks () {
+    async fetchTextblocks() {
       const textBlockKeysToFetch = Object.keys(this.textblocks).map(k => k);
       const res = await this.$http.get('/api/textblocks', {
         params: {
@@ -149,8 +149,7 @@ export default {
       }
 
       p {
-        font-family: 'Midnight Champion';
-        font-size: 26px;
+        font-size: 18px;
       }
     }
   }
