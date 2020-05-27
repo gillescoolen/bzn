@@ -1,7 +1,7 @@
 <template>
     <div class="header">
           <img :src="`/assets/municipalities/${municipality.imgpath}`" :alt="`Een afbeelding van gemeente ${municipality.name}`">
-          <h2 class="title" v-if="title">Gemeente {{title}}</h2>
+          <h2 class="title" v-if="title">{{title}}</h2>
           <BackButton />
       </div>
 </template>

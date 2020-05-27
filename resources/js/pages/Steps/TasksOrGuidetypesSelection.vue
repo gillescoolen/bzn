@@ -1,6 +1,6 @@
 <template>
     <div>
-        <TaskHeader :title="municipality.name"/>
+        <TaskHeader :title="`Gemeente ${municipality.name}`"/>
 
         <div class="content">
             <h3>Aan de slag met:</h3>
