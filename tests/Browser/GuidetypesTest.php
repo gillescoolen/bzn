@@ -5,7 +5,7 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class MapTest extends DuskTestCase
+class GuidetypesTest extends DuskTestCase
 {
     /**
      * Get the root selector for the component.
@@ -14,11 +14,11 @@ class MapTest extends DuskTestCase
      */
     public function component()
     {
-        return '@map';
+        return '@tasks';
     }
 
     /**
-     * Check if the map has loaded in correctly
+     * Check if our component renders.
      *
      * @return void
      */
@@ -26,25 +26,38 @@ class MapTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                // Check if the component exists in our page.
-                ->assertVisible($this->component())
-                ->click('@normal')
-                // Check that the 'ready' property is true, which means the component is ready.
-                ->assertVue('ready', true, $this->component());
+                ->waitFor($this->component(), 5)
+                ->assertVisible($this->component());
         });
     }
 
     /**
-     * Make sure the map defaults to Amsterdam with a zoom level of 12.
+     * Check if our component data has tasks.
      *
      * @return void
      */
-    public function testDefaultPosition()
+    public function testComponentData()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                // Check that the 'zoom' property is 12, which is our default.
-                ->assertVue('zoom', 12, $this->component());
+                ->waitFor($this->component(), 5)
+                ->pause(2000)
+                ->assertVueIsNot('guidetypes', null, $this->component());
+        });
+    }
+
+    /**
+     * Check if the form shows when clicking the icon.
+     *
+     * @return void
+     */
+    public function testShownComponent()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->waitFor('@guide-map', 5)
+                ->click('@questionnaire-show')
+                ->assertVue('show', true, $this->component());
         });
     }
 
@@ -58,9 +71,9 @@ class MapTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 // Check that the 'minZoom' property is 12, which is our default.
-                ->assertVue('minZoom', 12, $this->component())
+                ->assertVue('minZoom', 12, '@guide-map')
                 // Check that the zoom controls have been disabled.
-                ->assertVue('options', ['zoomControl' => false, 'preferCanvas' => true], $this->component());
+                ->assertVue('options', ['zoomControl' => false, 'preferCanvas' => true], '@guide-map');
         });
     }
 }
